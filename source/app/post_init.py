@@ -15,6 +15,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with this program; if not, write to the Free Software Foundation,
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+import ast
 import json
 
 from pathlib import Path
@@ -73,6 +74,12 @@ from app.models.models import create_safe_attr
 from app.models.models import get_by_value_or_create
 from app.models.models import get_or_create
 from app.iris_engine.demo_builder import create_demo_users
+
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
+from app.datamgmt.alerts.alerts_db import add_alert
+from app.models.alerts import Severity
+from elasticsearch import Elasticsearch
 
 log = app.logger
 
@@ -277,6 +284,111 @@ def run_post_init(development=False):
             if pwd is not None:
                 log.info(f'You can now login with user {admin.user} and password >>> {pwd} <<< '
                          f'on {os.getenv("INTERFACE_HTTPS_PORT")}')
+
+    scheduler = BackgroundScheduler()
+    es = Elasticsearch(f"https://{os.getenv('ELK_SERVER')}:{os.getenv('ELK_PORT')}",
+                       http_auth=(os.getenv("ELK_USER"), os.getenv("ELK_PASSWORD")),
+                       ssl_show_warn=False,
+                       verify_certs=False,
+                        )
+
+    query = {
+        "query": {
+            "range": {
+                "@timestamp": {
+                    "gte": "now-30d/d",  # Last 24 hours
+                    "lte": "now/d"
+                }
+            }
+        },
+        # "size": 10,  # Get up to 10 alerts
+        # "_source": ["@timestamp", "kibana.alert.rule.name", "message"]  # Specify fields to retrieve
+        # "_source": ["@timestamp"]  # Specify fields to retrieve
+    }
+
+    from .datamgmt.client.client_db import get_client_by_name, create_client
+    from .datamgmt.alerts.alerts_db import get_alert_by_source_ref
+
+
+    severities_map = {
+        "medium": 1,
+        "unspecified": 2,
+        "informational": 3,
+        "low": 4,
+        "high": 5,
+        "critical": 6,
+    }
+
+    def parse_alerts():
+        response = es.search(index=".alerts-security.*", body=query)
+        # print(response)
+        print("parsing alerts")
+        with app.app_context():
+            print("len", len(response['hits']['hits']))
+            for hit in response['hits']['hits']:
+                alert = hit["_source"]
+                # alert uuid
+                if 'kibana.alert.uuid' not in alert:
+                    continue
+                print(alert['kibana.alert.rule.execution.uuid'])
+                alert_uuid = alert['kibana.alert.uuid']
+                exists = get_alert_by_source_ref(alert_uuid)
+                if exists:
+                    continue
+
+                if "user" not in alert:
+                    continue
+                client_name = alert['user']['domain']
+                client_object = get_client_by_name(client_name)
+                if client_object is None:
+                    print("not found client")
+                    client_object = create_client(
+                        {
+                            "customer_name": client_name,
+                        }
+                    )
+                print(client_object.client_id)
+
+                description = alert['kibana.alert.rule.description']+"\n"
+                # mitre
+                tactics = []
+                threats = alert['kibana.alert.rule.threat']
+                for threat in threats:
+                    tactics.append(f"{threat['tactic']['id']} - {threat['tactic']['name']}")
+                description += "MITRE ATT&CK: "+",".join(tactics) + "\n"
+
+                title = alert['kibana.alert.reason']
+
+                # severity
+                severity = 2
+                if 'kibana.alert.severity' in alert:
+                    severity_str = alert['kibana.alert.severity']
+                    if severity_str in severities_map:
+                        severity = severities_map[severity_str.lower()]
+
+                tags = None
+                if 'kibana.alert.rule.tags' in alert:
+                    tags = ",".join(alert['kibana.alert.rule.tags'])
+
+                # status
+                status = 2 # new
+                source = "ELK"
+
+
+                ips = alert['host']['ip']
+                if len(ips) > 0:
+                    description += f"IP: {ips[0]}"
+
+                add_alert(title=title, description=description, source=source, status=status, severity=severity,
+                          owner_id=1, customer_id=client_object.client_id, created_at=alert['@timestamp'],
+                          alert_uuid=alert_uuid, tags=tags, alert_source_content=alert)
+
+    scheduler.add_job(
+        func=parse_alerts,
+        trigger=IntervalTrigger(seconds=int(os.getenv("ALERTS_FETCH_INTERVAL", 10))),
+    )
+
+    scheduler.start()
 
 
 def create_safe_db(db_name):

@@ -15,6 +15,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with this program; if not, write to the Free Software Foundation,
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+import uuid
 from copy import deepcopy
 
 import json
@@ -346,7 +347,12 @@ def add_alert(
         source,
         status,
         severity,
-        owner
+        owner_id,
+        created_at,
+        customer_id,
+        alert_uuid,
+        tags = None,
+        alert_source_content = None,
 ):
     """
     Add an alert to the database
@@ -367,9 +373,19 @@ def add_alert(
     alert.alert_title = title
     alert.alert_description = description
     alert.alert_source = source
-    alert.alert_status = status
-    alert.alert_severity = severity
-    alert.alert_owner_id = owner
+    # alert.alert_status = status
+    alert.alert_status_id = status
+    # alert.alert_severity = severity
+    alert.alert_severity_id = severity
+    alert.alert_owner_id = owner_id
+    alert.alert_customer_id = customer_id
+    alert.alert_source_event_time = created_at
+    alert.alert_source_ref = alert_uuid
+    if tags:
+        alert.alert_tags = tags
+    if alert_source_content:
+        alert.alert_source_content = alert_source_content
+    db.session.add(alert)
 
     # Add the alert to the database
     db.session.add(alert)
@@ -392,6 +408,13 @@ def get_alert_by_id(alert_id: int) -> Alert:
         db.session.query(Alert)
         .options(selectinload(Alert.iocs), selectinload(Alert.assets))
         .filter(Alert.alert_id == alert_id)
+        .first()
+    )
+
+def get_alert_by_source_ref(source_ref: str) -> Alert:
+    return (
+        db.session.query(Alert)
+        .filter(Alert.alert_source_ref == source_ref)
         .first()
     )
 

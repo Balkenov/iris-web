@@ -215,3 +215,8 @@ def get_case_client(case_id: int) -> Client:
     ).first()
 
     return client
+
+def get_client_by_name(name: str) -> Client:
+    client = Client.query.filter(Client.name == name).first()
+
+    return client

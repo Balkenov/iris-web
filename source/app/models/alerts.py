@@ -33,7 +33,7 @@ class Alert(db.Model):
     alert_title = Column(Text, nullable=False)
     alert_description = Column(Text)
     alert_source = Column(Text)
-    alert_source_ref = Column(Text)
+    alert_source_ref = Column(Text, unique=True)
     alert_source_link = Column(Text)
     alert_source_content = Column(JSON)
     alert_severity_id = Column(ForeignKey('severities.severity_id'), nullable=False)
