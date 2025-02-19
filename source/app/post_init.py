@@ -292,11 +292,12 @@ def run_post_init(development=False):
                        verify_certs=False,
                         )
 
+    interval = int(os.getenv('ALERTS_FETCH_INTERVAL', '300'))+60
     query = {
         "query": {
             "range": {
                 "@timestamp": {
-                    "gte": "now-30d/d",  # Last 24 hours
+                    "gte": f"now-{interval}s/d",  # Last 24 hours
                     "lte": "now/d"
                 }
             }
