@@ -18,13 +18,13 @@
 services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    container_name: iriswebapp_rabbitmq
+    container_name: iriswebapp_rabbitmq_new
     restart: always
     networks:
       - iris_backend
 
   db:
-    container_name: iriswebapp_db
+    container_name: iriswebapp_db_new
     restart: always
     environment:
       - POSTGRES_USER
@@ -38,7 +38,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
   app:
-    container_name: iriswebapp_app
+    container_name: iriswebapp_app_new
     command: ['nohup', './iris-entrypoint.sh', 'iriswebapp']
     volumes:
       - ./certificates/rootCA/irisRootCACert.pem:/etc/irisRootCACert.pem:ro
@@ -67,7 +67,7 @@ services:
       - iris_frontend
 
   worker:
-    container_name: iriswebapp_worker
+    container_name: iriswebapp_worker_new
     restart: always
     command: ['./wait-for-iriswebapp.sh', 'app:8000', './iris-entrypoint.sh', 'iris-worker']
     volumes:
@@ -97,7 +97,7 @@ services:
       - iris_backend
 
   nginx:
-    container_name: iriswebapp_nginx
+    container_name: iriswebapp_nginx_new
     environment:
       - IRIS_UPSTREAM_SERVER
       - IRIS_UPSTREAM_PORT
