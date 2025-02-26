@@ -292,12 +292,13 @@ def run_post_init(development=False):
                        verify_certs=False,
                         )
 
-    interval = int(os.getenv('ALERTS_FETCH_INTERVAL', '300'))+60
+    interval = int(os.getenv('ALERTS_FETCH_INTERVAL', '60'))+60
     query = {
         "query": {
             "range": {
                 "@timestamp": {
-                    "gte": f"now-{interval}s/d",  # Last 24 hours
+                    # "gte": f"now-{interval}s/d",  # Last 24 hours
+                    "gte": f"now-60d/d",  # Last 24 hours
                     "lte": "now/d"
                 }
             }
@@ -331,6 +332,9 @@ def run_post_init(development=False):
                 # alert uuid
                 if 'kibana.alert.uuid' not in alert:
                     continue
+                if 'kibana.alert.rule.name' not in alert:
+                    continue
+                title = alert['kibana.alert.rule.name']
                 print(alert['kibana.alert.rule.execution.uuid'])
                 alert_uuid = alert['kibana.alert.uuid']
                 exists = get_alert_by_source_ref(alert_uuid)
@@ -340,6 +344,7 @@ def run_post_init(development=False):
                 if "user" not in alert:
                     continue
                 client_name = alert['user']['domain']
+                user_name = alert['user']['name']
                 client_object = get_client_by_name(client_name)
                 if client_object is None:
                     print("not found client")
@@ -350,16 +355,18 @@ def run_post_init(development=False):
                     )
                 print(client_object.client_id)
 
-                description = alert['kibana.alert.rule.description']+"\n"
+                description = alert['kibana.alert.rule.description']
                 # mitre
                 tactics = []
                 threats = alert['kibana.alert.rule.threat']
+                mitre = None
                 for threat in threats:
                     tactics.append(f"{threat['tactic']['id']} - {threat['tactic']['name']}")
-                description += "MITRE ATT&CK: "+",".join(tactics) + "\n"
+                if len(tactics) > 0:
+                    mitre = ", ".join(tactics)
 
-                title = alert['kibana.alert.reason']
-
+                # title = alert['kibana.alert.reason']
+                reason = alert['kibana.alert.reason']
                 # severity
                 severity = 2
                 if 'kibana.alert.severity' in alert:
@@ -375,18 +382,60 @@ def run_post_init(development=False):
                 status = 2 # new
                 source = "ELK"
 
+                ip = None
+                alert_host_name = None
+                if 'host' in alert:
+                    if 'ip' in alert['host']:
+                        ips = alert['host']['ip']
+                        if len(ips) > 0:
+                            ip = ips[0]
+                    if 'hostname' in alert['host']:
+                        alert_host_name = alert['host']['hostname']
+                agent_id = None
+                if 'agent' in alert:
+                    if 'id' in alert['agent']:
+                        agent_id = alert['agent']['id']
 
-                ips = alert['host']['ip']
-                if len(ips) > 0:
-                    description += f"IP: {ips[0]}"
+                customer_space = None
+                if 'data_stream' in alert and 'namespace' in alert['data_stream']:
+                    customer_space = alert['data_stream']['namespace']
+
+                def get_value(data: dict, key: str):
+                    if key in data:
+                        return data[key]
+
+                    keys = key.split('.')
+                    current = data
+
+                    for k in keys:
+                        if isinstance(current, dict) and k in current:
+                            current = current[k]
+                        else:
+                            return None
+                    return current
+
+                required_fields_str = ""
+                if 'kibana.alert.rule.parameters' in alert and 'required_fields' in alert['kibana.alert.rule.parameters']:
+                    required_fields_titles = alert['kibana.alert.rule.parameters']['required_fields']
+                    for field in required_fields_titles:
+                        v = get_value(alert, field['name'])
+                        if v:
+                            required_fields_str += f"{field['name']}: {v}\n"
+                        print(field['name'], v)
+                if required_fields_str == "":
+                    required_fields_str = None
 
                 add_alert(title=title, description=description, source=source, status=status, severity=severity,
                           owner_id=1, customer_id=client_object.client_id, created_at=alert['@timestamp'],
-                          alert_uuid=alert_uuid, tags=tags, alert_source_content=alert)
+                          alert_uuid=alert_uuid, tags=tags, alert_source_content=alert, alert_reason=reason,
+                          alert_host_ip=ip, alert_host_name=alert_host_name, alert_agent_id=agent_id,
+                          alert_user_name=user_name, alert_mitre=mitre, alert_customer_space=customer_space,
+                          alert_required_fields=required_fields_str,
+                          )
 
     scheduler.add_job(
         func=parse_alerts,
-        trigger=IntervalTrigger(seconds=int(os.getenv("ALERTS_FETCH_INTERVAL", 10))),
+        trigger=IntervalTrigger(seconds=int(os.getenv("ALERTS_FETCH_INTERVAL", 60))),
     )
 
     scheduler.start()

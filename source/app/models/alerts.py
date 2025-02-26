@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import uuid
-from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy.dialects.postgresql import JSON, JSONB
 from sqlalchemy import BigInteger, Table, Boolean, String
 from sqlalchemy import Column
 from sqlalchemy import DateTime
@@ -48,6 +48,14 @@ class Alert(db.Model):
     alert_customer_id = Column(ForeignKey('client.client_id'), nullable=False)
     alert_classification_id = Column(ForeignKey('case_classification.id'))
     alert_resolution_status_id = Column(ForeignKey('alert_resolution_status.resolution_status_id'), nullable=True)
+    alert_reason = Column(Text)
+    alert_mitre = Column(Text)
+    alert_host_name = Column(Text)
+    alert_host_ip = Column(Text)
+    alert_agent_id = Column(Text)
+    alert_user_name = Column(Text)
+    alert_customer_space = Column(Text)
+    alert_required_fields = Column(Text)
 
     owner = relationship('User', foreign_keys=[alert_owner_id])
     severity = relationship('Severity')

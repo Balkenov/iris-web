@@ -1282,11 +1282,14 @@ function update_time() {
 }
 
 function formatTime(in_, format) {
+    let date;
     if (typeof(in_) === typeof(1)){
-        let date = new Date(Math.floor(in_) * 1000);
+        date = new Date(Math.floor(in_) * 1000);
+        date = new Date(date.getTime()+5*60*60*1000);
         return date.toLocaleString(undefined, format);
     } else if (typeof(in_) === typeof('')) {
-        let date = new Date(in_);
+        date = new Date(in_);
+        date = new Date(date.getTime()+5*60*60*1000);
         return date.toLocaleString(undefined, format);
     }
 }

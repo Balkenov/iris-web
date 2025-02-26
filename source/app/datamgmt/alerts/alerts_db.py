@@ -351,8 +351,16 @@ def add_alert(
         created_at,
         customer_id,
         alert_uuid,
+        alert_reason,
+        alert_mitre,
+        alert_host_ip=None,
+        alert_host_name=None,
+        alert_agent_id=None,
+        alert_user_name=None,
         tags = None,
         alert_source_content = None,
+        alert_customer_space=None,
+        alert_required_fields=None,
 ):
     """
     Add an alert to the database
@@ -381,6 +389,14 @@ def add_alert(
     alert.alert_customer_id = customer_id
     alert.alert_source_event_time = created_at
     alert.alert_source_ref = alert_uuid
+    alert.alert_reason = alert_reason
+    alert.alert_mitre = alert_mitre
+    alert.alert_host_ip = alert_host_ip
+    alert.alert_host_name = alert_host_name
+    alert.alert_agent_id = alert_agent_id
+    alert.alert_user_name = alert_user_name
+    alert.alert_customer_space = alert_customer_space
+    alert.alert_required_fields = alert_required_fields
     if tags:
         alert.alert_tags = tags
     if alert_source_content:

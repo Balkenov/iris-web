@@ -851,7 +851,7 @@ function renderNestedObject(obj) {
 
 function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
                      modulesOptionsIocReq) {
-  const colorSeverity = alert_severity_to_color(alert.severity.severity_name);
+    const colorSeverity = alert_severity_to_color(alert.severity.severity_name);
   const alert_color = alertStatusToColor(alert.status.status_name);
   const alert_resolution = alertResolutionToARC(alert.resolution_status, alert.alert_id);
 
@@ -864,6 +864,14 @@ function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
   alert.alert_source_link = filterXSS(alert.alert_source_link);
   alert.alert_source_ref = filterXSS(alert.alert_source_ref);
   alert.alert_note = filterXSS(alert.alert_note);
+  alert.alert_reason = filterXSS(alert.alert_reason)
+  alert.alert_host_name = filterXSS(alert.alert_host_name)
+  alert.alert_host_ip = filterXSS(alert.alert_host_ip)
+  alert.alert_agent_id = filterXSS(alert.alert_agent_id)
+  alert.alert_user_name = filterXSS(alert.alert_user_name)
+  alert.alert_customer_space = filterXSS(alert.alert_customer_space)
+  alert.alert_mitre = filterXSS(alert.alert_mitre)
+    alert.alert_required_fields = filterXSS(alert.alert_required_fields)
 
   let menuOptionsHtmlAlert = '';
   const menuOptions = modulesOptionsAlertReq;
@@ -987,10 +995,43 @@ function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
               <div id="additionalDetails-${alert.alert_id}" class="collapse mt-4 ${expanded? 'show': ''} alert-collapsible">
                 <div class="card-no-pd mt-2">
                     <div class="card-body">
-                    <h3 class="title mb-3"><strong>General info</strong></h3>  
+                    <h3 class="title mb-3"><strong>General info</strong></h3>
+                        ${alert.alert_reason ? `<div class="row"><div class="col-md-3"><b>Reason:</b></div>
+                        <div class="col-md-9">${alert.alert_reason}</div>
+                      </div>` : ''}
+                        
+                        ${alert.alert_host_name ? `<div class="row"><div class="col-md-3"><b>Host Name:</b></div>
+                        <div class="col-md-9">${alert.alert_host_name}</div>
+                      </div>` : ''}
+                        
+                        ${alert.alert_host_ip ? `<div class="row"><div class="col-md-3"><b>Host IP:</b></div>
+                        <div class="col-md-9">${alert.alert_host_ip}</div>
+                      </div>` : ''}
+                        
+                        ${alert.alert_agent_id ? `<div class="row"><div class="col-md-3"><b>Agent ID:</b></div>
+                        <div class="col-md-9">${alert.alert_agent_id}</div>
+                      </div>` : ''}
+                        
+                         ${alert.alert_user_name ? `<div class="row"><div class="col-md-3"><b>User Name:</b></div>
+                        <div class="col-md-9">${alert.alert_user_name}</div>
+                      </div>` : ''}
+                         
+                        ${alert.alert_customer_space ? `<div class="row"><div class="col-md-3"><b>Customer Space:</b></div>
+                        <div class="col-md-9">${alert.alert_customer_space}</div>
+                      </div>` : ''}
+                        
+                        ${alert.alert_mitre ? `<div class="row"><div class="col-md-3"><b>MITRE ATT&CK Tactic:</b></div>
+                        <div class="col-md-9">${alert.alert_mitre}</div>
+                      </div>` : ''}
+                        
+                        ${alert.alert_required_fields ? `<div class="row"><div class="col-md-3"><b>Required Fields:</b></div>
+                        <div class="col-md-9">${alert.alert_required_fields.replaceAll('\n', '<br/>')}</div>
+                      </div>` : ''}
+                        
                         ${alert.alert_source ? `<div class="row"><div class="col-md-3"><b>Source:</b></div>
                         <div class="col-md-9">${alert.alert_source}</div>
-                      </div>` : ''}
+                      </div>` : ''}             
+                        
                       ${alert.alert_source_link ? `<div class="row mt-2">
                         <div class="col-md-3"><b>Source Link:</b></div>
                         <div class="col-md-9 copy-value">${
@@ -1014,7 +1055,7 @@ function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
                       ${alert.alert_source_event_time ? `<div class="row mt-2">
                         <div class="col-md-3"><b>Source Event Time:</b></div>
                         <div class="col-md-9 copy-value">
-                            ${formatTime(alert.alert_source_event_time)} UTC
+                            ${formatTime(alert.alert_source_event_time)} UTC+5
                             <button class="copy-btn ml-2" data-value="${formatTime(alert.alert_source_event_time)}">
                                     <i class="fa fa-copy text-dark"></i>
                             </button>
@@ -1023,7 +1064,7 @@ function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
                       ${alert.alert_creation_time ? `<div class="row mt-2">
                         <div class="col-md-3"><b>IRIS Creation Time:</b></div>
                         <div class="col-md-9 copy-value">
-                            ${formatTime(alert.alert_creation_time)} UTC
+                            ${formatTime(alert.alert_creation_time)} UTC+5
                             <button class="copy-btn ml-2" data-value="${formatTime(alert.alert_creation_time)}">
                                     <i class="fa fa-copy text-dark"></i>
                             </button>
@@ -2165,6 +2206,7 @@ $(document).ready(function () {
                     { caption: '"field": "alert_title"', value: '"field": "alert_title"', meta: "field" },
                     { caption: '"field": "alert_description"', value: '"field": "alert_description"', meta: "field" },
                     { caption: '"field": "alert_source"', value: '"field": "alert_source"', meta: "field" },
+                    { caption: '"field": "alert_reason"', value: '"field": "alert_reason"', meta: "field" },
                     { caption: '"field": "alert_tags"', value: '"field": "alert_tags"', meta: "field" },
                     { caption: '"field": "alert_status_id"', value: '"field": "alert_status_id"', meta: "field" },
                     { caption: '"field": "alert_severity_id"', value: '"field": "alert_severity_id"', meta: "field" },
