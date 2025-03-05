@@ -851,7 +851,7 @@ function renderNestedObject(obj) {
 
 function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
                      modulesOptionsIocReq) {
-    const colorSeverity = alert_severity_to_color(alert.severity.severity_name);
+  const colorSeverity = alert_severity_to_color(alert.severity.severity_name);
   const alert_color = alertStatusToColor(alert.status.status_name);
   const alert_resolution = alertResolutionToARC(alert.resolution_status, alert.alert_id);
 
@@ -871,7 +871,7 @@ function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
   alert.alert_user_name = filterXSS(alert.alert_user_name)
   alert.alert_customer_space = filterXSS(alert.alert_customer_space)
   alert.alert_mitre = filterXSS(alert.alert_mitre)
-    alert.alert_required_fields = filterXSS(alert.alert_required_fields)
+  alert.alert_required_fields = filterXSS(alert.alert_required_fields)
 
   let menuOptionsHtmlAlert = '';
   const menuOptions = modulesOptionsAlertReq;
@@ -1024,9 +1024,18 @@ function renderAlert(alert, expanded=false, modulesOptionsAlertReq,
                         <div class="col-md-9">${alert.alert_mitre}</div>
                       </div>` : ''}
                         
-                        ${alert.alert_required_fields ? `<div class="row"><div class="col-md-3"><b>Required Fields:</b></div>
-                        <div class="col-md-9">${alert.alert_required_fields.replaceAll('\n', '<br/>')}</div>
-                      </div>` : ''}
+                        ${(() => {
+                            return alert.alert_required_fields.split('\n')
+                                .map(line => line.trim())
+                                .filter(line => line.includes(':'))
+                                .map(line => {
+                                    let [key, ...value] = line.split(':');
+                                    return `<div class="row">
+                                                <div class="col-md-3"><b>${key.trim()}:</b></div>
+                                                <div class="col-md-9">${value.join(':').trim()}</div>
+                                            </div>`;
+                                }).join('');
+                         })()}
                         
                         ${alert.alert_source ? `<div class="row"><div class="col-md-3"><b>Source:</b></div>
                         <div class="col-md-9">${alert.alert_source}</div>
