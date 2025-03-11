@@ -54,6 +54,11 @@ def get_case(caseid) -> Cases:
 def case_exists(caseid):
     return Cases.query.filter(Cases.case_id == caseid).count()
 
+def get_case_for_alert(reason: str, state_id: int) -> Cases:
+    return Cases.query.filter(
+        Cases.state_id == state_id,
+        Cases.reason == reason,
+    ).first()
 
 def get_case_client_id(caseid):
     client_id = Cases.query.with_entities(

@@ -408,10 +408,16 @@ def ac_set_new_case_access(org_members, case_id, customer_id = None):
     """
     Set a new case access
     """
+    from app.datamgmt.manage.manage_users_db import get_user
+    if current_user:
+        user = current_user
+    else:
+        user = get_user(1)
+
 
     users = ac_apply_autofollow_groups_access(case_id)
-    if current_user.id in users.keys():
-        del users[current_user.id]
+    if user.id in users.keys():
+        del users[user.id]
 
     users_full = User.query.with_entities(User.id).all()
     users_full_access = list(set([u.id for u in users_full]) - set(users.keys()))
@@ -422,17 +428,17 @@ def ac_set_new_case_access(org_members, case_id, customer_id = None):
     # Add specific right for the user creating the case
     UserCaseAccess.query.filter(
         UserCaseAccess.case_id == case_id,
-        UserCaseAccess.user_id == current_user.id
+        UserCaseAccess.user_id == user.id
     ).delete()
     db.session.commit()
     uca = UserCaseAccess()
     uca.case_id = case_id
-    uca.user_id = current_user.id
+    uca.user_id = user.id
     uca.access_level = CaseAccessLevel.full_access.value
     db.session.add(uca)
     db.session.commit()
 
-    ac_add_user_effective_access([current_user.id], case_id, CaseAccessLevel.full_access.value)
+    ac_add_user_effective_access([user.id], case_id, CaseAccessLevel.full_access.value)
 
     # Add customer permissions for all users belonging to the customer
     if customer_id:

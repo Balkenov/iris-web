@@ -77,7 +77,6 @@ from app.iris_engine.demo_builder import create_demo_users
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-from app.datamgmt.alerts.alerts_db import add_alert
 from app.models.alerts import Severity
 from elasticsearch import Elasticsearch
 
@@ -379,7 +378,6 @@ def run_post_init(development=False):
                     tags = ",".join(alert['kibana.alert.rule.tags'])
 
                 # status
-                status = 2 # new
                 source = "ELK"
 
                 ip = None
@@ -425,13 +423,54 @@ def run_post_init(development=False):
                 if required_fields_str == "":
                     required_fields_str = None
 
-                add_alert(title=title, description=description, source=source, status=status, severity=severity,
+                status_id = 2
+
+                from .datamgmt.alerts.alerts_db import add_alert, register_related_alerts, cache_similar_alert
+
+                alert = add_alert(title=title, description=description, source=source, status=status_id, severity=severity,
                           owner_id=1, customer_id=client_object.client_id, created_at=alert['@timestamp'],
                           alert_uuid=alert_uuid, tags=tags, alert_source_content=alert, alert_reason=reason,
                           alert_host_ip=ip, alert_host_name=alert_host_name, alert_agent_id=agent_id,
                           alert_user_name=user_name, alert_mitre=mitre, alert_customer_space=customer_space,
                           alert_required_fields=required_fields_str,
                           )
+                from .util import add_obj_history_entry
+                from .datamgmt.case.case_db import get_case_for_alert
+                from .datamgmt.alerts.alerts_db import create_case_from_alert, merge_alert_in_case
+                from .iris_engine.access_control.utils import ac_set_new_case_access
+                from .iris_engine.utils.tracker import track_activity
+                from .iris_engine.module_handler.module_handler import call_modules_hook
+
+                # Add history entry
+                add_obj_history_entry(alert, 'Alert created')
+                # Cache the alert for similarities check
+                cache_similar_alert(alert.alert_customer_id, assets=[],
+                                    iocs=[], alert_id=alert.alert_id,
+                                    creation_date=alert.alert_source_event_time)
+
+                register_related_alerts(alert, assets_list=[], iocs_list=[])
+
+                alert = call_modules_hook('on_postload_alert_create', data=alert)
+
+                case = get_case_for_alert(alert.alert_reason, 2)
+                if case:
+                    alert.alert_status_id = AlertStatus.query.filter_by(status_name='Merged').first().status_id
+                    db.session.commit()
+                    print("case exists")
+                    case = merge_alert_in_case(alert, case, [], [], "", True, alert.alert_tags)
+                    alert = call_modules_hook('on_postload_alert_merge', data=alert, caseid=case.case_id)
+                    add_obj_history_entry(alert, f"Alert merged into existing case #{case.case_id}")
+                else:
+                    alert.alert_status_id = AlertStatus.query.filter_by(status_name='Escalated').first().status_id
+                    db.session.commit()
+                    case = create_case_from_alert(alert, [], [], "", "", True, alert.alert_tags, 0, alert.alert_reason)
+
+                    ac_set_new_case_access(None, case.case_id, case.client_id)
+                    case = call_modules_hook('on_postload_case_create', data=case)
+                    add_obj_history_entry(case, 'created')
+                    add_obj_history_entry(alert, f"Alert escalated to case #{case.case_id}")
+                    alert = call_modules_hook('on_postload_alert_escalate', data=alert)
+                print(case)
 
     scheduler.add_job(
         func=parse_alerts,

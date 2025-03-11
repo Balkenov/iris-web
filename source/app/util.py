@@ -774,14 +774,19 @@ def get_random_suffix(length):
 
 
 def add_obj_history_entry(obj, action, commit=False):
+    from .datamgmt.manage.manage_users_db import get_user
+    if current_user:
+        user = current_user
+    else:
+        user = get_user(1)
     if hasattr(obj, 'modification_history'):
 
         if isinstance(obj.modification_history, dict):
 
             obj.modification_history.update({
                 datetime.datetime.now().timestamp(): {
-                    'user': current_user.user,
-                    'user_id': current_user.id,
+                    'user': user.user,
+                    'user_id': user.id,
                     'action': action
                 }
             })
@@ -790,8 +795,8 @@ def add_obj_history_entry(obj, action, commit=False):
 
             obj.modification_history = {
                 datetime.datetime.now().timestamp(): {
-                    'user': current_user.user,
-                    'user_id': current_user.id,
+                    'user': user.user,
+                    'user_id': user.id,
                     'action': action
                 }
             }

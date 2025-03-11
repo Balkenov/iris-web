@@ -361,7 +361,7 @@ def add_alert(
         alert_source_content = None,
         alert_customer_space=None,
         alert_required_fields=None,
-):
+) -> Alert:
     """
     Add an alert to the database
 
@@ -577,7 +577,7 @@ def create_case_from_alerts(alerts: List[Alert], iocs_list: List[str], assets_li
 
 
 def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List[str], case_title: str,
-                           note: str, import_as_event: bool, case_tags: str, template_id: int) -> Cases:
+                           note: str, import_as_event: bool, case_tags: str, template_id: int, reason = None) -> Cases:
     """
     Create a case from an alert
 
@@ -594,6 +594,11 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
     returns:
         Cases: The case that was created from the alert
     """
+    from ..manage.manage_users_db import get_user
+    if current_user:
+        user = current_user
+    else:
+        user = get_user(1)
 
     escalation_note = ""
     if note:
@@ -608,16 +613,17 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
 
     # Create the case
     case = Cases(
-        name=f"[ALERT]{case_template_title_prefix} {alert.alert_title}" if not case_title else f"{case_template_title_prefix} {case_title}",
-        description=f"*Alert escalated by {current_user.name}*\n\n{escalation_note}"
+        name=f"[ALERT]{case_template_title_prefix} {alert.alert_reason}" if not case_title else f"{case_template_title_prefix} {case_title}",
+        description=f"*Alert escalated by {user.name}*\n\n{escalation_note}"
                     f"### Alert description\n\n{alert.alert_description}"
                     f"\n\n### IRIS alert link\n\n"
                     f"[<i class='fa-solid fa-bell'></i> #{alert.alert_id}](/alerts?alert_ids={alert.alert_id})",
         soc_id=alert.alert_id,
         client_id=alert.alert_customer_id,
-        user=current_user,
+        user=user,
         classification_id=alert.alert_classification_id,
-        state_id=get_case_state_by_name('Open').state_id
+        state_id=get_case_state_by_name('Open').state_id,
+        reason=reason,
     )
 
     case.save()
@@ -642,7 +648,7 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
         for alert_ioc in alert.iocs:
             if str(alert_ioc.ioc_uuid) == ioc_uuid:
 
-                ioc, existed = add_ioc(alert_ioc, current_user.id, case.case_id)
+                ioc, existed = add_ioc(alert_ioc, user.id, case.case_id)
                 add_ioc_link(ioc.ioc_id, case.case_id)
                 ioc_links.append(ioc.ioc_id)
 
@@ -666,7 +672,7 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
 
                 asset = create_asset(asset=alert_asset,
                                      caseid=case.case_id,
-                                     user_id=current_user.id
+                                     user_id=user.id
                                      )
                 asset.asset_uuid = alert_asset.asset_uuid
 
@@ -695,13 +701,13 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
         }, session=db.session)
 
         event.case_id = case.case_id
-        event.user_id = current_user.id
+        event.user_id = user.id
         event.event_added = datetime.utcnow()
 
         add_obj_history_entry(event, 'created')
 
         db.session.add(event)
-        update_timeline_state(caseid=case.case_id)
+        update_timeline_state(caseid=case.case_id, userid=user.id)
 
         event.category = [unspecified_cat]
 
@@ -738,6 +744,11 @@ def merge_alert_in_case(alert: Alert, case: Cases, iocs_list: List[str],
         import_as_event (bool): Whether to import the alert as an event
         case_tags (str): The tags to add to the case
     """
+    if current_user:
+        user = current_user
+    else:
+        from ..manage.manage_users_db import get_user
+        user = get_user(1)
     if case in alert.cases:
         return case
 
@@ -745,7 +756,7 @@ def merge_alert_in_case(alert: Alert, case: Cases, iocs_list: List[str],
     if note:
         escalation_note = f"\n\n### Escalation note\n\n{note}\n\n"
 
-    case.description += f"\n\n*Alert [#{alert.alert_id}](/alerts?alert_ids={alert.alert_id}) escalated by {current_user.name}*\n\n{escalation_note}"
+    case.description += f"\n\n*Alert [#{alert.alert_id}](/alerts?alert_ids={alert.alert_id}) escalated by {user.name}*\n\n{escalation_note}"
 
     for tag in case_tags.split(',') if case_tags else []:
         tag = Tags(tag_title=tag).save()
@@ -762,7 +773,7 @@ def merge_alert_in_case(alert: Alert, case: Cases, iocs_list: List[str],
         for alert_ioc in alert.iocs:
             if str(alert_ioc.ioc_uuid) == ioc_uuid:
 
-                ioc, existed = add_ioc(alert_ioc, current_user.id, case.case_id)
+                ioc, existed = add_ioc(alert_ioc, user.id, case.case_id)
                 add_ioc_link(ioc.ioc_id, case.case_id)
                 ioc_links.append(ioc.ioc_id)
 
@@ -783,7 +794,7 @@ def merge_alert_in_case(alert: Alert, case: Cases, iocs_list: List[str],
                 else:
                     asset = create_asset(asset=alert_asset,
                                          caseid=case.case_id,
-                                         user_id=current_user.id
+                                         user_id=user.id
                                          )
 
                     set_ioc_links(ioc_links, asset.asset_id)
@@ -812,13 +823,13 @@ def merge_alert_in_case(alert: Alert, case: Cases, iocs_list: List[str],
         }, session=db.session)
 
         event.case_id = case.case_id
-        event.user_id = current_user.id
+        event.user_id = user.id
         event.event_added = datetime.utcnow()
 
         add_obj_history_entry(event, 'created')
 
         db.session.add(event)
-        update_timeline_state(caseid=case.case_id)
+        update_timeline_state(caseid=case.case_id, userid=user.id)
 
         event.category = [unspecified_cat]
 
