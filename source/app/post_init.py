@@ -452,7 +452,7 @@ def run_post_init(development=False):
 
                 alert = call_modules_hook('on_postload_alert_create', data=alert)
 
-                case = get_case_for_alert(alert.alert_reason, 2)
+                case = get_case_for_alert(alert.alert_title, alert.alert_reason, 2)
                 if case:
                     alert.alert_status_id = AlertStatus.query.filter_by(status_name='Merged').first().status_id
                     db.session.commit()

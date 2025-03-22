@@ -25,7 +25,15 @@ def upgrade():
                                 sa.Text, nullable=True),
                       )
 
+    if not _table_has_column("cases", "original_name"):
+        op.add_column('cases',
+                      sa.Column('original_name',
+                                sa.Text, nullable=True),
+                      )
 
 def downgrade():
     if _table_has_column("cases", "reason"):
         op.drop_column('cases', 'reason')
+
+    if _table_has_column("cases", "original_name"):
+        op.drop_column('cases', 'original_name')

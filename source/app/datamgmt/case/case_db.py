@@ -28,6 +28,7 @@ from app.models.models import CaseTemplateReport, ReviewStatus
 from app.models.models import Client
 from app.models.models import Languages
 from app.models.models import ReportType
+from app.models.alerts import Alert
 
 
 def get_case_summary(caseid):
@@ -54,11 +55,13 @@ def get_case(caseid) -> Cases:
 def case_exists(caseid):
     return Cases.query.filter(Cases.case_id == caseid).count()
 
-def get_case_for_alert(reason: str, state_id: int) -> Cases:
-    return Cases.query.filter(
+def get_case_for_alert(name: str, reason: str, state_id: int) -> Cases:
+    return Cases.query.with_entities(
+        Alert.alert_title == name
+    ).filter(
         Cases.state_id == state_id,
         Cases.reason == reason,
-    ).first()
+    ).join(Cases.alerts).first()
 
 def get_case_client_id(caseid):
     client_id = Cases.query.with_entities(

@@ -192,7 +192,6 @@ function load_comments(element_id, element_type, comment_id, do_notification, is
             $('#comments_list').empty();
             var names = Object;
             for (var i = 0; i < data['data'].length; i++) {
-
                 comment_text = data['data'][i].comment_text;
                 converter = get_showdown_convert();
                 html = converter.makeHtml(do_md_filter_xss(comment_text));
@@ -212,7 +211,13 @@ function load_comments(element_id, element_type, comment_id, do_notification, is
                     can_edit = '<a href="#" class="btn btn-sm comment-edition-hidden" title="Edit comment" onclick="edit_comment(\'' + data['data'][i].comment_id + '\', \'' + element_id + '\',\''+ element_type +'\'); return false;"><i class="fa-solid fa-edit text-dark"></i></a>';
                     can_edit += '<a href="#" class="btn btn-sm comment-edition-hidden" title="Delete comment" onclick="delete_comment(\'' + data['data'][i].comment_id + '\', \'' + element_id + '\',\''+ element_type +'\'); return false;"><i class="fa-solid fa-trash text-dark"></i></a>';
                 }
+                let edited = ""
+                comment_date = formatTime(data['data'][i].comment_date)
+                edited_date = formatTime(data['data'][i].comment_update_date)
 
+                if (!areTimestampsEqualToSeconds(data['data'][i].comment_date, data['data'][i].comment_update_date)) {
+                    edited = '<a class="btn btn-sm comment-edition-hidden" style="cursor: default;" title="Edited '+edited_date+' UTC+5" ><i class="fa-solid fa-pen text-dark"></i></a>';
+                }
                 comment = `
                     <div class="row mb-2 mr-1" >
                         <div class="col-12" id="comment_${data['data'][i].comment_id}">
@@ -222,9 +227,10 @@ function load_comments(element_id, element_type, comment_id, do_notification, is
                                         <div class="col">
                                             <div class="ml-2 row">
                                                 ${avatar}
-                                                <h6 class="text-uppercase fw-bold mb-1 ml-1 mt-2">${filterXSS(data['data'][i].name)}</h6>
+                                                <h6 class="text-uppercase fw-bold mb-1 ml-1 mt-2">${filterXSS(username)}</h6>
                                                 <div class="ml-auto">
-                                                    ${can_edit} <small class="text-muted text-wrap">${data['data'][i].comment_date}</small>
+                                                    ${can_edit} <small class="text-muted text-wrap">${comment_date} UTC+5</small> ${edited}
+                                                  
                                                 </div>
                                             </div>
                                             <div class="row" style="border-left: 3px solid #eaeaea;margin-left:30px;">

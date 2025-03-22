@@ -15,8 +15,12 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with this program; if not, write to the Free Software Foundation,
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+from typing import Tuple
+
+from flask_login import current_user
 
 from app.models import Comments
+from app import db
 
 
 def get_case_comment(comment_id, caseid):
@@ -29,3 +33,31 @@ def get_case_comment(comment_id, caseid):
             Comments.comment_id == comment_id,
             Comments.comment_case_id == caseid
         ).first()
+
+def get_case_comments(caseid):
+    return Comments.query.filter(
+        Comments.comment_alert_id.is_(None),
+        Comments.comment_case_id == caseid
+    ).order_by(
+        Comments.comment_date.asc()
+    ).all()
+
+def delete_case_comment(comment_id: int, caseid: int) -> Tuple[bool, str]:
+    """
+    Delete a comment of a case
+
+    args:
+        comment_id (int): The ID of the comment
+    """
+    comment = Comments.query.filter(
+        Comments.comment_id == comment_id,
+        Comments.comment_user_id == current_user.id,
+        Comments.comment_case_id == caseid
+    ).first()
+    if not comment:
+        return False, "You are not allowed to delete this comment"
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    return True, "Comment deleted successfully"

@@ -20,6 +20,8 @@ from copy import deepcopy
 
 import json
 from datetime import datetime, timedelta
+
+import pytz
 from flask_login import current_user
 from functools import reduce
 from sqlalchemy import desc, asc, func, tuple_, or_, not_, and_
@@ -611,11 +613,31 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
         if case_template:
             case_template_title_prefix = case_template.title_prefix
 
+    current_timezone = pytz.timezone("Asia/Almaty")
+    required_fields = alert.alert_required_fields.split("\n")
+    new_fields_str = ""
+    for field in required_fields:
+        key_and_value = field.split(": ")
+        if len(key_and_value) < 2:
+            print(field)
+            continue
+        key, value = key_and_value[0], key_and_value[1]
+        key = key.replace(".", " ")
+        key = key.title()
+        new_fields_str += f"\n\n### {key}\n\n{value}"
     # Create the case
     case = Cases(
-        name=f"[ALERT]{case_template_title_prefix} {alert.alert_reason}" if not case_title else f"{case_template_title_prefix} {case_title}",
+        name=f"[ALERT]{case_template_title_prefix} {alert.alert_title}" if not case_title else f"{case_template_title_prefix} {case_title}",
         description=f"*Alert escalated by {user.name}*\n\n{escalation_note}"
                     f"### Alert description\n\n{alert.alert_description}"
+                    f"\n\n### Reason\n\n{alert.alert_reason}"
+                    f"\n\n### Source event time\n\n{current_timezone.localize(alert.alert_source_event_time)}"
+                    f"\n\n### MITRE ATT&CK Tactic\n\n{alert.alert_mitre}"
+                    f"\n\n### Host name\n\n{alert.alert_host_name}"
+                    f"\n\n### Host IP\n\n{alert.alert_host_ip}"
+                    f"\n\n### Agent ID\n\n{alert.alert_agent_id}"
+                    f"\n\n### User Name\n\n{alert.alert_user_name}"
+                    f"{new_fields_str}"
                     f"\n\n### IRIS alert link\n\n"
                     f"[<i class='fa-solid fa-bell'></i> #{alert.alert_id}](/alerts?alert_ids={alert.alert_id})",
         soc_id=alert.alert_id,

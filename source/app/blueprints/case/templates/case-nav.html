@@ -41,9 +41,23 @@
                     <span class="menu-title">Evidence</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="comment_element('{{ case.case_id }}', 'comments')">
+                    <span class="menu-title">Comments</span>
+                </a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--                <button type="button" class="btn bg-transparent btn-sm mt&#45;&#45;4" onclick="comment_element('{{ case.case_id }}', 'comments')" title="Comments">-->
+<!--                  <span class="btn-label">-->
+<!--                    <i class="fa-solid fa-comments"></i><span class="notification" id="object_comments_number_{{ case.case_id }}">{{''}}</span>-->
+<!--                  </span>-->
+<!--                </button>-->
+<!--            </li>-->
               </ul>
           </div>
 </nav>
 
-
+{% block javascripts %}
+    <script src="/static/assets/js/iris/comments.js"></script>
+{% endblock javascripts %}
 

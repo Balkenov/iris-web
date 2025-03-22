@@ -797,7 +797,33 @@ var iClassWhiteList = ['fa-solid fa-tags','fa-solid fa-tag', 'fa-solid fa-bell',
 'fa-solid fa-file-shield text-success mr-1', 'fa-regular fa-file mr-1', 'fa-solid fa-lock text-success mr-1']
 
 function get_new_ace_editor(anchor_id, content_anchor, target_anchor, onchange_callback, do_save, readonly, live_preview) {
+    let users = []
+    get_request_api("/case/users/list")
+        .done((data) => {
+            console.log(data)
+            users = data['data']
+        })
+         // 🔹 Define a Custom Autocomplete for User Mentions (@)
+    var mentionAutocomplete = {
+        getCompletions: function(editor, session, pos, prefix, callback) {
+            var cursor = editor.getCursorPosition();
+            var line = session.getLine(cursor.row);
+
+            if (line[cursor.column - 1] === "@" || line[cursor.column-2] === "@") {
+                var suggestions = users.map(function(user) {
+                    return {
+                        caption: "@"+user.user_login + " "+user.user_name,
+                        value: user.user_login,
+                        meta: "user"
+                    };
+                });
+                callback(null, suggestions);
+            }
+        }
+    };
+
     var editor = ace.edit(anchor_id);
+    editor.completers = [mentionAutocomplete]
     if ($("#"+anchor_id).attr("data-theme") != "dark") {
         editor.setTheme("ace/theme/tomorrow");
     } else {
@@ -812,12 +838,23 @@ function get_new_ace_editor(anchor_id, content_anchor, target_anchor, onchange_c
     editor.setOption("showPrintMargin", false);
     editor.setOption("displayIndentGuides", true);
     editor.setOption("maxLines", "Infinity");
-    editor.setOption("minLines", "2");
+    editor.setOption("minLines", "5");
     editor.setOption("autoScrollEditorIntoView", true);
     editor.session.setUseWrapMode(true);
     editor.setOption("indentedSoftWrap", false);
     editor.renderer.setScrollMargin(8, 5)
     editor.setOption("enableBasicAutocompletion", true);
+    // editor.setOption("enableSnippets", true);
+    editor.setOption("enableLiveAutocompletion", true);
+    editor.setOption("highlightActiveLine", true)
+    editor.setOption("highlightGutterLine", true)
+
+    editor.commands.on("afterExec", function (e) {
+        if (e.command.name === "insertstring" && e.args === "@") {
+            console.log("running")
+            editor.execCommand("startAutocomplete");
+        }
+    });
 
     if (do_save !== undefined && do_save !== null) {
         editor.commands.addCommand({
@@ -1286,12 +1323,23 @@ function formatTime(in_, format) {
     if (typeof(in_) === typeof(1)){
         date = new Date(Math.floor(in_) * 1000);
         date = new Date(date.getTime()+5*60*60*1000);
-        return date.toLocaleString(undefined, format);
+        return date.toLocaleString("ru-KZ", format);
     } else if (typeof(in_) === typeof('')) {
         date = new Date(in_);
         date = new Date(date.getTime()+5*60*60*1000);
-        return date.toLocaleString(undefined, format);
+        return date.toLocaleString("ru-KZ", format);
     }
+}
+
+function areTimestampsEqualToSeconds(timestamp1, timestamp2) {
+    const date1 = new Date(timestamp1);
+    const date2 = new Date(timestamp2);
+
+    // Convert to seconds since epoch (ignoring milliseconds)
+    const time1 = Math.floor(date1.getTime() / 1000);
+    const time2 = Math.floor(date2.getTime() / 1000);
+
+    return time1 === time2;
 }
 
 function download_file(filename, contentType, data) {
