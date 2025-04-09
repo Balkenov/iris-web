@@ -15,7 +15,7 @@
       <div class="page-inner py-5">
         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row ">
           <div>
-            <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+            <h2 class="text-white pb-2 fw-bold">{{_('Dashboard')}}</h2>
           </div>
           <div class="ml-md-auto py-2 py-md-0">
             <a href="javascript:void(0);" onclick="load_add_case();" class="btn btn-white btn-sm btn-border btn-round mr-2">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Cases (open / all)</p>
+                                <p class="card-category">{{_('Cases (open / all)')}}</p>
                                 <h4 class="card-title">{{ data.cases_open_count }} / {{ data.cases_count }}</h4>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Attributed open cases</p>
+                                <p class="card-category">{{_('Attributed open cases')}}</p>
                                 <h4 class="card-title">{{ data.user_open_count }}</h4>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Attributed open tasks</p>
+                                <p class="card-category">{{_('Attributed open tasks')}}</p>
                                 <h4 class="card-title" id="user_attr_count"></h4>
                             </div>
                         </div>
@@ -95,11 +95,11 @@
       <div class="col-md-12">
             <section class="card">
                 <div class="card-header">
-                  <div class="card-title">Attributed cases review
+                  <div class="card-title">{{_('Attributed cases review')}}
                     <div class="text-faded float-right">
                       <small id="ureviews_last_updated"></small>
                       <button type="button" class="btn btn-xs btn-dark ml-2"
-                          onclick="update_ureviews_list();">Refresh
+                          onclick="update_ureviews_list();">{{_('Refresh')}}
                         </button>
                     </div>
                   </div>
@@ -109,14 +109,14 @@
                       <table class="table display table-striped table-hover" width="100%" cellspacing="0" id="ureview_table" >
                         <thead>
                           <tr>
-                              <th>Case name</th>
-                              <th>Review Status</th>
+                              <th>{{_('Case name')}}</th>
+                              <th>{{_('Review Status')}}</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                              <th>Case name</th>
-                              <th>Review Status</th>
+                              <th>{{_('Case name')}}</th>
+                              <th>{{_('Review Status')}}</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -130,11 +130,11 @@
             {{ form.hidden_tag() }}
             <section class="card">
                 <div class="card-header">
-                  <div class="card-title">Attributed open tasks
+                  <div class="card-title">{{_('Attributed open tasks')}}
                     <div class="text-faded float-right">
                       <small id="utasks_last_updated"></small>
                       <button type="button" class="btn btn-xs btn-dark ml-2"
-                          onclick="update_utasks_list();">Refresh
+                          onclick="update_utasks_list();">{{_('Refresh')}}
                         </button>
                     </div>
                   </div>
@@ -144,22 +144,22 @@
                       <table class="table display table-striped table-hover" width="100%" cellspacing="0" id="utasks_table" >
                         <thead>
                           <tr>
-                              <th>Title</th>
-                              <th>Description</th>
-                              <th>Status</th>
-                              <th>Case</th>
-                              <th>Last update</th>
-                              <th>Tags</th>
+                              <th>{{_('Title')}}</th>
+                              <th>{{_('Description')}}</th>
+                              <th>{{_('Status')}}</th>
+                              <th>{{_('Case')}}</th>
+                              <th>{{_('Last update')}}</th>
+                              <th>{{_('Tags')}}</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                              <th>Title</th>
-                              <th>Description</th>
-                              <th>Status</th>
-                              <th>Case</th>
-                              <th>Last update</th>
-                              <th>Tags</th>
+                              <th>{{_('Title')}}</th>
+                              <th>{{_('Description')}}</th>
+                              <th>{{_('Status')}}</th>
+                              <th>{{_('Case')}}</th>
+                              <th>{{_('Last update')}}</th>
+                              <th>{{_('Tags')}}</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -173,14 +173,14 @@
         <div class="col-md-12">
             <section class="card">
                 <div class="card-header">
-                  <div class="card-title">Attributed open cases
+                  <div class="card-title">{{_('Attributed open cases')}}
                     <div class="text-faded float-right">
                       <small id="ucases_last_updated"></small>
                         <button type="button" class="btn btn-xs btn-dark ml-2"
-                          onclick="update_ucases_list(true);">Show closed cases
+                          onclick="update_ucases_list(true);">{{_('Show closed cases')}}
                         </button>
                       <button type="button" class="btn btn-xs btn-dark ml-2"
-                          onclick="update_ucases_list();">Refresh
+                          onclick="update_ucases_list();">{{_('Refresh')}}
                         </button>
                     </div>
                   </div>
@@ -190,20 +190,20 @@
                       <table class="table display table-striped table-hover" width="100%" cellspacing="0" id="ucases_table" >
                         <thead>
                           <tr>
-                              <th>Title</th>
-                              <th>Description</th>
-                              <th>Client</th>
-                              <th>Opening date</th>
-                              <th>Tags</th>
+                              <th>{{_('Title')}}</th>
+                              <th>{{_('Description')}}</th>
+                              <th>{{_('Client')}}</th>
+                              <th>{{_('Opening date')}}</th>
+                              <th>{{_('Tags')}}</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                              <th>Title</th>
-                              <th>Description</th>
-                              <th>Client</th>
-                              <th>Opening date</th>
-                              <th>Tags</th>
+                              <th>{{_('Title')}}</th>
+                              <th>{{_('Description')}}</th>
+                              <th>{{_('Client')}}</th>
+                              <th>{{_('Opening date')}}</th>
+                              <th>{{_('Tags')}}</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -223,10 +223,10 @@
                           <small id="tasks_last_updated"></small>
                             <button type="button" class="btn btn-xs btn-dark ml-2"
                               onclick="add_gtask();">
-                              Add global task
+                                {{_('Add global task')}}
                             </button>
                             <button type="button" class="btn btn-xs btn-dark ml-2"
-                              onclick="update_gtasks_list();">Refresh
+                              onclick="update_gtasks_list();">{{_('Refresh')}}
                             </button>
                         </div>
                       </div>
@@ -236,22 +236,22 @@
                           <table class="table display table-striped table-hover" width="100%" cellspacing="0" id="gtasks_table" >
                             <thead>
                               <tr>
-                                  <th>Title</th>
-                                  <th>Description</th>
-                                  <th>Status</th>
-                                  <th>Assigned to</th>
-                                  <th>Last update</th>
-                                  <th>Tags</th>
+                                  <th>{{_('Title')}}</th>
+                                  <th>{{_('Description')}}</th>
+                                  <th>{{_('Status')}}</th>
+                                  <th>{{_('Assigned to')}}</th>
+                                  <th>{{_('Last update')}}</th>
+                                  <th>{{_('Tags')}}</th>
                               </tr>
                             </thead>
                             <tfoot>
                               <tr>
-                                  <th>Title</th>
-                                  <th>Description</th>
-                                  <th>Status</th>
-                                  <th>Assigned to</th>
-                                  <th>Last update</th>
-                                  <th>Tags</th>
+                                  <th>{{_('Title')}}</th>
+                                  <th>{{_('Description')}}</th>
+                                  <th>{{_('Status')}}</th>
+                                  <th>{{_('Assigned to')}}</th>
+                                  <th>{{_('Last update')}}</th>
+                                  <th>{{_('Tags')}}</th>
                               </tr>
                             </tfoot>
                           </table>

@@ -1,0 +1,1321 @@
+# Kazakh translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-04-02 00:06+0500\n"
+"PO-Revision-Date: 2025-03-25 23:09+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: kk\n"
+"Language-Team: kk <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: blueprints/activities/templates/activities.html:20
+#: blueprints/alerts/templates/alerts.html:78
+#: blueprints/case/templates/case.html:136
+#: blueprints/case/templates/case_assets.html:26
+#: blueprints/case/templates/case_graph.html:28
+#: blueprints/case/templates/case_graph_timeline.html:43
+#: blueprints/case/templates/case_ioc.html:30
+#: blueprints/case/templates/case_rfile.html:27
+#: blueprints/case/templates/case_tasks.html:34
+#: blueprints/case/templates/case_timeline.html:46
+#: blueprints/case/templates/modal_conversation.html:53
+#: blueprints/overview/templates/overview.html:31
+msgid "Refresh"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:28
+msgid "Show non case related activity"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:38
+#: blueprints/activities/templates/activities.html:48
+msgid "Date"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:39
+#: blueprints/activities/templates/activities.html:49
+msgid "User"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:40
+#: blueprints/activities/templates/activities.html:50
+#: blueprints/search/templates/search.html:89
+#: blueprints/search/templates/search.html:99
+#: blueprints/search/templates/search.html:120
+#: blueprints/search/templates/search.html:128
+#: templates/includes/quick-sidebar.html:7 templates/includes/sidenav.html:71
+msgid "Case"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:41
+#: blueprints/activities/templates/activities.html:51
+msgid "Manual input"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:42
+#: blueprints/activities/templates/activities.html:52
+msgid "From API"
+msgstr ""
+
+#: blueprints/activities/templates/activities.html:43
+#: blueprints/activities/templates/activities.html:53
+msgid "Activity"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:28
+msgid "Filter"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:33
+msgid "Clear Filters"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:42
+#: blueprints/alerts/templates/modal_escalate.html:82
+msgid "Merge"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:48
+msgid ""
+"Assign\n"
+"                                        to me"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:50
+#: blueprints/alerts/templates/modal_new_alert_owner.html:18
+msgid "Assign"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:56
+msgid "Set status"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:59
+msgid "New"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:60
+msgid ""
+"In\n"
+"                                        progress"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:62
+msgid "Pending"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:63
+msgid "Closed"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:64
+msgid "Merged"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:68
+msgid "Close with note"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:69
+#: blueprints/case/templates/modal_add_case_asset.html:131
+#: blueprints/case/templates/modal_add_case_event.html:248
+#: blueprints/case/templates/modal_add_case_ioc.html:114
+msgid "Delete"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:71
+msgid "Select all"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:73
+msgid "Select"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:76
+msgid "Expand All"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:82
+msgid "Alerts per page"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:103
+#: blueprints/case/templates/case_tasks.html:57
+#: blueprints/case/templates/case_tasks.html:67
+#: blueprints/overview/templates/overview.html:58
+#: blueprints/overview/templates/overview.html:74
+msgid "Title"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:107
+#: blueprints/case/templates/case_assets.html:64
+#: blueprints/case/templates/case_assets.html:76
+#: blueprints/case/templates/case_ioc.html:65
+#: blueprints/case/templates/case_ioc.html:75
+#: blueprints/case/templates/case_rfile.html:59
+#: blueprints/case/templates/case_rfile.html:69
+#: blueprints/case/templates/case_tasks.html:58
+#: blueprints/case/templates/case_tasks.html:68
+#: blueprints/case/templates/modal_add_case_asset.html:55
+#: blueprints/case/templates/modal_add_case_ioc.html:75
+#: blueprints/search/templates/search.html:87
+#: blueprints/search/templates/search.html:97
+msgid "Description"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:111
+msgid "Source"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:115
+#: blueprints/alerts/templates/alerts.html:344
+#: blueprints/case/templates/case_assets.html:68
+#: blueprints/case/templates/case_assets.html:80
+#: blueprints/case/templates/case_ioc.html:66
+#: blueprints/case/templates/case_ioc.html:76
+#: blueprints/case/templates/case_tasks.html:62
+#: blueprints/case/templates/case_tasks.html:72
+#: blueprints/overview/templates/overview.html:62
+#: blueprints/overview/templates/overview.html:78
+msgid "Tags"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:121
+#: blueprints/case/templates/case_tasks.html:59
+#: blueprints/case/templates/case_tasks.html:69
+msgid "Status"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:126
+#: blueprints/alerts/templates/alerts.html:355
+#: blueprints/overview/templates/overview.html:57
+msgid "Severity"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:131
+#: blueprints/alerts/templates/alerts.html:350
+#: blueprints/overview/templates/overview.html:60
+#: blueprints/overview/templates/overview.html:76
+msgid "Classification"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:136
+#: blueprints/case/templates/case.html:49
+#: blueprints/overview/templates/overview.html:59
+#: blueprints/overview/templates/overview.html:75
+#: blueprints/search/templates/search.html:90
+#: blueprints/search/templates/search.html:100
+#: blueprints/search/templates/search.html:121
+#: blueprints/search/templates/search.html:129
+msgid "Customer"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:143
+msgid "Source Start Date"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:147
+msgid "Source End Date"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:151
+msgid "Creation Start Date"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:155
+msgid "Creation End Date"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:159
+msgid "Asset(s) name"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:163
+msgid "IOC(s)"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:167
+msgid "Alert(s) ID"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:171
+msgid "Source Reference"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:175
+#: blueprints/overview/templates/overview.html:56
+msgid "Case ID"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:179
+#: blueprints/overview/templates/overview.html:66
+#: blueprints/overview/templates/overview.html:82
+msgid "Owner"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:184
+msgid "Resolution Status"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:192
+#: blueprints/alerts/templates/alerts.html:203
+msgid "Custom Conditions"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:195
+msgid "Show Examples"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:211
+msgid "Here are two sample custom conditions"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:235
+msgid "Apply Filters"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:236
+msgid ""
+"Save\n"
+"                            as filter"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:268
+msgid "View Alert"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:287
+msgid "Alert history"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:310
+msgid "Resolution status"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:314
+msgid "Not applicable"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:318
+msgid "False positive"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:322
+msgid "True positive without impact"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:326
+msgid "True positive with impact"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:330
+msgid "Legitimate"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:334
+msgid "Unknown"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:340
+msgid "Note"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:360
+msgid "Close Alert"
+msgstr ""
+
+#: blueprints/alerts/templates/alerts.html:361
+#: blueprints/alerts/templates/modal_escalate.html:81
+#: blueprints/alerts/templates/modal_new_alert_owner.html:17
+#: blueprints/case/templates/case.html:281
+#: blueprints/case/templates/modal_conversation.html:49
+msgid "Cancel"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_enrichment.html:5
+msgid "Enrichment"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_enrichment.html:14
+#: blueprints/case/templates/case_assets.html:110
+#: blueprints/case/templates/case_md_helper.html:6
+#: templates/includes/footer.html:25 templates/includes/footer.html:120
+msgid "Close"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:19
+msgid "Merge options"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:24
+msgid "Merge into a new case"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:29
+msgid "Merge into existing case"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:37
+msgid "New case title"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:42
+msgid "Select case to merge into"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:47
+msgid "Select case template"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:52
+msgid "IOCs to import"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:53
+#: blueprints/alerts/templates/modal_escalate.html:58
+msgid "Deselect All"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:57
+msgid "Assets to import"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:62
+msgid "Escalation note"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:66
+msgid "Case tags"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_escalate.html:74
+msgid "Add alert as event in the timeline"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_new_alert_owner.html:5
+msgid "Reassign Alert"
+msgstr ""
+
+#: blueprints/alerts/templates/modal_new_alert_owner.html:12
+msgid "New Owner"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:6
+msgid "Summary"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:11
+#: blueprints/search/templates/search.html:37
+msgid "Notes"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:16
+msgid "Assets"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:21
+#: blueprints/case/templates/case_assets.html:67
+#: blueprints/case/templates/case_assets.html:79
+#: blueprints/search/templates/search.html:33
+msgid "IOC"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:26
+msgid "Timeline"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:31
+msgid "Graph"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:36
+#: blueprints/overview/templates/overview.html:65
+#: blueprints/overview/templates/overview.html:81
+msgid "Tasks"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:41
+msgid "Evidence"
+msgstr ""
+
+#: blueprints/case/templates/case-nav.html:46
+#: blueprints/case/templates/case_notes_v2.html:77
+#: blueprints/search/templates/search.html:41
+msgid "Comments"
+msgstr ""
+
+#: blueprints/case/templates/case-nav_landing.html:10
+#: templates/includes/sidenav.html:110
+msgid "Manage"
+msgstr ""
+
+#: blueprints/case/templates/case-nav_landing.html:16
+msgid "Processors"
+msgstr ""
+
+#: blueprints/case/templates/case-nav_landing.html:24
+msgid "Pipelines"
+msgstr ""
+
+#: blueprints/case/templates/case-nav_landing.html:30
+msgid "Request review"
+msgstr ""
+
+#: blueprints/case/templates/case-nav_landing.html:37
+msgid "Generate report"
+msgstr ""
+
+#: blueprints/case/templates/case-nav_landing.html:43
+msgid "Activity report"
+msgstr ""
+
+#: blueprints/case/templates/case.html:33
+msgid "Open on"
+msgstr ""
+
+#: blueprints/case/templates/case.html:34
+msgid "Owned by"
+msgstr ""
+
+#: blueprints/case/templates/case.html:36
+msgid "Closed on"
+msgstr ""
+
+#: blueprints/case/templates/case.html:41
+msgid "Case severity"
+msgstr ""
+
+#: blueprints/case/templates/case.html:42
+msgid "Case outcome"
+msgstr ""
+
+#: blueprints/case/templates/case.html:52
+msgid "SOC ID"
+msgstr ""
+
+#: blueprints/case/templates/case.html:68
+msgid "Reviewed"
+msgstr ""
+
+#: blueprints/case/templates/case.html:68
+msgid ""
+"Case\n"
+"                                    reviewed by"
+msgstr ""
+
+#: blueprints/case/templates/case.html:69
+msgid "you"
+msgstr ""
+
+#: blueprints/case/templates/case.html:93
+msgid ""
+"Review\n"
+"                                requested"
+msgstr ""
+
+#: blueprints/case/templates/case.html:95
+msgid ""
+"Start\n"
+"                                    review"
+msgstr ""
+
+#: blueprints/case/templates/case.html:98
+msgid "Confirm review"
+msgstr ""
+
+#: blueprints/case/templates/case.html:100
+msgid "Cancel review"
+msgstr ""
+
+#: blueprints/case/templates/case.html:102
+msgid "You have been requested to review this case."
+msgstr ""
+
+#: blueprints/case/templates/case.html:126
+msgid "Case summary"
+msgstr ""
+
+#: blueprints/case/templates/case.html:134
+msgid "Edit"
+msgstr ""
+
+#: blueprints/case/templates/case.html:204
+#: blueprints/case/templates/case.html:248
+msgid "Generate in Safe Mode"
+msgstr ""
+
+#: blueprints/case/templates/case.html:210
+#: blueprints/case/templates/case.html:254
+msgid "Generate"
+msgstr ""
+
+#: blueprints/case/templates/case.html:266
+msgid "Choose reviewer"
+msgstr ""
+
+#: blueprints/case/templates/case.html:283
+msgid "Request"
+msgstr ""
+
+#: blueprints/case/templates/case.html:304
+msgid "Case Review"
+msgstr ""
+
+#: blueprints/case/templates/case.html:312
+msgid "Do you confirm that the case has been reviewed?"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:21
+#: blueprints/case/templates/case_graph.html:24
+#: blueprints/case/templates/case_graph.html:38
+#: blueprints/case/templates/case_graph_timeline.html:39
+#: blueprints/case/templates/case_graph_timeline.html:50
+#: blueprints/case/templates/case_ioc.html:26
+#: blueprints/case/templates/case_rfile.html:23
+#: blueprints/case/templates/case_tasks.html:30
+#: blueprints/case/templates/case_tasks.html:48
+#: blueprints/case/templates/case_timeline.html:42
+#: blueprints/case/templates/case_timeline.html:96
+msgid "Loading"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:31
+msgid "Add assets"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:40
+msgid ""
+"Upload CSV of\n"
+"                                    assets"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:62
+#: blueprints/case/templates/case_assets.html:74
+#: blueprints/case/templates/case_rfile.html:55
+#: blueprints/case/templates/case_rfile.html:65
+#: blueprints/profile/templates/profile.html:37
+#: blueprints/search/templates/search.html:86
+#: blueprints/search/templates/search.html:96
+msgid "Name"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:63
+#: blueprints/case/templates/case_assets.html:75
+#: blueprints/case/templates/case_ioc.html:64
+#: blueprints/case/templates/case_ioc.html:74
+#: blueprints/case/templates/case_rfile.html:56
+#: blueprints/case/templates/case_rfile.html:66
+#: blueprints/search/templates/search.html:88
+#: blueprints/search/templates/search.html:98
+msgid "Type"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:65
+#: blueprints/case/templates/case_assets.html:77
+msgid "IP"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:66
+#: blueprints/case/templates/case_assets.html:78
+msgid "Compromised"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:69
+#: blueprints/case/templates/case_assets.html:81
+msgid "Analysis"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:116
+#: blueprints/case/templates/case_ioc.html:117
+msgid "Expected CSV File format"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:120
+#: blueprints/case/templates/case_ioc.html:122
+msgid "CSV File format example"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:126
+#: blueprints/case/templates/case_timeline.html:169
+msgid "Choose CSV file to import"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:133
+#: blueprints/case/templates/case_timeline.html:176
+msgid "Download sample CSV"
+msgstr ""
+
+#: blueprints/case/templates/case_assets.html:134
+#: blueprints/case/templates/case_ioc.html:136
+#: blueprints/case/templates/case_timeline.html:177
+msgid "Upload"
+msgstr ""
+
+#: blueprints/case/templates/case_graph_timeline.html:26
+msgid ""
+"No\n"
+"                            group"
+msgstr ""
+
+#: blueprints/case/templates/case_graph_timeline.html:30
+msgid "Group by asset"
+msgstr ""
+
+#: blueprints/case/templates/case_graph_timeline.html:33
+msgid ""
+"Group\n"
+"                            by category"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:35
+#: templates/includes/quick-sidebar.html:62
+msgid "Add IOC"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:44
+msgid "Upload CSV of IOCs"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:63
+#: blueprints/case/templates/case_ioc.html:73
+msgid "Value"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:67
+#: blueprints/case/templates/case_ioc.html:77
+msgid "Linked cases"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:68
+#: blueprints/case/templates/case_ioc.html:78
+#: blueprints/search/templates/search.html:91
+#: blueprints/search/templates/search.html:101
+msgid "TLP"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:110
+msgid "Upload IOC list (CSV format)"
+msgstr ""
+
+#: blueprints/case/templates/case_ioc.html:134
+msgid ""
+"Download\n"
+"                    sample CSV"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:5
+msgid "Shortcuts"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:13
+msgid "Shortcut"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:14
+msgid "Action"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:20
+msgid "Save note"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:24
+msgid "Bold"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:28
+msgid "Italic"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:32
+msgid "Heading 1"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:36
+msgid "Heading 2"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:40
+msgid "Heading 3"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:44
+msgid "Heading 4"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:48
+msgid "Insert code"
+msgstr ""
+
+#: blueprints/case/templates/case_md_helper.html:52
+msgid "Insert link"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:20
+msgid "Search in notes"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:53
+msgid ""
+"Select\n"
+"\t\t\t\t\t\t\ta note on the left pane or click here to add a directory"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:55
+msgid ""
+"Right-click on a directory to add a\n"
+"\t\t\t\t\t\t\tnote"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:67
+msgid "Modifications history"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:82
+msgid "Copy shared lin"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:166
+msgid "Select the directory to move the item to."
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:184
+msgid "Note revisions"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:220
+msgid ""
+"Revert to this\n"
+"\t\t\t\t\t\t\t\trevision"
+msgstr ""
+
+#: blueprints/case/templates/case_notes_v2.html:223
+msgid "Delete revision"
+msgstr ""
+
+#: blueprints/case/templates/case_rfile.html:32
+msgid "Register Evidence"
+msgstr ""
+
+#: blueprints/case/templates/case_rfile.html:57
+#: blueprints/case/templates/case_rfile.html:67
+msgid "Hash"
+msgstr ""
+
+#: blueprints/case/templates/case_rfile.html:58
+msgid "Size (bytes)"
+msgstr ""
+
+#: blueprints/case/templates/case_rfile.html:60
+#: blueprints/case/templates/case_rfile.html:70
+msgid "Added by"
+msgstr ""
+
+#: blueprints/case/templates/case_rfile.html:68
+msgid "Size(bytes)"
+msgstr ""
+
+#: blueprints/case/templates/case_tasks.html:39
+msgid "Add task"
+msgstr ""
+
+#: blueprints/case/templates/case_tasks.html:60
+#: blueprints/case/templates/case_tasks.html:70
+msgid "Assigned to"
+msgstr ""
+
+#: blueprints/case/templates/case_tasks.html:61
+#: blueprints/case/templates/case_tasks.html:71
+#: blueprints/overview/templates/overview.html:64
+#: blueprints/overview/templates/overview.html:80
+msgid "Open date"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:31
+msgid "Apply filter"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:34
+msgid "Reset"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:52
+#: templates/includes/quick-sidebar.html:82
+msgid "Add event"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:57
+msgid "Toggle view"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:67
+msgid "Toggle tree view"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:69
+msgid "Toggle compact view"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:72
+msgid "Visualize"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:74
+msgid "Visualize by asset"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:75
+msgid ""
+"Visualize\n"
+"                                      by category"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:79
+msgid "Download as CSV"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:81
+msgid "Download as CSV with user info"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:84
+msgid "Upload CSV of events"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:150
+msgid "Upload events list (CSV format)"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:157
+msgid "Expected Events CSV File format"
+msgstr ""
+
+#: blueprints/case/templates/case_timeline.html:161
+msgid "Events CSV File format example"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:17
+#: blueprints/case/templates/modal_add_case_event.html:24
+#: blueprints/case/templates/modal_add_case_ioc.html:17
+msgid "Share"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:18
+msgid ""
+"Markdown\n"
+"                                    Link"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:50
+msgid "Asset Type"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:79
+msgid "Domain"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:89
+#: blueprints/case/templates/modal_add_case_asset.html:92
+msgid "Additional information"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:99
+msgid ""
+"Compromise\n"
+"                                            Status"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:104
+msgid "Analysis Status"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:109
+msgid "Asset tags"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_asset.html:115
+msgid "Related IOC"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:25
+msgid ""
+"Markdown\n"
+"                                Link"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:27
+msgid "Duplicate"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:82
+msgid "Event description"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:123
+msgid "Event tags"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:131
+msgid "Link to assets"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:139
+msgid "Link to IOCs"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:155
+msgid "Parent Event ID"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:166
+msgid "Push IOCs to assets"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:176
+msgid "Add to summary"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:186
+msgid "Display in graph"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:193
+msgid "Event color"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:250
+#: blueprints/case/templates/modal_add_case_ioc.html:116
+msgid "Update"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_event.html:255
+#: blueprints/case/templates/modal_add_case_ioc.html:121
+#: blueprints/case/templates/modal_conversation.html:47
+#: blueprints/case/templates/modal_note_edit.html:98
+msgid "Save"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_ioc.html:18
+msgid ""
+"Markdown\n"
+"                                  Link"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_ioc.html:67
+msgid "One IOC per line"
+msgstr ""
+
+#: blueprints/case/templates/modal_add_case_ioc.html:99
+msgid "IOC tags"
+msgstr ""
+
+#: blueprints/case/templates/modal_conversation.html:7
+msgid "Comments on"
+msgstr ""
+
+#: blueprints/case/templates/modal_conversation.html:45
+#: blueprints/search/templates/search.html:60
+#: blueprints/search/templates/search.html:73
+msgid "Comment"
+msgstr ""
+
+#: blueprints/case/templates/modal_conversation.html:51
+msgid "Preview"
+msgstr ""
+
+#: blueprints/case/templates/modal_note_edit.html:96
+msgid ""
+"Delete\n"
+"        note"
+msgstr ""
+
+#: blueprints/case/templates/select_case.html:15
+msgid "No case found for you"
+msgstr ""
+
+#: blueprints/case/templates/select_case.html:16
+msgid "The page you’re looking for is only available when a case is selected."
+msgstr ""
+
+#: blueprints/overview/templates/overview.html:38
+msgid "Show closed cases"
+msgstr ""
+
+#: blueprints/overview/templates/overview.html:55
+msgid "Outcome"
+msgstr ""
+
+#: blueprints/overview/templates/overview.html:61
+#: blueprints/overview/templates/overview.html:77
+msgid "State"
+msgstr ""
+
+#: blueprints/overview/templates/overview.html:63
+#: blueprints/overview/templates/overview.html:79
+msgid "Open since"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:48
+msgid "Username"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:61
+msgid "Email"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:97
+msgid "API Key"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:102
+msgid "Renew"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:111
+msgid "IRIS Theme"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:126
+msgid "Prompt a confirmation box before deleting objects"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:143
+msgid "Refresh access"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:148
+msgid ""
+"Reset\n"
+"                                    MFA"
+msgstr ""
+
+#: blueprints/profile/templates/profile.html:152
+msgid "Change password"
+msgstr ""
+
+#: blueprints/search/templates/search.html:17
+msgid "Search across cases"
+msgstr ""
+
+#: blueprints/search/templates/search.html:25
+#: templates/includes/sidenav.html:86
+msgid "Search"
+msgstr ""
+
+#: blueprints/search/templates/search.html:29
+msgid "Set to search within"
+msgstr ""
+
+#: blueprints/search/templates/search.html:54
+#: blueprints/search/templates/search.html:67
+msgid "Filename"
+msgstr ""
+
+#: blueprints/search/templates/search.html:55
+#: blueprints/search/templates/search.html:68
+msgid "Path"
+msgstr ""
+
+#: blueprints/search/templates/search.html:56
+#: blueprints/search/templates/search.html:69
+msgid "VT Score"
+msgstr ""
+
+#: blueprints/search/templates/search.html:57
+#: blueprints/search/templates/search.html:70
+msgid "Case seen"
+msgstr ""
+
+#: blueprints/search/templates/search.html:58
+#: blueprints/search/templates/search.html:71
+msgid "Seen count"
+msgstr ""
+
+#: blueprints/search/templates/search.html:59
+#: blueprints/search/templates/search.html:72
+msgid "Flag"
+msgstr ""
+
+#: blueprints/search/templates/search.html:61
+#: blueprints/search/templates/search.html:74
+msgid "VT"
+msgstr ""
+
+#: blueprints/search/templates/search.html:119
+#: blueprints/search/templates/search.html:127
+msgid "Comment text"
+msgstr ""
+
+#: templates/includes/footer.html:10
+msgid "Switch context"
+msgstr ""
+
+#: templates/includes/footer.html:27
+msgid "Switch"
+msgstr ""
+
+#: templates/includes/footer.html:55
+msgid "Add a task log that will be registered under activities"
+msgstr ""
+
+#: templates/includes/footer.html:61 templates/includes/footer.html:91
+msgid "Submit"
+msgstr ""
+
+#: templates/includes/footer.html:84
+msgid "Input the folder name below"
+msgstr ""
+
+#: templates/includes/footer.html:112
+msgid "Task info"
+msgstr ""
+
+#: templates/includes/footer.html:130 templates/includes/footer.html:155
+msgid "Save Filter"
+msgstr ""
+
+#: templates/includes/footer.html:137
+msgid "Filter Name"
+msgstr ""
+
+#: templates/includes/footer.html:141
+msgid "Filter Description"
+msgstr ""
+
+#: templates/includes/footer.html:146
+msgid ""
+"\"filterIsPrivate\" name=\"filterIsPrivate\"\n"
+"                       type=\"checkbox\">\n"
+"                <span class=\"form-check-sign\"> "
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:8 templates/includes/sidenav.html:94
+msgid "Activities"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:9
+msgid ""
+"DIM\n"
+"\t\t\t\t\tTasks"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:50
+msgid "Take screenshot of content"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:68
+msgid "Add asset"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:76
+msgid "Add note"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:90
+msgid "Upload evidence"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:96
+msgid "Add task log"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:104
+msgid "Register evidence"
+msgstr ""
+
+#: templates/includes/quick-sidebar.html:116
+msgid "Switch case"
+msgstr ""
+
+#: templates/includes/sidenav.html:28
+msgid "My settings"
+msgstr ""
+
+#: templates/includes/sidenav.html:33
+msgid "Logout"
+msgstr ""
+
+#: templates/includes/sidenav.html:45
+msgid "Dashboard"
+msgstr ""
+
+#: templates/includes/sidenav.html:51
+msgid "Overview"
+msgstr ""
+
+#: templates/includes/sidenav.html:58
+msgid "Welcome page"
+msgstr ""
+
+#: templates/includes/sidenav.html:66
+msgid "Investigation"
+msgstr ""
+
+#: templates/includes/sidenav.html:78
+msgid "Alerts"
+msgstr ""
+
+#: templates/includes/sidenav.html:101
+msgid "DIM Tasks"
+msgstr ""
+
+#: templates/includes/sidenav.html:115
+msgid "Manage case"
+msgstr ""
+
+#: templates/includes/sidenav.html:122
+msgid "Advanced"
+msgstr ""
+
+#: templates/includes/sidenav.html:140
+msgid "Customers"
+msgstr ""
+
+#: templates/includes/sidenav.html:148
+msgid "Case Objects"
+msgstr ""
+
+#: templates/includes/sidenav.html:155
+msgid "Custom Attributes"
+msgstr ""
+
+#: templates/includes/sidenav.html:163
+msgid "Case Templates"
+msgstr ""
+
+#: templates/includes/sidenav.html:171
+msgid "Report Templates"
+msgstr ""
+
+#: templates/includes/sidenav.html:178
+msgid "Access control"
+msgstr ""
+
+#: templates/includes/sidenav.html:185
+msgid "Server settings"
+msgstr ""
+
+#: templates/includes/sidenav.html:196
+msgid "Help"
+msgstr ""
+
+#: templates/pages/error-404.html:21
+msgid "The page you’re looking for was not found."
+msgstr ""
+
+#~ msgid "My setting"
+#~ msgstr ""
+
+#~ msgid "Preview"
+#~ msgstr "Предпросмотр"
+

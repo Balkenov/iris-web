@@ -17,7 +17,7 @@
 						<div class="row mt-1">
 							<div class="col">
 								<div class="input-group">
-									<input type="text" placeholder="Search in notes" class="form-control" id="search-input">
+									<input type="text" placeholder="{{_('Search in notes')}}" class="form-control" id="search-input">
 									  <div class="input-group-append">
 										<button class="btn btn-sm btn-light" type="button" id="clear-search">
 										  &times;
@@ -50,8 +50,10 @@
 				<div class="page-content" id="emptyNoteDisplay">
 					<div class="mt-4">
 						<h4 class="text-dark text-sm text-center ml-mr-auto">It looks pretty empty <i class="fa-solid fa-mug-hot ml-2"></i></h4>
-						<h4 class="text-dark text-sm text-center ml-mr-auto"><a href="#" onclick="add_folder();return false;">Select a note on the left pane or click here to add a directory</a></h4>
-						<h4 class="text-dark text-sm text-center ml-mr-auto">Right-click on a directory to add a note</h4>
+						<h4 class="text-dark text-sm text-center ml-mr-auto"><a href="#" onclick="add_folder();return false;">{{_('Select
+							a note on the left pane or click here to add a directory')}}</a></h4>
+						<h4 class="text-dark text-sm text-center ml-mr-auto">{{_('Right-click on a directory to add a
+							note')}}</h4>
 
 					</div>
 				</div>
@@ -62,7 +64,7 @@
 							<small>
 								<i class="text-muted" id="currentNoteIDLabel"></i>
 								<i class="fa fa-cloud-upload-alt ml-2" title="Auto saving enabled"></i>
-								<a class="bg-transparent" onclick="load_note_revisions()"><i class="fa-solid fa-clock-rotate-left ml-2 mt-2" style="cursor: pointer;" title="Modifications history"></i></a>
+								<a class="bg-transparent" onclick="load_note_revisions()"><i class="fa-solid fa-clock-rotate-left ml-2 mt-2" style="cursor: pointer;" title="{{_('Modifications history')}}"></i></a>
 							</small>
 
 						</div>
@@ -72,12 +74,12 @@
 								<span class="float-right mr-2 mt-1" id="content_last_saved_by"></span>
 								<div class="avatar-group-note mt-1 mr-2 float-right" id="ppl_list_viewing">
 								</div>
-								  <button type="button" class="btn bg-transparent btn-xs" onclick="proxy_comment_element();" title="Comments">
+								  <button type="button" class="btn bg-transparent btn-xs" onclick="proxy_comment_element();" title="{{_('Comments')}}">
 									<span class="btn-label">
 										<i class="fa-solid fa-comments mr-2"></i><span class="notification" id="object_comments_number"></span>
 									</span>
 								</button>
-								<button type="button" class="btn bg-transparent btn-xs" onclick="proxy_copy_object_link();return false;" title="Copy shared link">
+								<button type="button" class="btn bg-transparent btn-xs" onclick="proxy_copy_object_link();return false;" title="{{_('Copy shared lin')}}k">
 									<span class="btn-label">
 										<i class="fa fa-share mr-2"></i>
 									</span>
@@ -161,7 +163,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col">
-							<span>Select the directory to move the item to.</span>
+							<span>{{_('Select the directory to move the item to.')}}</span>
 						</div>
 					</div>
 					<div class="row mt-2">
@@ -179,7 +181,7 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" >Note revisions</h5>
+					<h5 class="modal-title" >{{_('Note revisions')}}</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -215,8 +217,10 @@
 					</div>
 					<div class="row mt-2">
 						<div class="col">
-							<button class="btn btn-light float-right" onclick="note_revision_revert();">Revert to this revision</button>
-							<button class="btn btn-outline-danger float-right mr-2" onclick="note_revision_delete();">Delete revision</button>
+							<button class="btn btn-light float-right" onclick="note_revision_revert();">{{_('Revert to this
+								revision')}}</button>
+							<button class="btn btn-outline-danger float-right mr-2" onclick="note_revision_delete();">
+								{{_('Delete revision')}}</button>
 						</div>
 					</div>
 				</div>

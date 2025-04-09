@@ -30,26 +30,26 @@
                             </div>
                              <div class="row">
                                 <div class="col">
-                                <h5 class="text-white op-7 mb-1"><b>Open on</b> {{ case.open_date }} by {{ case.user.name }}</h5>
-                                <h5 class="text-white op-7 mb-3"><b>Owned by</b> {{ case.owner.name }}</h5>
+                                <h5 class="text-white op-7 mb-1"><b>{{_('Open on')}}</b> {{ case.open_date }} by {{ case.user.name }}</h5>
+                                <h5 class="text-white op-7 mb-3"><b>{{_('Owned by')}}</b> {{ case.owner.name }}</h5>
                                 {% if case.close_date %}
-                                <h5 class="text-warning  mb-1">Closed on {{ case.close_date }}</h5>
+                                <h5 class="text-warning  mb-1">{{_('Closed on')}} {{ case.close_date }}</h5>
                                 {% endif %}
                             </div>
                                 <div class="col mt-auto">
                                 <div class="row">
-                                    {% if case.severity %}<span onclick="case_detail('{{ case.case_id }}', true);" class="btn btn-rounded badge-pill hidden-caret btn-sm ml-2 mb-2 ml-auto {% if case.severity.severity_id > 4 %} badge-danger {% elif case.severity.severity_id == 4 %} bg-warning-gradient text-dark {% else %} btn-light {% endif %} ml-2" title="Case severity"><i class="fa-solid fa-bolt mr-1"></i> {{ case.severity.severity_name }}</span>{% endif %}
-                                     <span title="Case outcome" class="float-right btn btn-rounded badge-pill hidden-caret btn-sm ml-2 mb-2 {% if case.status_id == 1%}badge-success{% elif case.status_id == 2 %}badge-danger{% else %}btn-light{% endif %}"
+                                    {% if case.severity %}<span onclick="case_detail('{{ case.case_id }}', true);" class="btn btn-rounded badge-pill hidden-caret btn-sm ml-2 mb-2 ml-auto {% if case.severity.severity_id > 4 %} badge-danger {% elif case.severity.severity_id == 4 %} bg-warning-gradient text-dark {% else %} btn-light {% endif %} ml-2" title="{{_('Case severity')}}"><i class="fa-solid fa-bolt mr-1"></i> {{ case.severity.severity_name }}</span>{% endif %}
+                                     <span title="{{_('Case outcome')}}" class="float-right btn btn-rounded badge-pill hidden-caret btn-sm ml-2 mb-2 {% if case.status_id == 1%}badge-success{% elif case.status_id == 2 %}badge-danger{% else %}btn-light{% endif %}"
                                         onclick="case_detail('{{ case.case_id }}', true);"
                                      ><i class="fa-solid fa-group-arrows-rotate mr-2"></i>{{ case.status_name }}</span>
                                 </div>
                                 <div class="row">
                                       <div class="ml-auto">
                                         <div class="row">
-                                            <h5 class="text-white op-7 mb-2 float-right mr-4"><b>Customer</b> : {{ case.client.name }}</h5>
+                                            <h5 class="text-white op-7 mb-2 float-right mr-4"><b>{{_('Customer')}}</b> : {{ case.client.name }}</h5>
                                         </div>
                                           <div class="row">
-                                            {% if case.soc_id %} <h5 class="text-white op-7 mb-2 mr-4"><b>SOC ID :</b> {{ case.soc_id }}</h5> {% endif %}
+                                            {% if case.soc_id %} <h5 class="text-white op-7 mb-2 mr-4"><b>{{_('SOC ID')}} :</b> {{ case.soc_id }}</h5> {% endif %}
                                           </div>
                                     </div>
                                 </div>
@@ -65,7 +65,8 @@
                                 {% if case.classification %}<h5 title="Classification" onclick="case_detail('{{ case.case_id }}', true);" style="cursor:pointer;"><span class="btn-rounded badge-pill hidden-caret btn-sm btn-light ml-2"><i class="fa-solid fa-shield-virus mr-1"></i>{{ case.classification.name_expanded }}</span></h5>{% endif %}
                                 {% if case.alerts| length > 0 %}<h5 title="Alerts"><a class="btn-rounded badge-pill hidden-caret btn-sm btn-dark ml-2 bg-warning-gradient text-dark" href="/alerts?cid={{ case.case_id }}&sort=desc&case_id={{ case.case_id }}" target="_blank" rel="noopener"><i class="fa-solid fa-bell mr-1"></i> {{ case.alerts| length }} related alerts</a></h5>{% endif %}
                                 {% if case.review_status.status_name == "Reviewed" %}
-                                <h5 title="Reviewed"> <a class="text-white btn-rounded badge-pill hidden-caret btn-sm ml-2 badge-success"><i class="fa-regular fa-circle-check mr-2"></i>Case reviewed by {% if case.reviewer.id == current_user.id %} you {% else %} {{ case.reviewer.name }} {% endif %}</a></h5>
+                                <h5 title="{{_('Reviewed')}}"> <a class="text-white btn-rounded badge-pill hidden-caret btn-sm ml-2 badge-success"><i class="fa-regular fa-circle-check mr-2"></i>{{_('Case
+                                    reviewed by')}} {% if case.reviewer.id == current_user.id %} {{_('you')}} {% else %} {{ case.reviewer.name }} {% endif %}</a></h5>
                                 {% endif %}
                             </div>
                         </div>
@@ -89,12 +90,16 @@
                 {% if case.reviewer_id == current_user.id and case.review_status.status_name != "Reviewed" and case.review_status.status_name != "Not reviewed" %}
                     <div class="row row-card-no-pd review-card mt--3 mb--3 bg-warning-gradient" style="display: none;">
                         <div class="col-md-12">
-                            <h4 class="font-weight-bold"><i class="fa-solid fa-triangle-exclamation text-danger ml-2 mr-2"></i>Review requested
-                                <button class="btn btn-sm float-right btn-dark mr-3 mt-2 btn-start-review">Start review</button>
-                                <button class="btn btn-sm float-right btn-success mr-3 mt-2 btn-confirm-review" style="display:none">Confirm review</button>
-                                <button class="btn btn-sm float-right btn-light mr-3 mt-2 btn-cancel-review" style="display:none">Cancel review</button></h4>
+                            <h4 class="font-weight-bold"><i class="fa-solid fa-triangle-exclamation text-danger ml-2 mr-2"></i>{{_('Review
+                                requested')}}
+                                <button class="btn btn-sm float-right btn-dark mr-3 mt-2 btn-start-review">{{_('Start
+                                    review')}}</button>
+                                <button class="btn btn-sm float-right btn-success mr-3 mt-2 btn-confirm-review" style="display:none">
+                                    {{_('Confirm review')}}</button>
+                                <button class="btn btn-sm float-right btn-light mr-3 mt-2 btn-cancel-review" style="display:none">
+                                    {{_('Cancel review')}}</button></h4>
 
-                            <span class="ml-2" id="reviewSubtitle">You have been requested to review this case.</span>
+                            <span class="ml-2" id="reviewSubtitle">{{_('You have been requested to review this case.')}}</span>
                         </div>
                     </div>
                 {% elif case.review_status.status_name == "Review in progress" %}
@@ -118,16 +123,17 @@
                                 <div class="row">
                                     {{ form.hidden_tag() }}
                                     <a href="#case_summary_card" class="d-block nav-link mr-auto" data-toggle="collapse" aria-expanded="true" aria-controls="case_summary_card">
-                                        <h4 class="m-0 font-weight-bold">Case summary {{ "(Syncing with DB )" if case.id }}</h4>
+                                        <h4 class="m-0 font-weight-bold">{{_('Case summary')}} {{ "(Syncing with DB )" if case.id }}</h4>
                                     </a>
                                     <div class="mr-0 float-right">
                                         <small id="content_typing" class="mr-3 mt-1"></small>
                                         <small id="content_last_saved_by" class="mr-3 mt-1"></small>
                                         <span id="last_saved" class="badge mr-3 ml-2"></span>
                                         <small id="content_last_sync"></small>
-                                        <button class="btn btn-sm mr-2 ml-3" onclick="edit_case_summary();" id="sum_edit_btn" >Edit</button>
+                                        <button class="btn btn-sm mr-2 ml-3" onclick="edit_case_summary();" id="sum_edit_btn" >
+                                            {{_('Edit')}}</button>
                                         <button type="button" id="sum_refresh_btn" class="btn btn-sm btn-outline-default mr-3" onclick="sync_editor();">
-                                            Refresh
+                                            {{_('Refresh')}}
                                         </button>
                                     </div>
                                 </div>
@@ -195,13 +201,13 @@
                               <span class="btn-label">
                                 <i class="fa fa-file-download"></i>
                               </span>
-                              Generate in Safe Mode
+                              {{_('Generate in Safe Mode')}}
                           </a>
                           <a href="#" class="btn btn-light float-right mt-2 ml-2" onclick="gen_report(false);">
                               <span class="btn-label">
                                 <i class="fa fa-file-download"></i>
                               </span>
-                              Generate
+                              {{_('Generate')}}
                             </a>
                           {% endif %}
                       </div>
@@ -239,13 +245,13 @@
                               <span class="btn-label">
                                 <i class="fa fa-file-download"></i>
                               </span>
-                              Generate in Safe Mode
+                              {{_('Generate in Safe Mode')}}
                           </a>
                           <a href="#" class="btn btn-light float-right mt-2 ml-2" onclick="gen_act_report(false);">
                               <span class="btn-label">
                                 <i class="fa fa-file-download"></i>
                               </span>
-                              Generate
+                              {{_('Generate')}}
                             </a>
                           {% endif %}
                       </div>
@@ -257,7 +263,7 @@
                   <div class="modal-content">
                     <form method="post" action="" id="form_choose_reviewer">
                           <div class="modal-header">
-                          <h5>Choose reviewer</h5>
+                          <h5>{{_('Choose reviewer')}}</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                           </div>
@@ -272,8 +278,9 @@
                               </div>
                              <div class="row mt-4">
                                  <div class="col-12 d-flex">
-                                     <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">Cancel</button>
-                                     <button type="button" class="btn btn-outline-success ml-auto" id="submit_set_reviewer">Request</button>
+                                     <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">{{_('Cancel')}}</button>
+                                     <button type="button" class="btn btn-outline-success ml-auto" id="submit_set_reviewer">
+                                         {{_('Request')}}</button>
                                  </div>
                              </div>
                           </div>
@@ -294,7 +301,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Case Review</h5>
+                            <h5 class="modal-title">{{_('Case Review')}}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -302,7 +309,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <p>Do you confirm that the case has been reviewed?</p>
+                                    <p>{{_('Do you confirm that the case has been reviewed?')}}</p>
                                 </div>
                             </div>
                             <div class="row">

@@ -1918,4 +1918,6 @@ $(document).ready(function(){
     userWhoamiRequest();
 });
 
-
+function changeLanguage(lang) {
+    window.location.href = "/change-language/" + lang;
+}

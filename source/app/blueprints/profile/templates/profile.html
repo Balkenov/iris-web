@@ -34,7 +34,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="icon-token"></i>
-                                        Name
+                                        {{_('Name')}}
                                     </span>
                                 </div>
                                 <input class="form-control" value="{{ current_user.name }}" readonly>
@@ -45,7 +45,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="icon-token"></i>
-                                        Username
+                                        {{_('Username')}}
                                     </span>
                                 </div>
                                 <input class="form-control disable" value="{{ current_user.user }}" readonly>
@@ -58,7 +58,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="icon-token"></i>
-                                        Email
+                                        {{_('Email')}}
                                     </span>
                                 </div>
                                 <input class="form-control disable" value="{{ current_user.email }}" readonly>
@@ -94,12 +94,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="icon-token"></i>
-                                        API Key
+                                        {{_('API Key')}}
                                     </span>
                                 </div>
                                 <input class="form-control disable" value="{{ current_user.api_key }}" readonly>
                                 <div class="input-group-append">
-                                    <button class="btn btn-sm btn-dark" type="button" onclick="renew_api()">Renew</button>
+                                    <button class="btn btn-sm btn-dark" type="button" onclick="renew_api()">{{_('Renew')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-label d-block">IRIS Theme</label>
+                                <label class="form-label d-block">{{_('IRIS Theme')}}</label>
                                 <div class="selectgroup selectgroup-primary selectgroup-pills">
                                     <label class="selectgroup-item" title="Light mode">
                                         <input type="radio" name="iris-theme" value="false" class="selectgroup-input" {% if not current_user.in_dark_mode %}checked{% endif %}>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-label d-block">Prompt a confirmation box before deleting objects</label>
+                                <label class="form-label d-block">{{_('Prompt a confirmation box before deleting objects')}}</label>
                                 <div class="selectgroup selectgroup-primary selectgroup-pills">
                                     <label class="selectgroup-item" title="Do not prompt a confirmation popup and delete objects directly">
                                         <input type="radio" name="user-has-deletion-prompt" value="false" class="selectgroup-input" {% if not current_user.has_deletion_confirmation %}checked{% endif %}>
@@ -139,14 +139,17 @@
                     </div>
                     <div class="row">
                         <div class="col-6 float-left mt-4">
-                            <button class="btn btn-dark" type="button" onclick="refresh_user_permissions();" id="user_refresh_perms_btn">Refresh access</button>
+                            <button class="btn btn-dark" type="button" onclick="refresh_user_permissions();" id="user_refresh_perms_btn">
+                                {{_('Refresh access')}}</button>
                         </div>
 
                         <div class="col-6 mt-4">
                             {% if mfa_enabled %}
-                                <a class="btn btn-primary float-right mr-2" type="button" href="/auth/mfa-setup">Reset MFA</a>
+                                <a class="btn btn-primary float-right mr-2" type="button" href="/auth/mfa-setup">{{_('Reset
+                                    MFA')}}</a>
                             {% endif %}
-                            <button class="btn float-right btn-primary mr-2" type="button" onclick="update_password();">Change password</button>
+                            <button class="btn float-right btn-primary mr-2" type="button" onclick="update_password();">
+                                {{_('Change password')}}</button>
                         </div>
                     </div>
                 </div>

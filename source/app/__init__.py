@@ -20,8 +20,9 @@ import json
 import logging as logger
 import os
 import urllib.parse
-from flask import Flask
+from flask import Flask, request, redirect, url_for
 from flask import session
+from flask_babel import Babel, _
 from flask_bcrypt import Bcrypt
 from flask_caching import Cache
 from flask_login import LoginManager
@@ -64,6 +65,19 @@ logger.basicConfig(level=logger.INFO, format=LOG_FORMAT, datefmt=LOG_TIME_FORMAT
 
 app = Flask(__name__)
 
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'ru', 'kk']
+
+def get_locale():
+    return session.get('lang', request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES']))
+
+babel = Babel(app, locale_selector=get_locale)
+
+@app.route('/change-language/<lang>')
+def change_language(lang):
+    if lang in app.config['BABEL_SUPPORTED_LOCALES']:
+        session['lang'] = lang
+    return redirect(request.referrer or url_for('home'))
 
 def ac_current_user_has_permission(*permissions):
     """

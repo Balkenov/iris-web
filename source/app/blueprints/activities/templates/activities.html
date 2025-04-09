@@ -17,7 +17,7 @@
                 <div class="card-header">
                     <div class="card-title">User activities ( max 10k entries + unbound )
                         <button type="button" class="btn btn-sm btn-outline-dark float-right ml-2" onclick="refresh_activities();">
-                                Refresh
+                            {{_('Refresh')}}
                         </button>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                    <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" value="" id="non_case_related_act">
-                                <span class="form-check-sign">Show non case related activity</span>
+                                <span class="form-check-sign">{{_('Show non case related activity')}}</span>
                             </label>
                     </div>
                     <div class="table-responsive" id="activities_table_wrapper">
@@ -35,22 +35,22 @@
                       <table class="table display table-striped table-hover" width="100%" cellspacing="0" id="activities_table" >
                         <thead>
                           <tr>
-                            <th>Date</th>
-                            <th>User</th>
-                            <th>Case</th>
-                            <th>Manual input</th>
-                            <th>From API</th>
-                            <th>Activity</th>
+                            <th>{{_('Date')}}</th>
+                            <th>{{_('User')}}</th>
+                            <th>{{_('Case')}}</th>
+                            <th>{{_('Manual input')}}</th>
+                            <th>{{_('From API')}}</th>
+                            <th>{{_('Activity')}}</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                            <th>Date</th>
-                            <th>User</th>
-                            <th>Case</th>
-                            <th>Manual input</th>
-                            <th>From API</th>
-                            <th>Activity</th>
+                            <th>{{_('Date')}}</th>
+                            <th>{{_('User')}}</th>
+                            <th>{{_('Case')}}</th>
+                            <th>{{_('Manual input')}}</th>
+                            <th>{{_('From API')}}</th>
+                            <th>{{_('Activity')}}</th>
                           </tr>
                         </tfoot>
                       </table>

@@ -42,6 +42,19 @@
 								<i class="fa fa-search"></i>
 							</a>
 						</li>
+						<li class="nav-item">
+							<div class="dropdown show">
+							  <a title="Language" class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img src="{{ url_for('static', filename='assets/icons/language.png') }}" width="18.5" alt="Language" style="filter: brightness(0) invert(1);">
+							  </a>
+
+							  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="min-width: 100px;">
+								<a class="dropdown-item" href="#" onclick="changeLanguage('en')" data-lang="en">En</a>
+								<a class="dropdown-item" href="#" onclick="changeLanguage('ru')" data-lang="ru">Ru</a>
+								<a class="dropdown-item" href="#" onclick="changeLanguage('kk')" data-lang="kk">Kk</a>
+							  </div>
+							</div>
+						</li>
 						<li class="nav-item hidden-caret">
 							<a class="nav-link" title="Switch case" onclick="load_context_switcher();return false;" href="#" role="button">
 								<i class="flaticon-repeat"></i>
@@ -77,5 +90,3 @@
 			<!-- End Navbar -->
 
 		</div>
-
-		

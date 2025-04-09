@@ -28,10 +28,10 @@
                             <div class="row">
                                 <div id='timeline_filtering' class="col-9 pt-2 pl-2" style="border-radius:3px;" ></div>
                                 <button class="btn btn-sm btn-light ml-2 pt-2" onclick="filter_timeline();">
-                                   Apply filter
+                                    {{_('Apply filter')}}
                                 </button>
                                 <button class="btn btn-sm btn-light ml-1 pt-2" onclick="reset_filters();">
-                                   Reset
+                                    {{_('Reset')}}
                                 </button>
                                 <i class="ml-1 mt-1 fa-regular text-white fa-circle-question" title="Filter help" style="cursor:pointer;" onclick="show_timeline_filter_help();"></i>
                             </div>
@@ -39,22 +39,22 @@
                      </ul>
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center page-navigation page-navigation-style-2 page-navigation-secondary">
                         <li class="nav-item ml-2">
-                            <span class="text-white text-sm mr-2" id="last_resfresh">Loading</span>
+                            <span class="text-white text-sm mr-2" id="last_resfresh">{{_('Loading')}}</span>
                         </li>
                         <li class="nav-item hidden-caret">
                             <button class="btn btn-primary btn-sm" onclick="get_or_filter_tm();">
-                                <span class="menu-title">Refresh</span>
+                                <span class="menu-title">{{_('Refresh')}}</span>
                             </button>
                         </li>
 
                         <li class="nav-item hidden-caret">
                             <button class="btn btn-dark btn-sm" onclick="add_event();">
-                                <span class="menu-title">Add event</span>
+                                <span class="menu-title">{{_('Add event')}}</span>
                             </button>
                         </li>
                          <li class="nav-item hidden-caret">
                             <button class="btn btn-dark btn-sm" onclick="toggle_tree_view();">
-                                <span class="menu-title">Toggle view</span>
+                                <span class="menu-title">{{_('Toggle view')}}</span>
                             </button>
                         </li>
                         <li class="nav-item">
@@ -63,17 +63,25 @@
                                   <span class="menu-title"><i class="fas fa-ellipsis-v"></i></span>
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="javascript:void(0);" onclick="toggle_tree_view();"> Toggle tree view</a>
-                                  <a class="dropdown-item" href="javascript:void(0);" onclick="toggle_compact_view();"> Toggle compact view</a>
+                                  <a class="dropdown-item" href="javascript:void(0);" onclick="toggle_tree_view();">
+                                      {{_('Toggle tree view')}}</a>
+                                  <a class="dropdown-item" href="javascript:void(0);" onclick="toggle_compact_view();">
+                                      {{_('Toggle compact view')}}</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="timeline/visualize?cid={{session['current_case'].case_id}}"> Visualize</a>
-                                  <a class="dropdown-item" href="timeline/visualize?cid={{session['current_case'].case_id}}&group-by=asset"> Visualize by asset</a>
-                                  <a class="dropdown-item" href="timeline/visualize?cid={{session['current_case'].case_id}}&group-by=category">Visualize by category</a>
+                                  <a class="dropdown-item" href="timeline/visualize?cid={{session['current_case'].case_id}}">
+                                      {{_('Visualize')}}</a>
+                                  <a class="dropdown-item" href="timeline/visualize?cid={{session['current_case'].case_id}}&group-by=asset">
+                                      {{_('Visualize by asset')}}</a>
+                                  <a class="dropdown-item" href="timeline/visualize?cid={{session['current_case'].case_id}}&group-by=category">{{_('Visualize
+                                      by category')}}</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#" onclick="timelineToCsv();"><small class="fa fa-download mr-2"></small> Download as CSV</a>
-                                  <a class="dropdown-item" href="#" onclick="timelineToCsvWithUI();"><small class="fa fa-download mr-2"></small> Download as CSV with user info</a>
+                                  <a class="dropdown-item" href="#" onclick="timelineToCsv();"><small class="fa fa-download mr-2"></small>
+                                      {{_('Download as CSV')}}</a>
+                                  <a class="dropdown-item" href="#" onclick="timelineToCsvWithUI();"><small class="fa fa-download mr-2"></small>
+                                      {{_('Download as CSV with user info')}}</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#" onclick="fire_upload_csv_events();"><small class="fa fa-upload mr-2"></small> Upload CSV of events</a>
+                                  <a class="dropdown-item" href="#" onclick="fire_upload_csv_events();"><small class="fa fa-upload mr-2"></small>
+                                      {{_('Upload CSV of events')}}</a>
                               </div>
                             </div>
                         </li>
@@ -85,7 +93,7 @@
 
         <div class="page-inner">
             <div class="row">
-                <div class="loader1 text-center ml-mr-auto" id="loading_msg">Loading...</div>
+                <div class="loader1 text-center ml-mr-auto" id="loading_msg">{{_('Loading')}}...</div>
                 <div class="col-md-12" id="card_main_load" style="display:none;">
                     <div id="paginator"></div>
                     <ul class="timeline" id="timeline_list">
@@ -139,18 +147,18 @@
 
           <div class="modal-content">
             <div class="modal-header">
-              <h5>Upload events list (CSV format)</h5>
+              <h5>{{_('Upload events list (CSV format)')}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                   aria-hidden="true">&times;</span></button>
             </div>
 
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="csv_format" class="placeholder">Expected Events CSV File format</label>
+                    <label for="csv_format" class="placeholder">{{_('Expected Events CSV File format')}}</label>
                     <textarea id="csv_format" class="form-control col-md-12 col-sm-12 sizable-textarea" rows="2" disabled>event_timestamp,event_title,event_description,linked_assets,linked_IoCs,event_tags (separated with &quot;|&quot;),event_color,event_raw_data</textarea>
                 </div>
                 <div class="form-group">
-                    <label class="placeholder">Events CSV File format example</label>
+                    <label class="placeholder">{{_('Events CSV File format example')}}</label>
                     <textarea class="form-control col-md-12 col-sm-12 sizable-textarea" rows="3" disabled>
 event_date,event_tz,event_title,event_category,event_content,event_raw,event_source,event_assets,event_iocs,event_tags
 "2023-03-26T03:00:30.000","+00:00","An event","Unspecified","Event description","raw","source","","","defender|malicious"
@@ -158,14 +166,15 @@ event_date,event_tz,event_title,event_category,event_content,event_raw,event_sou
                     </textarea>
                 </div>
                   <div class="form-group">
-                      <label class="placeholder">Choose CSV file to import : </label>
+                      <label class="placeholder">{{_('Choose CSV file to import')}} : </label>
                       <input id="input_upload_csv_events" type="file" accept="text/csv">
                   </div>
             </div>
             <div class='invalid-feedback' id='ioc-invalid-msg'></div>
             <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark mr-auto" onclick="generate_events_sample_csv();">Download sample CSV</button>
-                    <button type="button" class="btn btn-outline-success" onclick="upload_csv_events();">Upload</button>
+                    <button type="button" class="btn btn-outline-dark mr-auto" onclick="generate_events_sample_csv();">
+                        {{_('Download sample CSV')}}</button>
+                    <button type="button" class="btn btn-outline-success" onclick="upload_csv_events();">{{_('Upload')}}</button>
             </div>
           </div><!-- /.modal-content -->
         </form>
