@@ -65,8 +65,7 @@
                                 {% if case.classification %}<h5 title="Classification" onclick="case_detail('{{ case.case_id }}', true);" style="cursor:pointer;"><span class="btn-rounded badge-pill hidden-caret btn-sm btn-light ml-2"><i class="fa-solid fa-shield-virus mr-1"></i>{{ case.classification.name_expanded }}</span></h5>{% endif %}
                                 {% if case.alerts| length > 0 %}<h5 title="Alerts"><a class="btn-rounded badge-pill hidden-caret btn-sm btn-dark ml-2 bg-warning-gradient text-dark" href="/alerts?cid={{ case.case_id }}&sort=desc&case_id={{ case.case_id }}" target="_blank" rel="noopener"><i class="fa-solid fa-bell mr-1"></i> {{ case.alerts| length }} related alerts</a></h5>{% endif %}
                                 {% if case.review_status.status_name == "Reviewed" %}
-                                <h5 title="{{_('Reviewed')}}"> <a class="text-white btn-rounded badge-pill hidden-caret btn-sm ml-2 badge-success"><i class="fa-regular fa-circle-check mr-2"></i>{{_('Case
-                                    reviewed by')}} {% if case.reviewer.id == current_user.id %} {{_('you')}} {% else %} {{ case.reviewer.name }} {% endif %}</a></h5>
+                                <h5 title="{{_('Reviewed')}}"> <a class="text-white btn-rounded badge-pill hidden-caret btn-sm ml-2 badge-success"><i class="fa-regular fa-circle-check mr-2"></i>{{_('Case reviewed by')}} {% if case.reviewer.id == current_user.id %} {{_('you')}} {% else %} {{ case.reviewer.name }} {% endif %}</a></h5>
                                 {% endif %}
                             </div>
                         </div>
@@ -90,10 +89,8 @@
                 {% if case.reviewer_id == current_user.id and case.review_status.status_name != "Reviewed" and case.review_status.status_name != "Not reviewed" %}
                     <div class="row row-card-no-pd review-card mt--3 mb--3 bg-warning-gradient" style="display: none;">
                         <div class="col-md-12">
-                            <h4 class="font-weight-bold"><i class="fa-solid fa-triangle-exclamation text-danger ml-2 mr-2"></i>{{_('Review
-                                requested')}}
-                                <button class="btn btn-sm float-right btn-dark mr-3 mt-2 btn-start-review">{{_('Start
-                                    review')}}</button>
+                            <h4 class="font-weight-bold"><i class="fa-solid fa-triangle-exclamation text-danger ml-2 mr-2"></i>{{_('Review requested')}}
+                                <button class="btn btn-sm float-right btn-dark mr-3 mt-2 btn-start-review">{{_('Start review')}}</button>
                                 <button class="btn btn-sm float-right btn-success mr-3 mt-2 btn-confirm-review" style="display:none">
                                     {{_('Confirm review')}}</button>
                                 <button class="btn btn-sm float-right btn-light mr-3 mt-2 btn-cancel-review" style="display:none">

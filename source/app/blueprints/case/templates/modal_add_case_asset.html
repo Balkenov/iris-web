@@ -15,8 +15,7 @@
                               </button>
                               <div class="dropdown-menu pull-right" id="asset_modal_quick_actions" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#" onclick='copy_object_link({{asset.asset_id}});return false;'><i class="fa fa-share mr-2"></i>{{_('Share')}}</a>
-                                <a class="dropdown-item" href="#" onclick='copy_object_link_md("asset", {{asset.asset_id}});return false;'><i class="fa-brands fa-markdown mr-2"></i>{{_('Markdown
-                                    Link')}}</a>
+                                <a class="dropdown-item" href="#" onclick='copy_object_link_md("asset", {{asset.asset_id}});return false;'><i class="fa-brands fa-markdown mr-2"></i>{{_('Markdown Link')}}</a>
                               </div>
                          </div>
                          <button type="button" class="btn bg-transparent btn-xs" onclick="comment_element({{ asset.asset_id }}, 'assets')" title="Comments">
@@ -96,8 +95,7 @@
                                 </div>
                                 <div class="form-row ml-2">
                                     <div class="form-group col-6">
-                                        <label for="asset_compromise_status_id" class="placeholder mt-2">{{_('Compromise
-                                            Status')}}  </label>
+                                        <label for="asset_compromise_status_id" class="placeholder mt-2">{{_('Compromise Status')}}  </label>
                                         {{ form.asset_compromise_status_id(class="selectpicker col-9") }}
                                     </div>
                                     <div class="form-group col-6">
