@@ -104,7 +104,8 @@ def case_template_modal(cur_id, caseid, url_redir):
         "tags": case_template.tags,
         "tasks": case_template.tasks,
         "note_directories": case_template.note_directories,
-        "classification": case_template.classification
+        "classification": case_template.classification,
+        "severity": case_template.severity,
     }
 
     form.case_template_json.data = case_template_dict
@@ -123,6 +124,7 @@ def add_template_modal():
         "description": "Template description",
         "author": "YOUR NAME",
         "classification": "known-template-classification",
+        "severity": "Unspecified",
         "title_prefix": "[PREFIX]",
         "summary": "Summary to be set",
         "tags": ["ransomware","malware"],

@@ -38,6 +38,7 @@ from app import bc
 from app import celery
 from app import db
 from app.datamgmt.iris_engine.modules_db import iris_module_disable_by_id
+from app.datamgmt.manage.manage_case_templates_db import get_case_template_by_name
 from app.datamgmt.manage.manage_groups_db import add_case_access_to_group
 from app.datamgmt.manage.manage_users_db import add_user_to_group
 from app.datamgmt.manage.manage_users_db import add_user_to_organisation
@@ -463,7 +464,11 @@ def run_post_init(development=False):
                 else:
                     alert.alert_status_id = AlertStatus.query.filter_by(status_name='Escalated').first().status_id
                     db.session.commit()
-                    case = create_case_from_alert(alert, [], [], "", "", True, alert.alert_tags, 0, alert.alert_reason)
+                    template_id = 0
+                    template = get_case_template_by_name(alert.alert_title)
+                    if template:
+                        template_id = template.template_id
+                    case = create_case_from_alert(alert, [], [], "", "", True, alert.alert_tags, template_id, alert.alert_reason)
 
                     ac_set_new_case_access(None, case.case_id, case.client_id)
                     case = call_modules_hook('on_postload_case_create', data=case)

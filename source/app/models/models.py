@@ -250,6 +250,7 @@ class CaseTemplate(db.Model):
     tasks = Column(JSON, nullable=True)
     note_directories = Column(JSON, nullable=True)
     classification = Column(String, nullable=True)
+    severity = Column(String, nullable=True)
 
     created_by_user = relationship('User')
 

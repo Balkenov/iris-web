@@ -24,6 +24,7 @@ from app.datamgmt.case.case_tasks_db import add_task
 from app.datamgmt.manage.manage_case_classifications_db import get_case_classification_by_name
 from app.iris_engine.module_handler.module_handler import call_modules_hook
 from app.models import CaseTemplate, Cases, Tags, NoteDirectory
+from app.models.alerts import Severity
 from app.models.authorization import User
 from app.schema.marshables import CaseSchema, CaseTaskSchema, CaseNoteDirectorySchema, CaseNoteSchema
 
@@ -65,6 +66,9 @@ def get_case_template_by_id(cur_id: int) -> CaseTemplate:
     case_template = CaseTemplate.query.filter_by(id=cur_id).first()
     return case_template
 
+def get_case_template_by_name(name: str) -> CaseTemplate:
+    case_template = CaseTemplate.query.filter_by(name=name).first()
+    return case_template
 
 def delete_case_template_by_id(case_template_id: int):
     """Delete a case template
@@ -87,6 +91,10 @@ def validate_case_template(data: dict, update: bool = False) -> Optional[str]:
         # We check that name is not empty
         if "name" in data and not data["name"].strip():
             return "Name cannot be empty."
+
+        if "severity" in data:
+            if data["severity"] not in ["Unspecified", "Informational", "Low", "Medium", "High", "Critical"]:
+                return "Invalid severity."
 
         # We check that author length is not above 128 chars
         if "author" in data and len(data["author"]) > 128:
@@ -150,6 +158,9 @@ def validate_case_template(data: dict, update: bool = False) -> Optional[str]:
     except Exception as e:
         return str(e)
 
+def get_case_severity_by_name(name: str) -> Optional[Severity]:
+    severity = Severity.query.filter_by(severity_name=name).first()
+    return severity
 
 def case_template_pre_modifier(case_schema: CaseSchema, case_template_id: str):
     case_template = get_case_template_by_id(int(case_template_id))
@@ -161,6 +172,10 @@ def case_template_pre_modifier(case_schema: CaseSchema, case_template_id: str):
     case_classification = get_case_classification_by_name(case_template.classification)
     if case_classification:
         case_schema.classification_id = case_classification.id
+
+    severity = get_case_severity_by_name(case_template.severity)
+    if severity:
+        case_schema.severity_id = severity.severity_id
 
     return case_schema
 
