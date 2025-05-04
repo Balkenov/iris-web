@@ -837,6 +837,7 @@ class CaseTemplateSchema(ma.Schema):
     summary: Optional[str] = fields.String(allow_none=True, missing="")
     tags: Optional[List[str]] = fields.List(fields.String(), allow_none=True, missing=[])
     classification: Optional[str] = fields.String(allow_none=True, missing="")
+    severity: Optional[str] = fields.String(allow_none=True, missing="Unspecified")
     note_directories: Optional[List[Dict[str, Union[str, List[Dict[str, str]]]]]] = fields.List(fields.Dict(),
                                                                                                 allow_none=True,
                                                                                                 missing=[])
