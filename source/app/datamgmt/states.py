@@ -37,7 +37,10 @@ def _update_object_state(object_name, caseid, userid=None) -> ObjectState:
         ObjectState object
     """
     if not userid:
-        userid = current_user.id
+        if current_user:
+            userid = current_user.id
+        else:
+            userid = 1
 
     os = ObjectState.query.filter(and_(
         ObjectState.object_name == object_name,

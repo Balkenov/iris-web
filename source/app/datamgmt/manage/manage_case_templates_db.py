@@ -173,9 +173,9 @@ def case_template_pre_modifier(case_schema: CaseSchema, case_template_id: str):
     if case_classification:
         case_schema.classification_id = case_classification.id
 
-    severity = get_case_severity_by_name(case_template.severity)
-    if severity:
-        case_schema.severity_id = severity.severity_id
+    # severity = get_case_severity_by_name(case_template.severity)
+    # if severity:
+    #     case_schema.severity_id = severity.severity_id
 
     return case_schema
 
@@ -296,6 +296,14 @@ def case_template_post_modifier(case: Cases, case_template_id: Union[str, int]):
     if not case_template:
         logs.append(f"Case template {case_template_id} not found")
         return None, logs
+
+    case_classification = get_case_classification_by_name(case_template.classification)
+    if case_classification:
+        case.classification_id = case_classification.id
+
+    severity = get_case_severity_by_name(case_template.severity)
+    if severity:
+        case.severity_id = severity.severity_id
 
     # Update summary, we want to append in order not to skip the initial case description
     case.description += "\n" + case_template.summary

@@ -298,7 +298,7 @@ def run_post_init(development=False):
             "range": {
                 "@timestamp": {
                     # "gte": f"now-{interval}s/d",  # Last 24 hours
-                    "gte": f"now-60d/d",  # Last 24 hours
+                    "gte": f"now-180d/d",  # Last 24 hours
                     "lte": "now/d"
                 }
             }
@@ -465,10 +465,10 @@ def run_post_init(development=False):
                     alert.alert_status_id = AlertStatus.query.filter_by(status_name='Escalated').first().status_id
                     db.session.commit()
                     template_id = 0
-                    template = get_case_template_by_name(alert.alert_title)
+                    template = get_case_template_by_name(title)
                     if template:
-                        template_id = template.template_id
-                    case = create_case_from_alert(alert, [], [], "", "", True, alert.alert_tags, template_id, alert.alert_reason)
+                        template_id = template.id
+                    case = create_case_from_alert(alert, [], [], "", "", True, alert.alert_tags, template_id=template_id, reason=alert.alert_reason)
 
                     ac_set_new_case_access(None, case.case_id, case.client_id)
                     case = call_modules_hook('on_postload_case_create', data=case)
