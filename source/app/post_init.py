@@ -298,12 +298,12 @@ def run_post_init(development=False):
             "range": {
                 "@timestamp": {
                     # "gte": f"now-{interval}s/d",  # Last 24 hours
-                    "gte": f"now-180d/d",  # Last 24 hours
+                    "gte": f"now-30d/d",  # Last 24 hours
                     "lte": "now/d"
                 }
             }
         },
-        # "size": 10,  # Get up to 10 alerts
+        "size": 100,  # Get up to 10 alerts
         # "_source": ["@timestamp", "kibana.alert.rule.name", "message"]  # Specify fields to retrieve
         # "_source": ["@timestamp"]  # Specify fields to retrieve
     }
@@ -341,10 +341,14 @@ def run_post_init(development=False):
                 if exists:
                     continue
 
-                if "user" not in alert:
-                    continue
-                client_name = alert['user']['domain']
-                user_name = alert['user']['name']
+                client_name = "unknown"
+                user_name = "unknown"
+                if "user" in alert:
+                    if 'domain' in alert['user']:
+                        client_name = alert['user']['domain']
+                    if 'name' in alert['user']:
+                        user_name = alert['user']['name']
+
                 client_object = get_client_by_name(client_name)
                 if client_object is None:
                     print("not found client")
