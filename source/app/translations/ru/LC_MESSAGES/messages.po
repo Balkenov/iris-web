@@ -40,7 +40,7 @@ msgstr "Обновить"
 
 #: blueprints/activities/templates/activities.html:28
 msgid "Show non case related activity"
-msgstr ""
+msgstr "Показать активность, не связанную с кейсом"
 
 #: blueprints/activities/templates/activities.html:38
 #: blueprints/activities/templates/activities.html:48
@@ -115,7 +115,7 @@ msgstr "В работе"
 
 #: blueprints/alerts/templates/alerts.html:60
 msgid "Pending"
-msgstr ""
+msgstr "В ожидании"
 
 #: blueprints/alerts/templates/alerts.html:61
 msgid "Closed"
@@ -123,7 +123,7 @@ msgstr "Закрыто"
 
 #: blueprints/alerts/templates/alerts.html:62
 msgid "Merged"
-msgstr ""
+msgstr "Объединено"
 
 #: blueprints/alerts/templates/alerts.html:66
 msgid "Close with note"
@@ -247,35 +247,35 @@ msgstr "Клиент"
 
 #: blueprints/alerts/templates/alerts.html:141
 msgid "Source Start Date"
-msgstr ""
+msgstr "Начальная дата источника"
 
 #: blueprints/alerts/templates/alerts.html:145
 msgid "Source End Date"
-msgstr "Дата открытия"
+msgstr "Конечная дата источника"
 
 #: blueprints/alerts/templates/alerts.html:149
 msgid "Creation Start Date"
-msgstr ""
+msgstr "Начальная дата создания"
 
 #: blueprints/alerts/templates/alerts.html:153
 msgid "Creation End Date"
-msgstr ""
+msgstr "Конечная дата создания"
 
 #: blueprints/alerts/templates/alerts.html:157
 msgid "Asset(s) name"
-msgstr ""
+msgstr "Название ресурса"
 
 #: blueprints/alerts/templates/alerts.html:161
 msgid "IOC(s)"
-msgstr ""
+msgstr "IOC(s)"
 
 #: blueprints/alerts/templates/alerts.html:165
 msgid "Alert(s) ID"
-msgstr "ID Алерта/ов"
+msgstr "ID Алерта(-ов)"
 
 #: blueprints/alerts/templates/alerts.html:169
 msgid "Source Reference"
-msgstr ""
+msgstr "Ссылка на источник"
 
 #: blueprints/alerts/templates/alerts.html:173
 #: blueprints/overview/templates/overview.html:56
@@ -290,12 +290,12 @@ msgstr "Владелец"
 
 #: blueprints/alerts/templates/alerts.html:182
 msgid "Resolution Status"
-msgstr ""
+msgstr "Статус обработки"
 
 #: blueprints/alerts/templates/alerts.html:190
 #: blueprints/alerts/templates/alerts.html:201
 msgid "Custom Conditions"
-msgstr ""
+msgstr "Пользовательские условия"
 
 #: blueprints/alerts/templates/alerts.html:193
 msgid "Show Examples"
@@ -303,7 +303,7 @@ msgstr "Показать примеры"
 
 #: blueprints/alerts/templates/alerts.html:209
 msgid "Here are two sample custom conditions"
-msgstr ""
+msgstr "Вот два примера пользовательских условий"
 
 #: blueprints/alerts/templates/alerts.html:233
 msgid "Apply Filters"
@@ -315,7 +315,7 @@ msgstr "Сохранить как фильтр"
 
 #: blueprints/alerts/templates/alerts.html:265
 msgid "View Alert"
-msgstr "Просмотреть Алерт"
+msgstr "Просмотреть алерт"
 
 #: blueprints/alerts/templates/alerts.html:284
 msgid "Alert history"
@@ -323,7 +323,7 @@ msgstr "История алерта"
 
 #: blueprints/alerts/templates/alerts.html:307
 msgid "Resolution status"
-msgstr ""
+msgstr "Статус обработки"
 
 #: blueprints/alerts/templates/alerts.html:311
 msgid "Not applicable"
@@ -331,19 +331,19 @@ msgstr "Не применимо"
 
 #: blueprints/alerts/templates/alerts.html:315
 msgid "False positive"
-msgstr "Ложно положительно"
+msgstr "Ложное срабатывание"
 
 #: blueprints/alerts/templates/alerts.html:319
 msgid "True positive without impact"
-msgstr ""
+msgstr "Подтверждённая угроза без последствий"
 
 #: blueprints/alerts/templates/alerts.html:323
 msgid "True positive with impact"
-msgstr ""
+msgstr "Подтверждённая угроза с последствиями"
 
 #: blueprints/alerts/templates/alerts.html:327
 msgid "Legitimate"
-msgstr ""
+msgstr "Легитимно"
 
 #: blueprints/alerts/templates/alerts.html:331
 msgid "Unknown"
@@ -367,7 +367,7 @@ msgstr "Отмена"
 
 #: blueprints/alerts/templates/modal_enrichment.html:5
 msgid "Enrichment"
-msgstr ""
+msgstr "Дополнительные сведения"
 
 #: blueprints/alerts/templates/modal_enrichment.html:14
 #: blueprints/case/templates/case_assets.html:109
@@ -378,15 +378,15 @@ msgstr "Закрыть"
 
 #: blueprints/alerts/templates/modal_escalate.html:19
 msgid "Merge options"
-msgstr ""
+msgstr "Параметры объединения"
 
 #: blueprints/alerts/templates/modal_escalate.html:24
 msgid "Merge into a new case"
-msgstr "Смерджить в новый кейс"
+msgstr "Объединить в новый кейс"
 
 #: blueprints/alerts/templates/modal_escalate.html:29
 msgid "Merge into existing case"
-msgstr "Смерджить в сузествующий кейс"
+msgstr "Объединить в существующий кейс"
 
 #: blueprints/alerts/templates/modal_escalate.html:37
 msgid "New case title"
@@ -394,7 +394,7 @@ msgstr "Новый заголовк кейса"
 
 #: blueprints/alerts/templates/modal_escalate.html:42
 msgid "Select case to merge into"
-msgstr ""
+msgstr "Выберите кейс для объединения"
 
 #: blueprints/alerts/templates/modal_escalate.html:47
 msgid "Select case template"
@@ -402,28 +402,28 @@ msgstr "Шаблоны Кейсов"
 
 #: blueprints/alerts/templates/modal_escalate.html:52
 msgid "IOCs to import"
-msgstr ""
+msgstr "IOCs для импорта"
 
 #: blueprints/alerts/templates/modal_escalate.html:53
 #: blueprints/alerts/templates/modal_escalate.html:58
 msgid "Deselect All"
-msgstr "Отменить выбор всего"
+msgstr "Отменить все выбранное"
 
 #: blueprints/alerts/templates/modal_escalate.html:57
 msgid "Assets to import"
-msgstr ""
+msgstr "Ресурсы для импорта"
 
 #: blueprints/alerts/templates/modal_escalate.html:62
 msgid "Escalation note"
-msgstr ""
+msgstr "Заметка по эскалации"
 
 #: blueprints/alerts/templates/modal_escalate.html:66
 msgid "Case tags"
-msgstr ""
+msgstr "Теги кейса"
 
 #: blueprints/alerts/templates/modal_escalate.html:74
 msgid "Add alert as event in the timeline"
-msgstr ""
+msgstr "Добавить алерт как событие в хронологию"
 
 #: blueprints/alerts/templates/modal_new_alert_owner.html:5
 msgid "Reassign Alert"
@@ -451,7 +451,7 @@ msgstr "Ресурсы"
 #: blueprints/case/templates/case_assets.html:78
 #: blueprints/search/templates/search.html:33
 msgid "IOC"
-msgstr ""
+msgstr "IOC"
 
 #: blueprints/case/templates/case-nav.html:26
 msgid "Timeline"
@@ -484,7 +484,7 @@ msgstr "Управление"
 
 #: blueprints/case/templates/case-nav_landing.html:16
 msgid "Processors"
-msgstr ""
+msgstr "Процессоры"
 
 #: blueprints/case/templates/case-nav_landing.html:24
 msgid "Pipelines"
@@ -492,7 +492,7 @@ msgstr "Пайплайны"
 
 #: blueprints/case/templates/case-nav_landing.html:30
 msgid "Request review"
-msgstr "Запросить ревью"
+msgstr "Запросить проверку"
 
 #: blueprints/case/templates/case-nav_landing.html:37
 msgid "Generate report"
@@ -504,7 +504,7 @@ msgstr "Отчет по активности"
 
 #: blueprints/case/templates/case.html:33
 msgid "Open on"
-msgstr "Открыто с"
+msgstr "Открыт"
 
 #: blueprints/case/templates/case.html:34
 msgid "Owned by"
@@ -512,7 +512,7 @@ msgstr "Владелец"
 
 #: blueprints/case/templates/case.html:36
 msgid "Closed on"
-msgstr "Закрыто"
+msgstr "Закрыт"
 
 #: blueprints/case/templates/case.html:41
 msgid "Case severity"
@@ -524,39 +524,39 @@ msgstr "Результат кейса"
 
 #: blueprints/case/templates/case.html:52
 msgid "SOC ID"
-msgstr ""
+msgstr "Идентификатор SOC"
 
 #: blueprints/case/templates/case.html:68
 msgid "Reviewed"
-msgstr ""
+msgstr "Проверено"
 
 #: blueprints/case/templates/case.html:68
 msgid "Case reviewed by"
-msgstr ""
+msgstr "Проверка кейса выполнена"
 
 #: blueprints/case/templates/case.html:68
 msgid "you"
-msgstr "вами"
+msgstr "вы"
 
 #: blueprints/case/templates/case.html:92
 msgid "Review requested"
-msgstr ""
+msgstr "Запрошена проверка"
 
 #: blueprints/case/templates/case.html:93
 msgid "Start review"
-msgstr ""
+msgstr "Начать проверку"
 
 #: blueprints/case/templates/case.html:95
 msgid "Confirm review"
-msgstr "Подтвердить ревью"
+msgstr "Подтвердить проверку"
 
 #: blueprints/case/templates/case.html:97
 msgid "Cancel review"
-msgstr "Отменить ревью"
+msgstr "Отменить проверку"
 
 #: blueprints/case/templates/case.html:99
 msgid "You have been requested to review this case."
-msgstr ""
+msgstr "Вам назначена проверка этого кейса"
 
 #: blueprints/case/templates/case.html:123
 msgid "Case summary"
@@ -578,7 +578,7 @@ msgstr "Сгененрировать"
 
 #: blueprints/case/templates/case.html:263
 msgid "Choose reviewer"
-msgstr "Выбрать верьюера"
+msgstr "Указать ответственного"
 
 #: blueprints/case/templates/case.html:280
 msgid "Request"
@@ -586,11 +586,11 @@ msgstr "Запрос"
 
 #: blueprints/case/templates/case.html:301
 msgid "Case Review"
-msgstr "Ревью Кейса"
+msgstr "Обзор кейса"
 
 #: blueprints/case/templates/case.html:309
 msgid "Do you confirm that the case has been reviewed?"
-msgstr ""
+msgstr "Вы подтверждаете, что кейс был проверен?"
 
 #: blueprints/case/templates/case_assets.html:21
 #: blueprints/case/templates/case_graph.html:24
@@ -612,7 +612,7 @@ msgstr "Добавить ресурсы"
 
 #: blueprints/case/templates/case_assets.html:40
 msgid "Upload CSV of assets"
-msgstr ""
+msgstr "Загрузить ресурсы из CSV"
 
 #: blueprints/case/templates/case_assets.html:61
 #: blueprints/case/templates/case_assets.html:73
@@ -638,12 +638,12 @@ msgstr "Тип"
 #: blueprints/case/templates/case_assets.html:64
 #: blueprints/case/templates/case_assets.html:76
 msgid "IP"
-msgstr ""
+msgstr "IP-адрес"
 
 #: blueprints/case/templates/case_assets.html:65
 #: blueprints/case/templates/case_assets.html:77
 msgid "Compromised"
-msgstr ""
+msgstr "Скомпрометирован"
 
 #: blueprints/case/templates/case_assets.html:68
 #: blueprints/case/templates/case_assets.html:80
@@ -653,23 +653,23 @@ msgstr "Анализ"
 #: blueprints/case/templates/case_assets.html:115
 #: blueprints/case/templates/case_ioc.html:117
 msgid "Expected CSV File format"
-msgstr ""
+msgstr "Ожидаемый формат CSV-файла"
 
 #: blueprints/case/templates/case_assets.html:119
 #: blueprints/case/templates/case_ioc.html:122
 msgid "CSV File format example"
-msgstr ""
+msgstr "Пример формата CSV-файла"
 
 #: blueprints/case/templates/case_assets.html:125
 #: blueprints/case/templates/case_timeline.html:168
 msgid "Choose CSV file to import"
-msgstr ""
+msgstr "Выберите CSV-файл для импорта"
 
 #: blueprints/case/templates/case_assets.html:132
 #: blueprints/case/templates/case_ioc.html:134
 #: blueprints/case/templates/case_timeline.html:175
 msgid "Download sample CSV"
-msgstr ""
+msgstr "Скачать пример CSV"
 
 #: blueprints/case/templates/case_assets.html:133
 #: blueprints/case/templates/case_ioc.html:135
@@ -679,24 +679,24 @@ msgstr "Загрузка"
 
 #: blueprints/case/templates/case_graph_timeline.html:26
 msgid "No group"
-msgstr ""
+msgstr "Без группы"
 
 #: blueprints/case/templates/case_graph_timeline.html:29
 msgid "Group by asset"
-msgstr ""
+msgstr "Группировать по ресурсам"
 
 #: blueprints/case/templates/case_graph_timeline.html:32
 msgid "Group by category"
-msgstr ""
+msgstr "Группировать по категории"
 
 #: blueprints/case/templates/case_ioc.html:35
 #: templates/includes/quick-sidebar.html:61
 msgid "Add IOC"
-msgstr ""
+msgstr "Добавить IOC"
 
 #: blueprints/case/templates/case_ioc.html:44
 msgid "Upload CSV of IOCs"
-msgstr ""
+msgstr "Загрузить CSV-файл с IOC"
 
 #: blueprints/case/templates/case_ioc.html:63
 #: blueprints/case/templates/case_ioc.html:73
@@ -713,19 +713,19 @@ msgstr "Связанные кейсы"
 #: blueprints/search/templates/search.html:91
 #: blueprints/search/templates/search.html:101
 msgid "TLP"
-msgstr ""
+msgstr "TLP"
 
 #: blueprints/case/templates/case_ioc.html:110
 msgid "Upload IOC list (CSV format)"
-msgstr ""
+msgstr "Загрузить список IOC (в формате CSV)"
 
 #: blueprints/case/templates/case_md_helper.html:5
 msgid "Shortcuts"
-msgstr ""
+msgstr "Ярлыки"
 
 #: blueprints/case/templates/case_md_helper.html:13
 msgid "Shortcut"
-msgstr ""
+msgstr "Ярлык"
 
 #: blueprints/case/templates/case_md_helper.html:14
 msgid "Action"
@@ -737,11 +737,11 @@ msgstr "Сохранить заметку"
 
 #: blueprints/case/templates/case_md_helper.html:24
 msgid "Bold"
-msgstr ""
+msgstr "Жирный"
 
 #: blueprints/case/templates/case_md_helper.html:28
 msgid "Italic"
-msgstr ""
+msgstr "Курсив"
 
 #: blueprints/case/templates/case_md_helper.html:32
 msgid "Heading 1"
@@ -761,69 +761,69 @@ msgstr "Заголовок 4"
 
 #: blueprints/case/templates/case_md_helper.html:48
 msgid "Insert code"
-msgstr ""
+msgstr "Вставить код"
 
 #: blueprints/case/templates/case_md_helper.html:52
 msgid "Insert link"
-msgstr ""
+msgstr "Добавить ссылку"
 
 #: blueprints/case/templates/case_notes_v2.html:20
 msgid "Search in notes"
-msgstr ""
+msgstr "Поиск в заметках"
 
 #: blueprints/case/templates/case_notes_v2.html:53
 msgid "Select a note on the left pane or click here to add a directory"
-msgstr ""
+msgstr "Выберите заметку в левой панели или нажмите здесь, чтобы добавить директорию"
 
 #: blueprints/case/templates/case_notes_v2.html:54
 msgid "Right-click on a directory to add a note"
-msgstr ""
+msgstr "Кликните ПКМ по папке для добавления заметки"
 
 #: blueprints/case/templates/case_notes_v2.html:65
 msgid "Modifications history"
-msgstr ""
+msgstr "История изменений"
 
 #: blueprints/case/templates/case_notes_v2.html:80
 msgid "Copy shared lin"
-msgstr ""
+msgstr "Скопировать ссылку"
 
 #: blueprints/case/templates/case_notes_v2.html:164
 msgid "Select the directory to move the item to."
-msgstr ""
+msgstr "Укажите папку, в которую нужно переместить объект."
 
 #: blueprints/case/templates/case_notes_v2.html:182
 msgid "Note revisions"
-msgstr ""
+msgstr "Версии заметки"
 
 #: blueprints/case/templates/case_notes_v2.html:218
 msgid "Revert to this revision"
-msgstr ""
+msgstr "Восстановить эту версию"
 
 #: blueprints/case/templates/case_notes_v2.html:220
 msgid "Delete revision"
-msgstr ""
+msgstr "Удалить версию"
 
 #: blueprints/case/templates/case_rfile.html:32
 msgid "Register Evidence"
-msgstr ""
+msgstr "Зарегистрировать доказательство"
 
 #: blueprints/case/templates/case_rfile.html:57
 #: blueprints/case/templates/case_rfile.html:67
 msgid "Hash"
-msgstr ""
+msgstr "Хэш"
 
 #: blueprints/case/templates/case_rfile.html:58
 msgid "Size (bytes)"
-msgstr ""
+msgstr "Объём (в байтах)"
 
 #: blueprints/case/templates/case_rfile.html:60
 #: blueprints/case/templates/case_rfile.html:70
 msgid "Added by"
-msgstr ""
+msgstr "Добавлено"
 
 #: blueprints/case/templates/case_rfile.html:68
 msgid "Size(bytes)"
-msgstr ""
+msgstr "Объём (в байтах)"
 
 #: blueprints/case/templates/case_tasks.html:39
 msgid "Add task"
@@ -858,51 +858,51 @@ msgstr "Добавить событие"
 
 #: blueprints/case/templates/case_timeline.html:57
 msgid "Toggle view"
-msgstr ""
+msgstr "Переключить вид"
 
 #: blueprints/case/templates/case_timeline.html:67
 msgid "Toggle tree view"
-msgstr ""
+msgstr "Переключить древовидный вид"
 
 #: blueprints/case/templates/case_timeline.html:69
 msgid "Toggle compact view"
-msgstr ""
+msgstr "Переключить на компактный вид"
 
 #: blueprints/case/templates/case_timeline.html:72
 msgid "Visualize"
-msgstr ""
+msgstr "Визуализировать"
 
 #: blueprints/case/templates/case_timeline.html:74
 msgid "Visualize by asset"
-msgstr ""
+msgstr "Визуализировать по ресурсам"
 
 #: blueprints/case/templates/case_timeline.html:75
 msgid "Visualize by category"
-msgstr ""
+msgstr "Визуализировать по категориям"
 
 #: blueprints/case/templates/case_timeline.html:78
 msgid "Download as CSV"
-msgstr ""
+msgstr "Скачать как CSV"
 
 #: blueprints/case/templates/case_timeline.html:80
 msgid "Download as CSV with user info"
-msgstr ""
+msgstr "Скачать как CSV с информацией о пользователе"
 
 #: blueprints/case/templates/case_timeline.html:83
 msgid "Upload CSV of events"
-msgstr ""
+msgstr "Загрузить CSV с событиями"
 
 #: blueprints/case/templates/case_timeline.html:149
 msgid "Upload events list (CSV format)"
-msgstr ""
+msgstr "Загрузить список событий (в формате CSV)"
 
 #: blueprints/case/templates/case_timeline.html:156
 msgid "Expected Events CSV File format"
-msgstr ""
+msgstr "Требуемый формат CSV для событий"
 
 #: blueprints/case/templates/case_timeline.html:160
 msgid "Events CSV File format example"
-msgstr ""
+msgstr "Пример формата CSV-файла с событиями"
 
 #: blueprints/case/templates/modal_add_case_asset.html:17
 #: blueprints/case/templates/modal_add_case_event.html:24
@@ -914,11 +914,11 @@ msgstr "Поделиться"
 #: blueprints/case/templates/modal_add_case_event.html:25
 #: blueprints/case/templates/modal_add_case_ioc.html:18
 msgid "Markdown Link"
-msgstr ""
+msgstr "Ссылка Markdown"
 
 #: blueprints/case/templates/modal_add_case_asset.html:49
 msgid "Asset Type"
-msgstr ""
+msgstr "Тип ресурса"
 
 #: blueprints/case/templates/modal_add_case_asset.html:78
 msgid "Domain"
@@ -931,19 +931,19 @@ msgstr "Дополнительная информация"
 
 #: blueprints/case/templates/modal_add_case_asset.html:98
 msgid "Compromise Status"
-msgstr ""
+msgstr "Статус компрометации"
 
 #: blueprints/case/templates/modal_add_case_asset.html:102
 msgid "Analysis Status"
-msgstr ""
+msgstr "Статус анализа"
 
 #: blueprints/case/templates/modal_add_case_asset.html:107
 msgid "Asset tags"
-msgstr ""
+msgstr "Метки ресурса"
 
 #: blueprints/case/templates/modal_add_case_asset.html:113
 msgid "Related IOC"
-msgstr ""
+msgstr "Связанный IOC"
 
 #: blueprints/case/templates/modal_add_case_event.html:26
 msgid "Duplicate"
@@ -959,31 +959,31 @@ msgstr "Теги события"
 
 #: blueprints/case/templates/modal_add_case_event.html:130
 msgid "Link to assets"
-msgstr ""
+msgstr "Связать с ресурсами"
 
 #: blueprints/case/templates/modal_add_case_event.html:138
 msgid "Link to IOCs"
-msgstr ""
+msgstr "Ссылка на IOC"
 
 #: blueprints/case/templates/modal_add_case_event.html:154
 msgid "Parent Event ID"
-msgstr ""
+msgstr "ID родительского события"
 
 #: blueprints/case/templates/modal_add_case_event.html:165
 msgid "Push IOCs to assets"
-msgstr ""
+msgstr "Применить IOC к ресурсам"
 
 #: blueprints/case/templates/modal_add_case_event.html:175
 msgid "Add to summary"
-msgstr ""
+msgstr "Добавить в сводку"
 
 #: blueprints/case/templates/modal_add_case_event.html:185
 msgid "Display in graph"
-msgstr ""
+msgstr "Отобразить на графике"
 
 #: blueprints/case/templates/modal_add_case_event.html:192
 msgid "Event color"
-msgstr ""
+msgstr "Цвет события"
 
 #: blueprints/case/templates/modal_add_case_event.html:249
 #: blueprints/case/templates/modal_add_case_ioc.html:115
@@ -999,15 +999,15 @@ msgstr "Сохранить"
 
 #: blueprints/case/templates/modal_add_case_ioc.html:66
 msgid "One IOC per line"
-msgstr ""
+msgstr "Один IOC на строку"
 
 #: blueprints/case/templates/modal_add_case_ioc.html:98
 msgid "IOC tags"
-msgstr ""
+msgstr "Теги IOC"
 
 #: blueprints/case/templates/modal_conversation.html:7
 msgid "Comments on"
-msgstr ""
+msgstr "Комментарии к"
 
 #: blueprints/case/templates/modal_conversation.html:45
 #: blueprints/search/templates/search.html:60
@@ -1025,51 +1025,51 @@ msgstr "Удалить заметку"
 
 #: blueprints/case/templates/select_case.html:15
 msgid "No case found for you"
-msgstr ""
+msgstr "У вас нет назначенных кейсов"
 
 #: blueprints/case/templates/select_case.html:16
 msgid "The page you’re looking for is only available when a case is selected."
-msgstr ""
+msgstr "Страница доступна только после выбора кейса"
 
 #: blueprints/dashboard/templates/index.html:18
 #: templates/includes/sidenav.html:45
 msgid "Dashboard"
-msgstr "Дэшборд"
+msgstr "Обзорная панель"
 
 #: blueprints/dashboard/templates/index.html:47
 msgid "Cases (open / all)"
-msgstr ""
+msgstr "Кейсы (открытые / все)"
 
 #: blueprints/dashboard/templates/index.html:66
 #: blueprints/dashboard/templates/index.html:176
 msgid "Attributed open cases"
-msgstr ""
+msgstr "Назначенные кейсы"
 
 #: blueprints/dashboard/templates/index.html:85
 #: blueprints/dashboard/templates/index.html:133
 msgid "Attributed open tasks"
-msgstr ""
+msgstr "Назначенные открытые задачи"
 
 #: blueprints/dashboard/templates/index.html:98
 msgid "Attributed cases review"
-msgstr ""
+msgstr "Кейсы на проверку"
 
 #: blueprints/dashboard/templates/index.html:112
 #: blueprints/dashboard/templates/index.html:118
 msgid "Case name"
-msgstr ""
+msgstr "Имя кейса"
 
 #: blueprints/dashboard/templates/index.html:113
 #: blueprints/dashboard/templates/index.html:119
 msgid "Review Status"
-msgstr ""
+msgstr "Статус проверки"
 
 #: blueprints/dashboard/templates/index.html:151
 #: blueprints/dashboard/templates/index.html:161
 #: blueprints/dashboard/templates/index.html:243
 #: blueprints/dashboard/templates/index.html:253
 msgid "Last update"
-msgstr ""
+msgstr "Последнее обновление"
 
 #: blueprints/dashboard/templates/index.html:180
 #: blueprints/overview/templates/overview.html:38
@@ -1079,7 +1079,7 @@ msgstr "Отображать закрытые кейсы"
 #: blueprints/dashboard/templates/index.html:195
 #: blueprints/dashboard/templates/index.html:204
 msgid "Client"
-msgstr ""
+msgstr "Клиент"
 
 #: blueprints/dashboard/templates/index.html:196
 #: blueprints/dashboard/templates/index.html:205
@@ -1088,7 +1088,7 @@ msgstr "Дата открытия"
 
 #: blueprints/dashboard/templates/index.html:226
 msgid "Add global task"
-msgstr ""
+msgstr "Добавить общую задачу"
 
 #: blueprints/overview/templates/overview.html:55
 msgid "Outcome"
@@ -1110,31 +1110,31 @@ msgstr "Имя пользователя"
 
 #: blueprints/profile/templates/profile.html:61
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: blueprints/profile/templates/profile.html:97
 msgid "API Key"
-msgstr ""
+msgstr "Ключ API"
 
 #: blueprints/profile/templates/profile.html:102
 msgid "Renew"
-msgstr ""
+msgstr "Возобновить"
 
 #: blueprints/profile/templates/profile.html:111
 msgid "IRIS Theme"
-msgstr ""
+msgstr "Тема IRIS"
 
 #: blueprints/profile/templates/profile.html:126
 msgid "Prompt a confirmation box before deleting objects"
-msgstr ""
+msgstr "Показывать окно подтверждения перед удалением объектов"
 
 #: blueprints/profile/templates/profile.html:143
 msgid "Refresh access"
-msgstr ""
+msgstr "Обновить доступ"
 
 #: blueprints/profile/templates/profile.html:148
 msgid "Reset MFA"
-msgstr ""
+msgstr "Сброс MFA"
 
 #: blueprints/profile/templates/profile.html:151
 msgid "Change password"
@@ -1151,7 +1151,7 @@ msgstr "Поиск"
 
 #: blueprints/search/templates/search.html:29
 msgid "Set to search within"
-msgstr ""
+msgstr "Установить область поиска"
 
 #: blueprints/search/templates/search.html:54
 #: blueprints/search/templates/search.html:67
@@ -1166,27 +1166,27 @@ msgstr "Путь"
 #: blueprints/search/templates/search.html:56
 #: blueprints/search/templates/search.html:69
 msgid "VT Score"
-msgstr ""
+msgstr "Оценка VT"
 
 #: blueprints/search/templates/search.html:57
 #: blueprints/search/templates/search.html:70
 msgid "Case seen"
-msgstr ""
+msgstr "Кейс просмотрен"
 
 #: blueprints/search/templates/search.html:58
 #: blueprints/search/templates/search.html:71
 msgid "Seen count"
-msgstr ""
+msgstr "Количество обнаружений"
 
 #: blueprints/search/templates/search.html:59
 #: blueprints/search/templates/search.html:72
 msgid "Flag"
-msgstr ""
+msgstr "Пометить"
 
 #: blueprints/search/templates/search.html:61
 #: blueprints/search/templates/search.html:74
 msgid "VT"
-msgstr ""
+msgstr "VT"
 
 #: blueprints/search/templates/search.html:119
 #: blueprints/search/templates/search.html:127
@@ -1195,27 +1195,27 @@ msgstr "Текст комментария"
 
 #: templates/includes/footer.html:10
 msgid "Switch context"
-msgstr ""
+msgstr "Сменить контекст"
 
 #: templates/includes/footer.html:27
 msgid "Switch"
-msgstr ""
+msgstr "Выбрать другой"
 
 #: templates/includes/footer.html:55
 msgid "Add a task log that will be registered under activities"
-msgstr ""
+msgstr "Добавить задачу в журнал действий"
 
 #: templates/includes/footer.html:61 templates/includes/footer.html:91
 msgid "Submit"
-msgstr ""
+msgstr "Подтвердить"
 
 #: templates/includes/footer.html:84
 msgid "Input the folder name below"
-msgstr ""
+msgstr "Укажите имя папки ниже"
 
 #: templates/includes/footer.html:112
 msgid "Task info"
-msgstr ""
+msgstr "Сведения о задаче"
 
 #: templates/includes/footer.html:130 templates/includes/footer.html:154
 msgid "Save Filter"
@@ -1231,15 +1231,15 @@ msgstr "Описание фильтра"
 
 #: templates/includes/footer.html:147
 msgid "Private Filter"
-msgstr ""
+msgstr "Приватный фильтр"
 
 #: templates/includes/footer.html:148
 msgid "If checked, the filter will be only visible to you"
-msgstr ""
+msgstr "Если отмечено, фильтр будет виден только вам"
 
 #: templates/includes/quick-sidebar.html:8 templates/includes/sidenav.html:94
 msgid "Activities"
-msgstr ""
+msgstr "Действия"
 
 #: templates/includes/quick-sidebar.html:9 templates/includes/sidenav.html:101
 msgid "DIM Tasks"
@@ -1247,31 +1247,31 @@ msgstr "Задачи DIM"
 
 #: templates/includes/quick-sidebar.html:49
 msgid "Take screenshot of content"
-msgstr ""
+msgstr "Сделать снимок содержимого"
 
 #: templates/includes/quick-sidebar.html:67
 msgid "Add asset"
-msgstr ""
+msgstr "Добавить ресурс"
 
 #: templates/includes/quick-sidebar.html:75
 msgid "Add note"
-msgstr ""
+msgstr "Добавить заметку"
 
 #: templates/includes/quick-sidebar.html:89
 msgid "Upload evidence"
-msgstr ""
+msgstr "Загрузить доказательство"
 
 #: templates/includes/quick-sidebar.html:95
 msgid "Add task log"
-msgstr ""
+msgstr "Добавить запись о задаче"
 
 #: templates/includes/quick-sidebar.html:103
 msgid "Register evidence"
-msgstr ""
+msgstr "Добавить доказательство"
 
 #: templates/includes/quick-sidebar.html:115
 msgid "Switch case"
-msgstr ""
+msgstr "Сменить кейс"
 
 #: templates/includes/sidenav.html:28
 msgid "My settings"
@@ -1287,11 +1287,11 @@ msgstr "Обзор"
 
 #: templates/includes/sidenav.html:58
 msgid "Welcome page"
-msgstr "Стартовая страница"
+msgstr "Начальная страница"
 
 #: templates/includes/sidenav.html:66
 msgid "Investigation"
-msgstr "Разбор"
+msgstr "Расследование"
 
 #: templates/includes/sidenav.html:78
 msgid "Alerts"
@@ -1303,7 +1303,7 @@ msgstr "Управление кейсом"
 
 #: templates/includes/sidenav.html:122
 msgid "Advanced"
-msgstr "Продвинутое"
+msgstr "Дополнительно"
 
 #: templates/includes/sidenav.html:140
 msgid "Customers"
@@ -1315,7 +1315,7 @@ msgstr "Объекты Кейсов"
 
 #: templates/includes/sidenav.html:155
 msgid "Custom Attributes"
-msgstr ""
+msgstr "Пользовательские атрибуты"
 
 #: templates/includes/sidenav.html:163
 msgid "Case Templates"
