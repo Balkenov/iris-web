@@ -298,12 +298,12 @@ def run_post_init(development=False):
             "range": {
                 "@timestamp": {
                     # "gte": f"now-{interval}s/d",  # Last 24 hours
-                    "gte": f"now-30d/d",  # Last 24 hours
+                    "gte": f"now-5m",  # Last 24 hours
                     "lte": "now/d"
                 }
             }
         },
-        "size": 100,  # Get up to 10 alerts
+        "size": 200,  # Get up to 10 alerts
         # "_source": ["@timestamp", "kibana.alert.rule.name", "message"]  # Specify fields to retrieve
         # "_source": ["@timestamp"]  # Specify fields to retrieve
     }
@@ -322,7 +322,7 @@ def run_post_init(development=False):
     }
 
     def parse_alerts():
-        response = es.search(index=".alerts-security.*", body=query)
+        response = es.search(index=".internal.alerts-security.alerts-*", body=query)
         # print(response)
         print("parsing alerts")
         with app.app_context():

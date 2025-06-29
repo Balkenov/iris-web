@@ -614,7 +614,7 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
             case_template_title_prefix = case_template.title_prefix
 
     current_timezone = pytz.timezone("Asia/Almaty")
-    required_fields = alert.alert_required_fields.split("\n")
+    required_fields = alert.alert_required_fields.split("\n") if alert.alert_required_fields else []
     new_fields_str = ""
     for field in required_fields:
         key_and_value = field.split(": ")
