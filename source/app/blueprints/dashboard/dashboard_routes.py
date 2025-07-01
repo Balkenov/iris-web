@@ -15,6 +15,8 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with this program; if not, write to the Free Software Foundation,
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+import tempfile
+import os
 
 import marshmallow
 from datetime import datetime
@@ -29,6 +31,9 @@ from flask import url_for
 from flask_login import current_user
 from flask_login import logout_user
 from flask_wtf import FlaskForm
+from flask import jsonify, send_file
+from io import BytesIO
+import zipfile
 
 from app import app
 from app import db
@@ -40,6 +45,7 @@ from app.datamgmt.dashboard.dashboard_db import list_user_tasks
 from app.forms import CaseGlobalTaskForm
 from app.iris_engine.access_control.utils import ac_get_user_case_counts
 from app.iris_engine.module_handler.module_handler import call_modules_hook
+from app.iris_engine.reporter.reporter import IrisMakeDocReport
 from app.iris_engine.utils.tracker import track_activity
 from app.models.authorization import User
 from app.models.cases import Cases
@@ -55,6 +61,9 @@ from app.util import not_authenticated_redirection_url
 from app.util import response_error
 from app.util import response_success
 from app.util import is_authentication_oidc
+from app.datamgmt.manage.manage_case_state_db import get_case_states_list
+from app.datamgmt.manage.manage_cases_db import build_filter_case_query
+from app.datamgmt.case.case_db import get_case_report_template
 
 from oic.oauth2.exception import GrantError
 
@@ -404,3 +413,110 @@ def gtask_delete(cur_id, caseid):
     track_activity("deleted global task ID {}".format(cur_id), caseid=caseid)
 
     return response_success("Task deleted")
+
+
+@dashboard_blueprint.route('/dashboard/case_states', methods=['GET'])
+@ac_api_requires()
+def get_case_states():
+    """
+    Returns all case states as JSON
+    """
+    return jsonify(get_case_states_list())
+
+
+@dashboard_blueprint.route('/dashboard/generate_wordx_report', methods=['POST'])
+@ac_api_requires()
+def generate_wordx_report():
+    """
+    Generate a ZIP archive containing docx reports for each case matching the filters.
+    """
+    start_date = request.form.get('start_date') or None
+    end_date = request.form.get('end_date') or None
+    state_id = request.form.get('state_id') or None
+    report_template_id = request.form.get('report_template_id')
+
+    # Convert empty string to None for filters
+    if not start_date:
+        start_date = None
+    if not end_date:
+        end_date = None
+    if not state_id:
+        state_id = None
+    else:
+        state_id = int(state_id)
+
+    if report_template_id:
+        try:
+            report_id = int(report_template_id)
+        except Exception:
+            # response_error("Invalid report template selected.", status=400)
+            return jsonify({'error': 'Invalid report template selected.'}), 400
+    else:
+        # fallback to first available template
+        report_templates = get_case_report_template()
+        if not report_templates:
+            return jsonify({'error': 'No report template found.'}), 404
+        report_id = report_templates[0][0]
+
+    # Query cases matching filters
+    query = build_filter_case_query(current_user.id, start_open_date=start_date, end_open_date=end_date, case_state_id=state_id)
+    cases = query.all()
+    if not cases:
+        return jsonify({'error': 'No cases found for the selected filters.'}), 404
+    if len(cases) > 50:
+        return jsonify({'error': 'Too many cases found for the selected filters.'}), 422
+    # Generate reports in a temp dir
+    tmp_dir = tempfile.mkdtemp()
+    files = []
+    for case in cases:
+        caseid = case.case_id if hasattr(case, 'case_id') else case[0]  # support both ORM and tuple
+        try:
+            maker = IrisMakeDocReport(tmp_dir, report_id, caseid)
+            fpath, logs = maker.generate_doc_report(doc_type="Investigation")
+            if fpath and os.path.exists(fpath):
+                with open(fpath, 'rb') as f:
+                    files.append((os.path.basename(fpath), f.read()))
+        except Exception as e:
+            continue  # skip failed cases
+
+    if not files:
+        return jsonify({'error': 'Failed to generate any reports.'}), 500
+
+    # Package files into a zip archive in memory
+    zip_buffer = BytesIO()
+    with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+        for filename, filedata in files:
+            zip_file.writestr(filename, filedata)
+    zip_buffer.seek(0)
+
+    # Clean up temp dir
+    for filename, _ in files:
+        try:
+            os.remove(os.path.join(tmp_dir, filename))
+        except Exception:
+            pass
+    try:
+        os.rmdir(tmp_dir)
+    except Exception:
+        pass
+
+    return send_file(
+        zip_buffer,
+        as_attachment=True,
+        download_name='reports.zip',
+        mimetype='application/zip'
+    )
+
+
+@dashboard_blueprint.route('/dashboard/report_templates', methods=['GET'])
+@ac_api_requires()
+def get_report_templates():
+    """
+    Returns a list of available report templates for Investigation reports.
+    """
+    templates = get_case_report_template()
+    # templates: list of tuples (id, name, language, description)
+    result = [
+        {'id': t[0], 'name': t[1], 'language': t[2]} for t in templates
+    ]
+    return jsonify(result)

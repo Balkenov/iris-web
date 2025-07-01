@@ -534,4 +534,82 @@ $(document).ready(function() {
     update_ureviews_list();
     update_gtasks_list();
     setInterval(check_page_update,30000);
+
+    // Populate case state dropdown
+    $.get('/dashboard/case_states', function(states) {
+        var $select = $('#case_state_select');
+        $select.empty();
+        $select.append('<option value="">Select state</option>');
+        states.forEach(function(state) {
+            $select.append('<option value="' + state.state_id + '">' + state.state_name + '</option>');
+        });
+    });
+
+    // Populate report template dropdown
+    $.get('/dashboard/report_templates', function(templates) {
+        var $select = $('#report_template_select');
+        $select.empty();
+        if (templates.length === 0) {
+            $select.append('<option value="">No templates found</option>');
+        } else {
+            $select.append('<option value="">Select template</option>');
+            templates.forEach(function(tmpl) {
+                $select.append('<option value="' + tmpl.id + '">' + tmpl.name + ' (' + tmpl.language + ')</option>');
+            });
+        }
+    });
+
+    // Handle Wordx report generation
+    $('#generate_wordx_btn').on('click', function(e) {
+        e.preventDefault();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+        var state_id = $('#case_state_select').val();
+        var report_template_id = $('#report_template_select').val();
+        var $msg = $('#wordx_report_msg');
+        $msg.text('');
+        if (!report_template_id) {
+            $msg.text('Please select a report template.');
+            return;
+        }
+        if (!start_date && !end_date && !state_id) {
+            $msg.text('Please select at least one filter or leave all empty for a full report.');
+        }
+        $msg.text('Generating report...');
+        var formData = new FormData();
+        formData.append('start_date', start_date);
+        formData.append('end_date', end_date);
+        formData.append('state_id', state_id);
+        formData.append('report_template_id', report_template_id);
+        formData.append('csrf_token', $('#csrf_token').val());
+        $.ajax({
+            url: '/dashboard/generate_wordx_report',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function(blob, status, xhr) {
+                var filename = xhr.getResponseHeader('Content-Disposition');
+                if (filename) {
+                    var match = filename.match(/filename="(.+\.zip)"/);
+                    filename = match ? match[1] : 'reports.zip';
+                } else {
+                    filename = 'reports.zip';
+                }
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                $msg.text('ZIP archive generated.');
+            },
+            error: function(xhr) {
+                $msg.text('Failed to generate report.');
+            }
+        });
+    });
 });
