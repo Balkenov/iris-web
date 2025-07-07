@@ -17,6 +17,7 @@
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 import binascii
+from datetime import datetime, timedelta
 from sqlalchemy import and_
 
 from app import db
@@ -56,11 +57,15 @@ def case_exists(caseid):
     return Cases.query.filter(Cases.case_id == caseid).count()
 
 def get_case_for_alert(name: str, reason: str, state_id: int) -> Cases:
+    # Calculate the timestamp for 5 minutes ago
+    five_minutes_ago = datetime.utcnow() - timedelta(minutes=5)
+    
     return Cases.query.with_entities(
         Alert.alert_title == name
     ).filter(
         Cases.state_id == state_id,
         Cases.reason == reason,
+        Cases.initial_date >= five_minutes_ago
     ).join(Cases.alerts).first()
 
 def get_case_client_id(caseid):
