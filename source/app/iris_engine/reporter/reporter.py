@@ -17,7 +17,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with this program; if not, write to the Free Software Foundation,
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
+import json
 # IMPORTS ------------------------------------------------
 
 # VARS ---------------------------------------------------
@@ -25,7 +25,7 @@
 # CONTENT ------------------------------------------------
 import logging as log
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import jinja2
 from jinja2.sandbox import SandboxedEnvironment
@@ -55,6 +55,21 @@ from app.iris_engine.reporter.ImageHandler import ImageHandler
 
 LOG_FORMAT = '%(asctime)s :: %(levelname)s :: %(module)s :: %(funcName)s :: %(message)s'
 log.basicConfig(level=log.INFO, format=LOG_FORMAT)
+
+
+def format_time(time_input) -> str:
+    if isinstance(time_input, str):
+        # Handle ISO 8601 string, possibly ending with 'Z'
+        dt_utc = datetime.fromisoformat(time_input.replace("Z", "+00:00"))
+    elif isinstance(time_input, datetime):
+        dt_utc = time_input
+    else:
+        raise TypeError("Input must be a string or datetime.datetime object")
+
+    # Assume input datetime is in UTC
+    dt_utc_plus_5 = dt_utc + timedelta(hours=5)
+    formatted = dt_utc_plus_5.strftime("%d.%m.%Y, %H:%M:%S") + " UTC+5"
+    return formatted
 
 
 class IrisReportMaker(object):
@@ -349,7 +364,8 @@ class IrisMakeDocReport(IrisReportMaker):
             'case': {'name': case_info_in['case'].get('name'),
                      'open_date': case_info_in['case'].get('open_date'),
                      'for_customer': case_info_in['case'].get('for_customer'),
-                     'client': case_info_in['case'].get('client')
+                     'client': case_info_in['case'].get('client'),
+                     'comments': case_info_in.get('comments')
                      },
             'doc_id': doc_id
         }
@@ -363,14 +379,47 @@ class IrisMakeDocReport(IrisReportMaker):
         """
         case_info = export_case_json_for_report(self._caseid)
 
+        d = {}
+        if 'timeline' in case_info:
+            if len(case_info['timeline']) > 0:
+                if 'event_raw' in case_info['timeline'][0]:
+                    s = case_info['timeline'][0]['event_raw']
+                    d = json.loads(s)
+
         # Get customer, user and case title
         case_info['doc_id'] = IrisMakeDocReport.get_docid()
         case_info['user'] = current_user.name
+        # nested_dict =
+        case_info['elk'] = self.get_elk_info(d)
 
         # Set date
         case_info['date'] = datetime.utcnow().strftime("%Y-%m-%d")
 
+        # Format initial date
+        case_info['registration_date'] = format_time(case_info.get('case', {}).get('initial_date'))
+
+        for comment in case_info.get('comments', []):
+            comment['comment_date'] = format_time(comment.get('comment_date'))
+
         return case_info
+
+    @staticmethod
+    def get_elk_info(info: dict) -> dict:
+        ips = info.get('host', {}).get('ip')
+        tactics = []
+        for threat in info.get('kibana.alert.rule.threat', []):
+            print(threat)
+            tactics.append(f"{threat['tactic']['id']} - {threat['tactic']['name']}")
+
+        new_dict = {
+            'kibana_alert_rule_name': info.get('kibana.alert.rule.name'),
+            'event_ingested': format_time(info.get('event', {}).get('ingested')),
+            'host_name': info.get('host', {}).get('hostname'),
+            'user_name': info.get('user', {}).get('name'),
+            'host_ip': ', '.join(ips),
+            'tactics': tactics,
+        }
+        return new_dict
 
     @staticmethod
     def get_case_summary(caseid):

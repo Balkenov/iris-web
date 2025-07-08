@@ -463,8 +463,9 @@ def generate_wordx_report():
     cases = query.all()
     if not cases:
         return jsonify({'error': 'No cases found for the selected filters.'}), 404
-    if len(cases) > 50:
-        return jsonify({'error': 'Too many cases found for the selected filters.'}), 422
+    max_cases = 1000
+    if len(cases) > max_cases:
+        return jsonify({'error': f'Too many cases found for the selected filters. Got {len(cases)}, max is {max_cases}'}), 422
     # Generate reports in a temp dir
     tmp_dir = tempfile.mkdtemp()
     files = []

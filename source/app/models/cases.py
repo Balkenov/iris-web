@@ -53,6 +53,7 @@ class Cases(db.Model):
     soc_id = Column(String(256))
     client_id = Column(ForeignKey('client.client_id'), nullable=False)
     name = Column(String(256))
+    original_name = Column(Text)
     description = Column(Text)
     open_date = Column(Date)
     close_date = Column(Date)
@@ -98,6 +99,7 @@ class Cases(db.Model):
                  state_id=None,
                  severity_id=None,
                  reason=None,
+                 original_name=None
                  ):
         self.name = name[:200] if name else None,
         self.soc_id = soc_id,
@@ -117,6 +119,7 @@ class Cases(db.Model):
         self.state_id = state_id,
         self.severity_id = severity_id
         self.reason = reason
+        self.original_name = original_name
 
     def save(self):
         """

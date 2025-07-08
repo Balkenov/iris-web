@@ -462,7 +462,7 @@ def run_post_init(development=False):
                     alert.alert_status_id = AlertStatus.query.filter_by(status_name='Merged').first().status_id
                     db.session.commit()
                     print("case exists")
-                    case = merge_alert_in_case(alert, case, [], [], "", True, alert.alert_tags)
+                    merge_alert_in_case(alert, case, [], [], "", True, alert.alert_tags)
                     alert = call_modules_hook('on_postload_alert_merge', data=alert, caseid=case.case_id)
                     add_obj_history_entry(alert, f"Alert merged into existing case #{case.case_id}")
                 else:
@@ -479,6 +479,8 @@ def run_post_init(development=False):
                     add_obj_history_entry(case, 'created')
                     add_obj_history_entry(alert, f"Alert escalated to case #{case.case_id}")
                     alert = call_modules_hook('on_postload_alert_escalate', data=alert)
+                db.session.commit()
+
                 print(case)
 
     scheduler.add_job(

@@ -646,6 +646,7 @@ def create_case_from_alert(alert: Alert, iocs_list: List[str], assets_list: List
         classification_id=alert.alert_classification_id,
         state_id=get_case_state_by_name('Open').state_id,
         reason=reason,
+        original_name=alert.alert_title,
     )
 
     case.save()
