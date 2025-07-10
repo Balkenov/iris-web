@@ -16,6 +16,7 @@
 #  along with this program; if not, write to the Free Software Foundation,
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import ast
+import datetime
 import json
 
 from pathlib import Path
@@ -298,7 +299,7 @@ def run_post_init(development=False):
             "range": {
                 "@timestamp": {
                     # "gte": f"now-{interval}s/d",  # Last 24 hours
-                    "gte": f"now-5m",  # Last 24 hours
+                    "gte": f"now-4m",  # Last 24 hours
                     "lte": "now/d"
                 }
             }
@@ -323,11 +324,10 @@ def run_post_init(development=False):
 
     def parse_alerts():
         response = es.search(index=".internal.alerts-security.alerts-*", body=query)
-        # print(response)
         print("parsing alerts")
         with app.app_context():
-            print("len", len(response['hits']['hits']))
             for hit in response['hits']['hits']:
+                print("processing new hit", datetime.datetime.now())
                 alert = hit["_source"]
                 # alert uuid
                 if 'kibana.alert.uuid' not in alert:
@@ -335,7 +335,6 @@ def run_post_init(development=False):
                 if 'kibana.alert.rule.name' not in alert:
                     continue
                 title = alert['kibana.alert.rule.name']
-                print(alert['kibana.alert.rule.execution.uuid'])
                 alert_uuid = alert['kibana.alert.uuid']
                 exists = get_alert_by_source_ref(alert_uuid)
                 if exists:
@@ -357,7 +356,6 @@ def run_post_init(development=False):
                             "customer_name": client_name,
                         }
                     )
-                print(client_object.client_id)
 
                 description = alert['kibana.alert.rule.description']
                 # mitre
@@ -369,7 +367,6 @@ def run_post_init(development=False):
                 if len(tactics) > 0:
                     mitre = ", ".join(tactics)
 
-                # title = alert['kibana.alert.reason']
                 reason = alert['kibana.alert.reason']
                 # severity
                 severity = 2
@@ -424,14 +421,12 @@ def run_post_init(development=False):
                         v = get_value(alert, field['name'])
                         if v:
                             required_fields_str += f"{field['name']}: {v}\n"
-                        print(field['name'], v)
                 if required_fields_str == "":
                     required_fields_str = None
 
                 status_id = 2
 
                 from .datamgmt.alerts.alerts_db import add_alert, register_related_alerts, cache_similar_alert
-
                 alert = add_alert(title=title, description=description, source=source, status=status_id, severity=severity,
                           owner_id=1, customer_id=client_object.client_id, created_at=alert['@timestamp'],
                           alert_uuid=alert_uuid, tags=tags, alert_source_content=alert, alert_reason=reason,
@@ -439,6 +434,8 @@ def run_post_init(development=False):
                           alert_user_name=user_name, alert_mitre=mitre, alert_customer_space=customer_space,
                           alert_required_fields=required_fields_str,
                           )
+
+                print(f"created alert, id is {alert.alert_id}, title is {alert.alert_title}, reason is {alert.alert_reason}")
                 from .util import add_obj_history_entry
                 from .datamgmt.case.case_db import get_case_for_alert
                 from .datamgmt.alerts.alerts_db import create_case_from_alert, merge_alert_in_case
@@ -449,19 +446,20 @@ def run_post_init(development=False):
                 # Add history entry
                 add_obj_history_entry(alert, 'Alert created')
                 # Cache the alert for similarities check
-                cache_similar_alert(alert.alert_customer_id, assets=[],
-                                    iocs=[], alert_id=alert.alert_id,
-                                    creation_date=alert.alert_source_event_time)
-
-                register_related_alerts(alert, assets_list=[], iocs_list=[])
+                # cache_similar_alert(alert.alert_customer_id, assets=[],
+                #                     iocs=[], alert_id=alert.alert_id,
+                #                     creation_date=alert.alert_source_event_time)
+                #
+                # register_related_alerts(alert, assets_list=[], iocs_list=[])
 
                 alert = call_modules_hook('on_postload_alert_create', data=alert)
 
-                case = get_case_for_alert(alert.alert_title, alert.alert_reason, 2)
+                case = get_case_for_alert(alert.alert_title, alert.alert_reason, 6)
                 if case:
+                    print(f"found similar case, case id {case.case_id}, original name is {case.original_name}, reason is {case.reason}")
                     alert.alert_status_id = AlertStatus.query.filter_by(status_name='Merged').first().status_id
+
                     db.session.commit()
-                    print("case exists")
                     merge_alert_in_case(alert, case, [], [], "", True, alert.alert_tags)
                     alert = call_modules_hook('on_postload_alert_merge', data=alert, caseid=case.case_id)
                     add_obj_history_entry(alert, f"Alert merged into existing case #{case.case_id}")
@@ -473,13 +471,14 @@ def run_post_init(development=False):
                     if template:
                         template_id = template.id
                     case = create_case_from_alert(alert, [], [], "", "", True, alert.alert_tags, template_id=template_id, reason=alert.alert_reason)
-
+                    if not case or not case.case_id:
+                        print(f"could not create case for alert {alert.alert_id}")
                     ac_set_new_case_access(None, case.case_id, case.client_id)
                     case = call_modules_hook('on_postload_case_create', data=case)
                     add_obj_history_entry(case, 'created')
                     add_obj_history_entry(alert, f"Alert escalated to case #{case.case_id}")
                     alert = call_modules_hook('on_postload_alert_escalate', data=alert)
-                db.session.commit()
+                # db.session.commit()
 
                 print(case)
 
@@ -1031,12 +1030,8 @@ def create_safe_alert_resolution_status():
     """
     create_safe(db.session, AlertResolutionStatus, resolution_status_name='False Positive',
                 resolution_status_description="The alert was a false positive")
-    create_safe(db.session, AlertResolutionStatus, resolution_status_name='True Positive With Impact',
-                resolution_status_description="The alert was a true positive and had an impact")
-    create_safe(db.session, AlertResolutionStatus, resolution_status_name='True Positive Without Impact',
-                resolution_status_description="The alert was a true positive but had no impact")
-    create_safe(db.session, AlertResolutionStatus, resolution_status_name='Not Applicable',
-                resolution_status_description="The alert is not applicable")
+    create_safe(db.session, AlertResolutionStatus, resolution_status_name='True Positive',
+                resolution_status_description="The alert was a true positive")
     create_safe(db.session, AlertResolutionStatus, resolution_status_name='Unknown',
                 resolution_status_description="Unknown resolution status")
     create_safe(db.session, AlertResolutionStatus, resolution_status_name='Legitimate',
@@ -1051,14 +1046,11 @@ def create_safe_case_states():
 
     """
     # Create new CaseState objects for each state
-    create_safe(db.session, CaseState, state_name='Unspecified', state_description="Unspecified", protected=True)
-    create_safe(db.session, CaseState, state_name='In progress', state_description="Case is being investigated")
-    create_safe(db.session, CaseState, state_name='Open', state_description="Case is open", protected=True)
-    create_safe(db.session, CaseState, state_name='Containment', state_description="Containment is in progress")
-    create_safe(db.session, CaseState, state_name='Eradication', state_description="Eradication is in progress")
-    create_safe(db.session, CaseState, state_name='Recovery', state_description="Recovery is in progress")
-    create_safe(db.session, CaseState, state_name='Post-Incident', state_description="Post-incident phase")
-    create_safe(db.session, CaseState, state_name='Reporting', state_description="Reporting is in progress")
+    create_safe(db.session, CaseState, state_name='Created', state_description="Created", protected=True)
+    create_safe(db.session, CaseState, state_name='In Progress (SOC)', state_description="In Progress (SOC)")
+    create_safe(db.session, CaseState, state_name='Waiting for a Customer', state_description="Waiting for a Customer")
+    create_safe(db.session, CaseState, state_name='In Progress (Customer)', state_description="In Progress (Customer)")
+    create_safe(db.session, CaseState, state_name='Waiting for SOC', state_description="Waiting for SOC")
     create_safe(db.session, CaseState, state_name='Closed', state_description="Case is closed", protected=True)
 
 

@@ -31,8 +31,8 @@ def upgrade():
         if state is None:
             state = CaseState()
             state.id=state_id
-            state.state_name='Unspecified'
-            state.state_description='Unspecified'
+            state.state_name='Created'
+            state.state_description='Created'
             state.protected=True
 
             op.bulk_insert(CaseState.__table__, [state.__dict__])

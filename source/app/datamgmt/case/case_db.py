@@ -57,14 +57,13 @@ def case_exists(caseid):
     return Cases.query.filter(Cases.case_id == caseid).count()
 
 def get_case_for_alert(name: str, reason: str, state_id: int) -> Cases:
-    # Calculate the timestamp for 5 minutes ago
-    five_minutes_ago = datetime.now() - timedelta(minutes=5)
+    hour_ago = datetime.now() - timedelta(hours=1)
     
     return Cases.query.filter(
-        # Cases.state_id == state_id,
         Cases.original_name == name,
         Cases.reason == reason,
-        Cases.initial_date >= five_minutes_ago
+        Cases.initial_date >= hour_ago,
+        Cases.state_id != state_id
     ).first()
 
 def get_case_client_id(caseid):
