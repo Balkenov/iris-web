@@ -25,6 +25,7 @@ import json
 # CONTENT ------------------------------------------------
 import logging as log
 import os
+import re
 from datetime import datetime, timedelta
 
 import jinja2
@@ -401,7 +402,17 @@ class IrisMakeDocReport(IrisReportMaker):
         for comment in case_info.get('comments', []):
             comment['comment_date'] = format_time(comment.get('comment_date'))
 
+        case_info['alert_description'] = self.get_alert_description(case_info.get('case', {}).get('description'))
+
         return case_info
+
+    @staticmethod
+    def get_alert_description(text: str) -> str:
+        pattern = r"#{1,6}\s*Alert description\s*\n+(.+?)(?:\n#{1,6}\s|\Z)"
+        match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+        return ""
 
     @staticmethod
     def get_elk_info(info: dict) -> dict:

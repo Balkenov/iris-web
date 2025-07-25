@@ -403,7 +403,6 @@ def add_alert(
         alert.alert_tags = tags
     if alert_source_content:
         alert.alert_source_content = alert_source_content
-    db.session.add(alert)
 
     # Add the alert to the database
     db.session.add(alert)

@@ -328,25 +328,30 @@ def run_post_init(development=False):
         with app.app_context():
             for hit in response['hits']['hits']:
                 print("processing new hit", datetime.datetime.now())
-                alert = hit["_source"]
+                alert_raw = hit["_source"]
                 # alert uuid
-                if 'kibana.alert.uuid' not in alert:
+                if 'kibana.alert.uuid' not in alert_raw:
                     continue
-                if 'kibana.alert.rule.name' not in alert:
+                if 'kibana.alert.rule.name' not in alert_raw:
                     continue
-                title = alert['kibana.alert.rule.name']
-                alert_uuid = alert['kibana.alert.uuid']
+                title = alert_raw['kibana.alert.rule.name']
+                alert_uuid = alert_raw['kibana.alert.uuid']
                 exists = get_alert_by_source_ref(alert_uuid)
                 if exists:
                     continue
 
-                client_name = "unknown"
+                client_name = "N/A"
                 user_name = "unknown"
-                if "user" in alert:
-                    if 'domain' in alert['user']:
-                        client_name = alert['user']['domain']
-                    if 'name' in alert['user']:
-                        user_name = alert['user']['name']
+                if "user" in alert_raw:
+                    # if 'domain' in alert_raw['user']:
+                    #     client_name = alert_raw['user']['domain']
+                    if 'name' in alert_raw['user']:
+                        user_name = alert_raw['user']['name']
+
+                customer_space = None
+                if 'data_stream' in alert_raw and 'namespace' in alert_raw['data_stream']:
+                    customer_space = alert_raw['data_stream']['namespace']
+                    client_name = customer_space
 
                 client_object = get_client_by_name(client_name)
                 if client_object is None:
@@ -357,48 +362,44 @@ def run_post_init(development=False):
                         }
                     )
 
-                description = alert['kibana.alert.rule.description']
+                description = alert_raw['kibana.alert.rule.description']
                 # mitre
                 tactics = []
-                threats = alert['kibana.alert.rule.threat']
+                threats = alert_raw['kibana.alert.rule.threat']
                 mitre = None
                 for threat in threats:
                     tactics.append(f"{threat['tactic']['id']} - {threat['tactic']['name']}")
                 if len(tactics) > 0:
                     mitre = ", ".join(tactics)
 
-                reason = alert['kibana.alert.reason']
+                reason = alert_raw['kibana.alert.reason']
                 # severity
                 severity = 2
-                if 'kibana.alert.severity' in alert:
-                    severity_str = alert['kibana.alert.severity']
+                if 'kibana.alert.severity' in alert_raw:
+                    severity_str = alert_raw['kibana.alert.severity']
                     if severity_str in severities_map:
                         severity = severities_map[severity_str.lower()]
 
                 tags = None
-                if 'kibana.alert.rule.tags' in alert:
-                    tags = ",".join(alert['kibana.alert.rule.tags'])
+                if 'kibana.alert.rule.tags' in alert_raw:
+                    tags = ",".join(alert_raw['kibana.alert.rule.tags'])
 
                 # status
                 source = "ELK"
 
                 ip = None
                 alert_host_name = None
-                if 'host' in alert:
-                    if 'ip' in alert['host']:
-                        ips = alert['host']['ip']
+                if 'host' in alert_raw:
+                    if 'ip' in alert_raw['host']:
+                        ips = alert_raw['host']['ip']
                         if len(ips) > 0:
                             ip = ips[0]
-                    if 'hostname' in alert['host']:
-                        alert_host_name = alert['host']['hostname']
+                    if 'hostname' in alert_raw['host']:
+                        alert_host_name = alert_raw['host']['hostname']
                 agent_id = None
-                if 'agent' in alert:
-                    if 'id' in alert['agent']:
-                        agent_id = alert['agent']['id']
-
-                customer_space = None
-                if 'data_stream' in alert and 'namespace' in alert['data_stream']:
-                    customer_space = alert['data_stream']['namespace']
+                if 'agent' in alert_raw:
+                    if 'id' in alert_raw['agent']:
+                        agent_id = alert_raw['agent']['id']
 
                 def get_value(data: dict, key: str):
                     if key in data:
@@ -415,10 +416,10 @@ def run_post_init(development=False):
                     return current
 
                 required_fields_str = ""
-                if 'kibana.alert.rule.parameters' in alert and 'required_fields' in alert['kibana.alert.rule.parameters']:
-                    required_fields_titles = alert['kibana.alert.rule.parameters']['required_fields']
+                if 'kibana.alert.rule.parameters' in alert_raw and 'required_fields' in alert_raw['kibana.alert.rule.parameters']:
+                    required_fields_titles = alert_raw['kibana.alert.rule.parameters']['required_fields']
                     for field in required_fields_titles:
-                        v = get_value(alert, field['name'])
+                        v = get_value(alert_raw, field['name'])
                         if v:
                             required_fields_str += f"{field['name']}: {v}\n"
                 if required_fields_str == "":
@@ -428,8 +429,8 @@ def run_post_init(development=False):
 
                 from .datamgmt.alerts.alerts_db import add_alert, register_related_alerts, cache_similar_alert
                 alert = add_alert(title=title, description=description, source=source, status=status_id, severity=severity,
-                          owner_id=1, customer_id=client_object.client_id, created_at=alert['@timestamp'],
-                          alert_uuid=alert_uuid, tags=tags, alert_source_content=alert, alert_reason=reason,
+                          owner_id=1, customer_id=client_object.client_id, created_at=alert_raw['@timestamp'],
+                          alert_uuid=alert_uuid, tags=tags, alert_source_content=alert_raw, alert_reason=reason,
                           alert_host_ip=ip, alert_host_name=alert_host_name, alert_agent_id=agent_id,
                           alert_user_name=user_name, alert_mitre=mitre, alert_customer_space=customer_space,
                           alert_required_fields=required_fields_str,
@@ -478,7 +479,7 @@ def run_post_init(development=False):
                     add_obj_history_entry(case, 'created')
                     add_obj_history_entry(alert, f"Alert escalated to case #{case.case_id}")
                     alert = call_modules_hook('on_postload_alert_escalate', data=alert)
-                # db.session.commit()
+                db.session.commit()
 
                 print(case)
 
