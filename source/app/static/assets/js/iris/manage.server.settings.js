@@ -41,3 +41,126 @@ function init_db_backup() {
         });
     });
 }
+
+function check_delete_cases() {
+    var start_date = $('#delete_start_date').val();
+    var end_date = $('#delete_end_date').val();
+    
+    if (!start_date || !end_date) {
+        swal("Error", "Please select both start and end dates.", {
+            icon: "error"
+        });
+        return;
+    }
+    
+    if (start_date > end_date) {
+        swal("Error", "Start date must be before or equal to end date.", {
+            icon: "error"
+        });
+        return;
+    }
+    
+    // Show loading state
+    $('#delete_cases_btn').prop('disabled', true).text('Checking...');
+    
+    var data = {
+        start_date: start_date,
+        end_date: end_date,
+        csrf_token: $('#csrf_token').val()
+    };
+    
+    post_request_api('/manage/settings/check-delete-cases', JSON.stringify(data), true)
+    .done((response) => {
+        $('#delete_cases_btn').prop('disabled', false).text('Delete Cases');
+        
+        if (response.data.cases_count === 0) {
+            swal("No Cases Found", "No cases found in the specified date range (excluding the protected primary case).", {
+                icon: "info"
+            });
+            return;
+        }
+        
+        var message = `This will permanently delete:\n\n` +
+                     `• ${response.data.cases_count} cases\n` +
+                     `• ${response.data.alerts_count} alerts\n` +
+                     `• All related assets, IOCs, comments, and other data\n\n` +
+                     `Note: The primary case (ID: 1) will be protected from deletion.\n\n` +
+                     `This action cannot be undone. Are you sure you want to continue?`;
+        
+        swal({
+            title: "Confirm Deletion",
+            text: message,
+            icon: "warning",
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-secondary",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Confirm Delete",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true
+                }
+            },
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                delete_cases(start_date, end_date);
+            }
+        });
+    })
+    .fail((error) => {
+        $('#delete_cases_btn').prop('disabled', false).text('Delete Cases');
+        swal("Error", "Failed to check cases. Please try again.", {
+            icon: "error"
+        });
+    });
+}
+
+function delete_cases(start_date, end_date) {
+    // Show loading state
+    $('#delete_cases_btn').prop('disabled', true).text('Deleting...');
+    
+    var data = {
+        start_date: start_date,
+        end_date: end_date,
+        csrf_token: $('#csrf_token').val()
+    };
+    
+    post_request_api('/manage/settings/delete-cases', JSON.stringify(data), true)
+    .done((response) => {
+        $('#delete_cases_btn').prop('disabled', false).text('Delete Cases');
+        
+        var message = `Successfully deleted:\n\n` +
+                     `• ${response.data.cases_count} cases\n` +
+                     `• ${response.data.alerts_count} alerts\n` +
+                     `• All related data\n\n` +
+                     `Note: The primary case (ID: 1) was protected from deletion.`;
+        
+        swal("Deletion Complete", message, {
+            icon: "success"
+        });
+        
+        // Clear the date inputs
+        $('#delete_start_date').val('');
+        $('#delete_end_date').val('');
+    })
+    .fail((error) => {
+        $('#delete_cases_btn').prop('disabled', false).text('Delete Cases');
+        
+        var errorMsg = "Failed to delete cases.";
+        if (error.responseJSON && error.responseJSON.msg) {
+            errorMsg = error.responseJSON.msg;
+        }
+        
+        swal("Error", errorMsg, {
+            icon: "error"
+        });
+    });
+}

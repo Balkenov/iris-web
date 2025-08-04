@@ -41,6 +41,7 @@ from app.util import ac_requires
 from app.util import response_error
 from app.util import response_success
 from dictdiffer import diff
+from app.datamgmt.manage.manage_srv_settings_db import check_cases_for_deletion, delete_cases_by_date_range
 
 
 manage_srv_settings_blueprint = Blueprint(
@@ -143,3 +144,55 @@ def manage_update_settings():
 
     except marshmallow.exceptions.ValidationError as e:
         return response_error(msg="Data error", data=e.messages)
+
+
+@manage_srv_settings_blueprint.route('/manage/settings/check-delete-cases', methods=['POST'])
+@ac_api_requires(Permissions.server_administrator)
+def manage_check_delete_cases():
+    if not request.is_json:
+        return response_error('Invalid request')
+
+    try:
+        data = request.get_json()
+        start_date = data.get('start_date')
+        end_date = data.get('end_date')
+
+        if not start_date or not end_date:
+            return response_error('Start date and end date are required')
+
+        cases_count, alerts_count = check_cases_for_deletion(start_date, end_date)
+        
+        return response_success("Cases checked", {
+            'cases_count': cases_count,
+            'alerts_count': alerts_count
+        })
+
+    except Exception as e:
+        return response_error(f'Error checking cases: {str(e)}')
+
+
+@manage_srv_settings_blueprint.route('/manage/settings/delete-cases', methods=['POST'])
+@ac_api_requires(Permissions.server_administrator)
+def manage_delete_cases():
+    if not request.is_json:
+        return response_error('Invalid request')
+
+    try:
+        data = request.get_json()
+        start_date = data.get('start_date')
+        end_date = data.get('end_date')
+
+        if not start_date or not end_date:
+            return response_error('Start date and end date are required')
+
+        cases_count, alerts_count = delete_cases_by_date_range(start_date, end_date)
+        
+        track_activity(f"Bulk deletion of cases completed: {cases_count} cases, {alerts_count} alerts deleted")
+        
+        return response_success("Cases deleted successfully", {
+            'cases_count': cases_count,
+            'alerts_count': alerts_count
+        })
+
+    except Exception as e:
+        return response_error(f'Error deleting cases: {str(e)}')

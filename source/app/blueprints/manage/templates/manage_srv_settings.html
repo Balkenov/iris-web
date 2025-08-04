@@ -9,6 +9,7 @@
 {% block content %}
 
 {{ form.hidden_tag() }}
+<input type="hidden" id="csrf_token" name="csrf_token" value="{{ form.csrf_token.current_token }}">
 <div class="page-inner">
     <div class="row ">
         <div class="col-md-12">
@@ -180,6 +181,45 @@
                                 <div class="float-right mt-4">
                                     <button class="btn btn-outline-primary" id="init_db_backup" type="button" onclick="init_db_backup()">Backup database</button>
                                 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Data Management</div>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <h2>Delete Cases</h2>
+                            <p><strong>Warning:</strong> This action will permanently delete cases and all related data (alerts, assets, IOCs, comments, etc.) within the specified date range. This action cannot be undone.</p>
+                            <p><strong>Note:</strong> The primary case (ID: 1) will be protected from deletion.</p>
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Start Date</span>
+                                        </div>
+                                        <input class="form-control" type="date" id="delete_start_date" name="delete_start_date">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">End Date</span>
+                                        </div>
+                                        <input class="form-control" type="date" id="delete_end_date" name="delete_end_date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-right mt-4">
+                                <button class="btn btn-outline-danger" id="delete_cases_btn" type="button" onclick="check_delete_cases()">Delete Cases</button>
+                            </div>
                         </div>
                     </div>
                 </div>
