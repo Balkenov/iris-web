@@ -69,6 +69,11 @@ function check_delete_cases() {
         csrf_token: $('#csrf_token').val()
     };
     
+    // Set a longer timeout for bulk operations
+    $.ajaxSetup({
+        timeout: 900000  // 15 minutes timeout (matches nginx)
+    });
+    
     post_request_api('/manage/settings/check-delete-cases', JSON.stringify(data), true)
     .done((response) => {
         $('#delete_cases_btn').prop('disabled', false).text('Delete Cases');
@@ -132,6 +137,11 @@ function delete_cases(start_date, end_date) {
         end_date: end_date,
         csrf_token: $('#csrf_token').val()
     };
+    
+    // Set a longer timeout for bulk deletion operations
+    $.ajaxSetup({
+        timeout: 900000  // 15 minutes timeout (matches nginx)
+    });
     
     post_request_api('/manage/settings/delete-cases', JSON.stringify(data), true)
     .done((response) => {

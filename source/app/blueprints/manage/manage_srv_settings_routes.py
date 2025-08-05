@@ -185,8 +185,12 @@ def manage_delete_cases():
         if not start_date or not end_date:
             return response_error('Start date and end date are required')
 
+        # Add logging to track the operation
+        app.logger.info(f"Starting bulk deletion for date range: {start_date} to {end_date}")
+        
         cases_count, alerts_count = delete_cases_by_date_range(start_date, end_date)
         
+        app.logger.info(f"Bulk deletion completed: {cases_count} cases, {alerts_count} alerts deleted")
         track_activity(f"Bulk deletion of cases completed: {cases_count} cases, {alerts_count} alerts deleted")
         
         return response_success("Cases deleted successfully", {
@@ -195,4 +199,7 @@ def manage_delete_cases():
         })
 
     except Exception as e:
+        app.logger.error(f"Error in bulk deletion: {str(e)}")
+        import traceback
+        app.logger.error(f"Traceback: {traceback.format_exc()}")
         return response_error(f'Error deleting cases: {str(e)}')
