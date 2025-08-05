@@ -12,8 +12,10 @@ from app.models.models import (
     DataStorePath, DataStoreFile, CaseReceivedFile, CaseKanban, IrisReport,
     UserActivity, CaseEventsAssets, CaseEventCategory, CaseGraphAssets, CaseGraphLinks,
     CasesAssetsExt, NotesGroup, NotesGroupLink, TaskAssignee, TaskComments,
-    IocComments, AssetComments, EvidencesComments, NotesComments, EventComments
+    IocComments, AssetComments, EvidencesComments, NotesComments, EventComments,
+    ObjectState, alert_assets_association, alert_iocs_association
 )
+from app.models.authorization import OrganisationCaseAccess, GroupCaseAccess, UserCaseAccess, UserCaseEffectiveAccess
 
 
 def get_srv_settings():
@@ -127,6 +129,28 @@ def delete_cases_by_date_range(start_date, end_date):
                 IocLink.case_id.in_(batch_case_ids)
             ).delete(synchronize_session=False)
             
+            # Delete object states
+            db.session.query(ObjectState).filter(
+                ObjectState.object_case_id.in_(batch_case_ids)
+            ).delete(synchronize_session=False)
+            
+            # Delete authorization records
+            db.session.query(OrganisationCaseAccess).filter(
+                OrganisationCaseAccess.case_id.in_(batch_case_ids)
+            ).delete(synchronize_session=False)
+            
+            db.session.query(GroupCaseAccess).filter(
+                GroupCaseAccess.case_id.in_(batch_case_ids)
+            ).delete(synchronize_session=False)
+            
+            db.session.query(UserCaseAccess).filter(
+                UserCaseAccess.case_id.in_(batch_case_ids)
+            ).delete(synchronize_session=False)
+            
+            db.session.query(UserCaseEffectiveAccess).filter(
+                UserCaseEffectiveAccess.case_id.in_(batch_case_ids)
+            ).delete(synchronize_session=False)
+            
             # Delete case comments
             db.session.query(Comments).filter(
                 Comments.comment_case_id.in_(batch_case_ids)
@@ -151,6 +175,31 @@ def delete_cases_by_date_range(start_date, end_date):
             db.session.query(CaseTags).filter(
                 CaseTags.case_id.in_(batch_case_ids)
             ).delete(synchronize_session=False)
+            
+            # Delete alerts associated with the cases
+            alert_ids_to_delete = db.session.query(Alert.alert_id).join(
+                AlertCaseAssociation
+            ).filter(
+                AlertCaseAssociation.case_id.in_(batch_case_ids)
+            ).all()
+            
+            alert_ids_to_delete = [alert_id[0] for alert_id in alert_ids_to_delete]
+            
+            if alert_ids_to_delete:
+                # Delete alert assets associations
+                db.session.query(alert_assets_association).filter(
+                    alert_assets_association.c.alert_id.in_(alert_ids_to_delete)
+                ).delete(synchronize_session=False)
+                
+                # Delete alert IOCs associations
+                db.session.query(alert_iocs_association).filter(
+                    alert_iocs_association.c.alert_id.in_(alert_ids_to_delete)
+                ).delete(synchronize_session=False)
+                
+                # Delete the alerts themselves
+                db.session.query(Alert).filter(
+                    Alert.alert_id.in_(alert_ids_to_delete)
+                ).delete(synchronize_session=False)
             
             # Delete alert-case associations
             db.session.query(AlertCaseAssociation).filter(
@@ -282,12 +331,16 @@ def delete_cases_by_date_range(start_date, end_date):
             ).delete(synchronize_session=False)
             
             # Delete the cases themselves
-            db.session.query(Cases).filter(
-                Cases.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Commit each batch to avoid memory issues
-            db.session.commit()
+            try:
+                db.session.query(Cases).filter(
+                    Cases.case_id.in_(batch_case_ids)
+                ).delete(synchronize_session=False)
+                
+                # Commit each batch to avoid memory issues
+                db.session.commit()
+            except Exception as e:
+                db.session.rollback()
+                raise Exception(f"Failed to delete cases in batch. This might be due to foreign key constraints. Error: {str(e)}")
         
         return len(case_ids), alerts_count
         
