@@ -176,7 +176,7 @@ def delete_cases_by_date_range(start_date, end_date):
                 CaseTags.case_id.in_(batch_case_ids)
             ).delete(synchronize_session=False)
             
-            # Delete alerts associated with the cases
+            # Get alert IDs before deleting associations
             alert_ids_to_delete = db.session.query(Alert.alert_id).join(
                 AlertCaseAssociation
             ).filter(
@@ -185,6 +185,12 @@ def delete_cases_by_date_range(start_date, end_date):
             
             alert_ids_to_delete = [alert_id[0] for alert_id in alert_ids_to_delete]
             
+            # Delete alert-case associations first
+            db.session.query(AlertCaseAssociation).filter(
+                AlertCaseAssociation.case_id.in_(batch_case_ids)
+            ).delete(synchronize_session=False)
+            
+            # Delete alerts associated with the cases
             if alert_ids_to_delete:
                 # Delete alert assets associations
                 db.session.query(alert_assets_association).filter(
@@ -200,11 +206,6 @@ def delete_cases_by_date_range(start_date, end_date):
                 db.session.query(Alert).filter(
                     Alert.alert_id.in_(alert_ids_to_delete)
                 ).delete(synchronize_session=False)
-            
-            # Delete alert-case associations
-            db.session.query(AlertCaseAssociation).filter(
-                AlertCaseAssociation.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
             
             # Delete data store paths and files
             db.session.query(DataStoreFile).filter(
