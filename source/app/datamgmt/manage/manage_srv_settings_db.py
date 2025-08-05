@@ -6,7 +6,7 @@ from app import db
 from app.models import ServerSettings
 from app.schema.marshables import ServerSettingsSchema
 from app.models.cases import Cases, CasesEvent, CaseTags
-from app.models.alerts import Alert, AlertCaseAssociation
+from app.models.alerts import Alert, AlertCaseAssociation, SimilarAlertsCache, AlertSimilarity
 from app.models.models import (
     CaseAssets, Ioc, Comments, CaseTasks, Notes, CaseEventsIoc, IocLink,
     DataStorePath, DataStoreFile, CaseReceivedFile, CaseKanban, IrisReport,
@@ -192,6 +192,20 @@ def delete_cases_by_date_range(start_date, end_date):
             
             # Delete alerts associated with the cases
             if alert_ids_to_delete:
+                # Delete alert similarity records
+                db.session.query(AlertSimilarity).filter(
+                    AlertSimilarity.alert_id.in_(alert_ids_to_delete)
+                ).delete(synchronize_session=False)
+                
+                db.session.query(AlertSimilarity).filter(
+                    AlertSimilarity.similar_alert_id.in_(alert_ids_to_delete)
+                ).delete(synchronize_session=False)
+                
+                # Delete alert similarity cache
+                db.session.query(SimilarAlertsCache).filter(
+                    SimilarAlertsCache.alert_id.in_(alert_ids_to_delete)
+                ).delete(synchronize_session=False)
+                
                 # Delete alert assets associations
                 db.session.query(alert_assets_association).filter(
                     alert_assets_association.c.alert_id.in_(alert_ids_to_delete)
