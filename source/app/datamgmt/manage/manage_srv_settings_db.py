@@ -81,281 +81,242 @@ def delete_cases_by_date_range(start_date, end_date):
     Delete cases and all related data within the specified date range
     This function is designed to handle tens of thousands of cases efficiently
     Excludes the primary case (case_id = 1) from deletion
+    Uses optimized raw SQL queries for better performance
     """
     try:
         start_dt = datetime.strptime(start_date, '%Y-%m-%d')
         end_dt = datetime.strptime(end_date, '%Y-%m-%d')
         
-        # Get all case IDs in the date range, excluding the primary case
-        case_ids = db.session.query(Cases.case_id).filter(
-            and_(
-                Cases.initial_date >= start_dt,
-                Cases.initial_date <= end_dt,
-                Cases.case_id != 1  # Exclude primary case
-            )
-        ).all()
+        # Use raw SQL to get case IDs more efficiently
+        case_ids_result = db.session.execute(text("""
+            SELECT case_id FROM cases 
+            WHERE initial_date >= :start_date 
+            AND initial_date <= :end_date 
+            AND case_id != 1
+        """), {'start_date': start_dt, 'end_date': end_dt})
         
-        case_ids = [case_id[0] for case_id in case_ids]
+        case_ids = [row[0] for row in case_ids_result]
         
         if not case_ids:
             return 0, 0
         
-        # Count alerts before deletion for reporting
-        alerts_count = db.session.query(Alert).join(
-            AlertCaseAssociation
-        ).filter(
-            AlertCaseAssociation.alert_id.in_(
-                db.session.query(AlertCaseAssociation.alert_id).filter(
-                    AlertCaseAssociation.case_id.in_(case_ids)
-                )
-            )
-        ).count()
+        # Count alerts using raw SQL for better performance
+        alerts_count_result = db.session.execute(text("""
+            SELECT COUNT(DISTINCT a.alert_id) 
+            FROM alerts a 
+            JOIN alert_case_association aca ON a.alert_id = aca.alert_id 
+            WHERE aca.case_id = ANY(:case_ids)
+        """), {'case_ids': case_ids})
         
-        # Delete in batches to handle large datasets efficiently
-        batch_size = 1000
+        alerts_count = alerts_count_result.scalar()
+        
+        # Use larger batch size for better performance
+        batch_size = 5000
         
         for i in range(0, len(case_ids), batch_size):
             batch_case_ids = case_ids[i:i + batch_size]
             
-            # Delete related data first (foreign key constraints)
+            # Use raw SQL for bulk deletions - much faster than ORM
+            batch_case_ids_str = ','.join(map(str, batch_case_ids))
             
-            # Delete case assets
-            db.session.query(CaseAssets).filter(
-                CaseAssets.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            # Delete related data using raw SQL for better performance
+            db.session.execute(text(f"""
+                DELETE FROM case_assets WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete case IOCs
-            db.session.query(IocLink).filter(
-                IocLink.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM ioc_link WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete object states
-            db.session.query(ObjectState).filter(
-                ObjectState.object_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM object_state WHERE object_case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete authorization records
-            db.session.query(OrganisationCaseAccess).filter(
-                OrganisationCaseAccess.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM organisation_case_access WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            db.session.query(GroupCaseAccess).filter(
-                GroupCaseAccess.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM group_case_access WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            db.session.query(UserCaseAccess).filter(
-                UserCaseAccess.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM user_case_access WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            db.session.query(UserCaseEffectiveAccess).filter(
-                UserCaseEffectiveAccess.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM user_case_effective_access WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete case comments
-            db.session.query(Comments).filter(
-                Comments.comment_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            # Continue with raw SQL for other deletions
+            db.session.execute(text(f"""
+                DELETE FROM comments WHERE comment_case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete case events
-            db.session.query(CasesEvent).filter(
-                CasesEvent.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM cases_events WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete case tasks
-            db.session.query(CaseTasks).filter(
-                CaseTasks.task_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM case_tasks WHERE task_case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete case notes
-            db.session.query(Notes).filter(
-                Notes.note_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM notes WHERE note_case_id IN ({batch_case_ids_str})
+            """))
             
-            # Delete case tags associations
-            db.session.query(CaseTags).filter(
-                CaseTags.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
+            db.session.execute(text(f"""
+                DELETE FROM case_tags WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            # Get alert IDs before deleting associations
-            alert_ids_to_delete = db.session.query(Alert.alert_id).join(
-                AlertCaseAssociation
-            ).filter(
-                AlertCaseAssociation.case_id.in_(batch_case_ids)
-            ).all()
+            # Optimize alert deletion with raw SQL
+            alert_ids_result = db.session.execute(text(f"""
+                SELECT DISTINCT a.alert_id 
+                FROM alerts a 
+                JOIN alert_case_association aca ON a.alert_id = aca.alert_id 
+                WHERE aca.case_id IN ({batch_case_ids_str})
+            """))
             
-            alert_ids_to_delete = [alert_id[0] for alert_id in alert_ids_to_delete]
+            alert_ids_to_delete = [row[0] for row in alert_ids_result]
             
-            # Delete alert-case associations first
-            db.session.query(AlertCaseAssociation).filter(
-                AlertCaseAssociation.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete alerts associated with the cases
             if alert_ids_to_delete:
-                # Delete alert similarity records
-                db.session.query(AlertSimilarity).filter(
-                    AlertSimilarity.alert_id.in_(alert_ids_to_delete)
-                ).delete(synchronize_session=False)
+                alert_ids_str = ','.join(map(str, alert_ids_to_delete))
                 
-                db.session.query(AlertSimilarity).filter(
-                    AlertSimilarity.similar_alert_id.in_(alert_ids_to_delete)
-                ).delete(synchronize_session=False)
+                # Delete alert associations and alerts using raw SQL
+                db.session.execute(text(f"""
+                    DELETE FROM alert_case_association WHERE case_id IN ({batch_case_ids_str})
+                """))
                 
-                # Delete alert similarity cache
-                db.session.query(SimilarAlertsCache).filter(
-                    SimilarAlertsCache.alert_id.in_(alert_ids_to_delete)
-                ).delete(synchronize_session=False)
+                db.session.execute(text(f"""
+                    DELETE FROM alert_similarity WHERE alert_id IN ({alert_ids_str})
+                """))
                 
-                # Delete alert assets associations
-                db.session.query(alert_assets_association).filter(
-                    alert_assets_association.c.alert_id.in_(alert_ids_to_delete)
-                ).delete(synchronize_session=False)
+                db.session.execute(text(f"""
+                    DELETE FROM alert_similarity WHERE similar_alert_id IN ({alert_ids_str})
+                """))
                 
-                # Delete alert IOCs associations
-                db.session.query(alert_iocs_association).filter(
-                    alert_iocs_association.c.alert_id.in_(alert_ids_to_delete)
-                ).delete(synchronize_session=False)
+                db.session.execute(text(f"""
+                    DELETE FROM similar_alerts_cache WHERE alert_id IN ({alert_ids_str})
+                """))
                 
-                # Delete the alerts themselves
-                db.session.query(Alert).filter(
-                    Alert.alert_id.in_(alert_ids_to_delete)
-                ).delete(synchronize_session=False)
-            
-            # Delete data store paths and files
-            db.session.query(DataStoreFile).filter(
-                DataStoreFile.file_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            db.session.query(DataStorePath).filter(
-                DataStorePath.path_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete case received files
-            db.session.query(CaseReceivedFile).filter(
-                CaseReceivedFile.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete case kanban
-            db.session.query(CaseKanban).filter(
-                CaseKanban.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete iris reports
-            db.session.query(IrisReport).filter(
-                IrisReport.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete user activities
-            db.session.query(UserActivity).filter(
-                UserActivity.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete case events assets
-            db.session.query(CaseEventsAssets).filter(
-                CaseEventsAssets.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete case event categories
-            db.session.query(CaseEventCategory).filter(
-                CaseEventCategory.event_id.in_(
-                    db.session.query(CasesEvent.event_id).filter(
-                        CasesEvent.case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            # Delete case graph assets and links
-            db.session.query(CaseGraphLinks).filter(
-                CaseGraphLinks.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            db.session.query(CaseGraphAssets).filter(
-                CaseGraphAssets.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete case assets ext
-            db.session.query(CasesAssetsExt).filter(
-                CasesAssetsExt.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete notes groups and links
-            db.session.query(NotesGroupLink).filter(
-                NotesGroupLink.case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            db.session.query(NotesGroup).filter(
-                NotesGroup.group_case_id.in_(batch_case_ids)
-            ).delete(synchronize_session=False)
-            
-            # Delete task assignees
-            db.session.query(TaskAssignee).filter(
-                TaskAssignee.task_id.in_(
-                    db.session.query(CaseTasks.id).filter(
-                        CaseTasks.task_case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            # Delete various comment associations
-            db.session.query(TaskComments).filter(
-                TaskComments.comment_task_id.in_(
-                    db.session.query(CaseTasks.id).filter(
-                        CaseTasks.task_case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            db.session.query(IocComments).filter(
-                IocComments.comment_ioc_id.in_(
-                    db.session.query(IocLink.ioc_id).filter(
-                        IocLink.case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            db.session.query(AssetComments).filter(
-                AssetComments.comment_asset_id.in_(
-                    db.session.query(CaseAssets.asset_id).filter(
-                        CaseAssets.case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            db.session.query(EvidencesComments).filter(
-                EvidencesComments.comment_evidence_id.in_(
-                    db.session.query(CaseReceivedFile.id).filter(
-                        CaseReceivedFile.case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            db.session.query(NotesComments).filter(
-                NotesComments.comment_note_id.in_(
-                    db.session.query(Notes.note_id).filter(
-                        Notes.note_case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            db.session.query(EventComments).filter(
-                EventComments.comment_event_id.in_(
-                    db.session.query(CasesEvent.event_id).filter(
-                        CasesEvent.case_id.in_(batch_case_ids)
-                    )
-                )
-            ).delete(synchronize_session=False)
-            
-            # Delete the cases themselves
-            try:
-                db.session.query(Cases).filter(
-                    Cases.case_id.in_(batch_case_ids)
-                ).delete(synchronize_session=False)
+                db.session.execute(text(f"""
+                    DELETE FROM alert_assets_association WHERE alert_id IN ({alert_ids_str})
+                """))
                 
-                # Commit each batch to avoid memory issues
-                db.session.commit()
-            except Exception as e:
-                db.session.rollback()
-                raise Exception(f"Failed to delete cases in batch. This might be due to foreign key constraints. Error: {str(e)}")
+                db.session.execute(text(f"""
+                    DELETE FROM alert_iocs_association WHERE alert_id IN ({alert_ids_str})
+                """))
+                
+                db.session.execute(text(f"""
+                    DELETE FROM alerts WHERE alert_id IN ({alert_ids_str})
+                """))
+            
+            # Continue with raw SQL for remaining deletions
+            db.session.execute(text(f"""
+                DELETE FROM data_store_file WHERE file_case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM data_store_path WHERE path_case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM case_received_file WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM case_kanban WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM iris_reports WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM user_activity WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            # Continue with remaining raw SQL deletions
+            db.session.execute(text(f"""
+                DELETE FROM case_events_assets WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM case_events_category WHERE event_id IN (
+                    SELECT event_id FROM cases_events WHERE case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM case_graph_links WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM case_graph_assets WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM cases_assets_ext WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM notes_group_link WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM notes_group WHERE group_case_id IN ({batch_case_ids_str})
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM task_assignee WHERE task_id IN (
+                    SELECT id FROM case_tasks WHERE task_case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            # Delete comment associations using raw SQL
+            db.session.execute(text(f"""
+                DELETE FROM task_comments WHERE comment_task_id IN (
+                    SELECT id FROM case_tasks WHERE task_case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM ioc_comments WHERE comment_ioc_id IN (
+                    SELECT ioc_id FROM ioc_link WHERE case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM asset_comments WHERE comment_asset_id IN (
+                    SELECT asset_id FROM case_assets WHERE case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM evidence_comments WHERE comment_evidence_id IN (
+                    SELECT id FROM case_received_file WHERE case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM note_comments WHERE comment_note_id IN (
+                    SELECT note_id FROM notes WHERE note_case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            db.session.execute(text(f"""
+                DELETE FROM event_comments WHERE comment_event_id IN (
+                    SELECT event_id FROM cases_events WHERE case_id IN ({batch_case_ids_str})
+                )
+            """))
+            
+            # Finally delete the cases themselves using raw SQL
+            db.session.execute(text(f"""
+                DELETE FROM cases WHERE case_id IN ({batch_case_ids_str})
+            """))
+            
+            # Commit each batch to avoid memory issues
+            db.session.commit()
         
         return len(case_ids), alerts_count
         
