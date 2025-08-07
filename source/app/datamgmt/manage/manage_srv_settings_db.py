@@ -139,20 +139,20 @@ def delete_cases_by_date_range(start_date, end_date):
             batch_case_ids_str = ','.join(map(str, batch_case_ids))
             
             # Delete in proper order to handle foreign key constraints efficiently
+
+            # Get alert IDs for this batch and delete related alert data
+            alert_ids_result = db.session.execute(text(f"""
+                SELECT DISTINCT alert_id 
+                FROM alert_case_association 
+                WHERE case_id IN ({batch_case_ids_str})
+            """))
             
-            # 1. Delete alert associations and alerts first
+            # Delete alert associations and alerts first
             db.session.execute(text(f"""
                 DELETE FROM alert_case_association WHERE case_id IN ({batch_case_ids_str})
             """))
-            
-            # Get alert IDs for this batch and delete related alert data
-            alert_ids_result = db.session.execute(text(f"""
-                SELECT DISTINCT a.alert_id 
-                FROM alerts a 
-                JOIN alert_case_association aca ON a.alert_id = aca.alert_id 
-                WHERE aca.case_id IN ({batch_case_ids_str})
-            """))
-            
+
+
             alert_ids = [row[0] for row in alert_ids_result]
             if alert_ids:
                 alert_ids_str = ','.join(map(str, alert_ids))
