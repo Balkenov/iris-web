@@ -824,10 +824,8 @@ function alertResolutionToARC(resolution, alert_id) {
         return '';
     }
     switch (resolution.resolution_status_name) {
-        case 'True Positive With Impact':
-            return `<span class="badge alert-bade-status badge-pill badge-danger mr-2" id="alertResolution-${alert_id}" data-value="true_positive_with_impact">True Positive with impact</span>`
-        case 'True Positive Without Impact':
-            return `<span class="badge alert-bade-status badge-pill badge-warning mr-2" id="alertResolution-${alert_id}" data-value="true_positive_without_impact">True Positive without impact</span>`
+        case 'True Positive':
+            return `<span class="badge alert-bade-status badge-pill badge-danger mr-2" id="alertResolution-${alert_id}" data-value="true_positive">True Positive</span>`
         case 'False Positive':
             return `<span class="badge alert-bade-status badge-pill badge-success mr-2" id="alertResolution-${alert_id}" data-value="false_positive">False Positive</span>`
         case 'Legitimate':

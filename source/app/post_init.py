@@ -1029,12 +1029,12 @@ def create_safe_alert_resolution_status():
     and resolution_status_description if they do not already exist in the database.
 
     """
+    create_safe(db.session, AlertResolutionStatus, resolution_status_name='Unknown',
+                resolution_status_description="Unknown resolution status")
     create_safe(db.session, AlertResolutionStatus, resolution_status_name='False Positive',
                 resolution_status_description="The alert was a false positive")
     create_safe(db.session, AlertResolutionStatus, resolution_status_name='True Positive',
                 resolution_status_description="The alert was a true positive")
-    create_safe(db.session, AlertResolutionStatus, resolution_status_name='Unknown',
-                resolution_status_description="Unknown resolution status")
     create_safe(db.session, AlertResolutionStatus, resolution_status_name='Legitimate',
                 resolution_status_description="The alert is acceptable and expected")
 
