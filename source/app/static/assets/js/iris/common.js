@@ -1544,7 +1544,7 @@ function context_data_parser(data, fire_modal = true) {
     if(notify_auto_api(data, true)) {
         $('#user_context').empty();
 
-        $('#user_context').append('<optgroup label="Open" id="switch_case_opened_opt"></optgroup>');
+        $('#user_context').append('<optgroup label="Created" id="switch_case_created_opt"></optgroup>');
         $('#user_context').append('<optgroup label="Closed" id="switch_case_closed_opt"></optgroup>');
         ocs = data.data;
         ret_data = [];
@@ -1558,7 +1558,7 @@ function context_data_parser(data, fire_modal = true) {
             if (ocs[index].close_date != null) {
                 $('#switch_case_closed_opt').append(`<option value="${ocs[index].case_id}">${case_name} (${cs_name}) ${ocs[index].access}</option>`);
             } else {
-                $('#switch_case_opened_opt').append(`<option value="${ocs[index].case_id}">${case_name} (${cs_name}) ${ocs[index].access}</option>`)
+                $('#switch_case_created_opt').append(`<option value="${ocs[index].case_id}">${case_name} (${cs_name}) ${ocs[index].access}</option>`)
             }
         }
 

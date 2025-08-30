@@ -427,7 +427,7 @@ function mergeAlertCasesSelectOption(data) {
     if(notify_auto_api(data, true)) {
         $('#mergeAlertCaseSelect').empty();
 
-        $('#mergeAlertCaseSelect').append('<optgroup label="Open" id="switchMergeAlertCasesOpen"></optgroup>');
+        $('#mergeAlertCaseSelect').append('<optgroup label="Created" id="switchMergeAlertCasesCreated"></optgroup>');
         $('#mergeAlertCaseSelect').append('<optgroup label="Closed" id="switchMergeAlertCasesClose"></optgroup>');
         let ocs = data.data;
         let ret_data = [];
@@ -441,7 +441,7 @@ function mergeAlertCasesSelectOption(data) {
             if (ocs[index].close_date != null) {
                 $('#switchMergeAlertCasesClose').append(`<option value="${ocs[index].case_id}">${case_name} (${cs_name}) ${ocs[index].access}</option>`);
             } else {
-                $('#switchMergeAlertCasesOpen').append(`<option value="${ocs[index].case_id}">${case_name} (${cs_name}) ${ocs[index].access}</option>`)
+                $('#switchMergeAlertCasesCreated').append(`<option value="${ocs[index].case_id}">${case_name} (${cs_name}) ${ocs[index].access}</option>`)
             }
         }
 

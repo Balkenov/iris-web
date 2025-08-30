@@ -1047,11 +1047,11 @@ def create_safe_case_states():
 
     """
     # Create new CaseState objects for each state
-    create_safe(db.session, CaseState, state_name='Created', state_description="Created", protected=True)
-    create_safe(db.session, CaseState, state_name='In Progress (SOC)', state_description="In Progress (SOC)")
-    create_safe(db.session, CaseState, state_name='Waiting for a Customer', state_description="Waiting for a Customer")
-    create_safe(db.session, CaseState, state_name='In Progress (Customer)', state_description="In Progress (Customer)")
-    create_safe(db.session, CaseState, state_name='Waiting for SOC', state_description="Waiting for SOC")
+    create_safe(db.session, CaseState, state_name='Created', state_description="Case is created", protected=True)
+    create_safe(db.session, CaseState, state_name='In Progress (SOC)', state_description="Case is in progress by SOC team")
+    create_safe(db.session, CaseState, state_name='Waiting for a Customer', state_description="Case is waiting for customer response")
+    create_safe(db.session, CaseState, state_name='In Progress (Customer)', state_description="Case is in progress by customer")
+    create_safe(db.session, CaseState, state_name='Waiting for SOC', state_description="Case is waiting for SOC team")
     create_safe(db.session, CaseState, state_name='Closed', state_description="Case is closed", protected=True)
 
 

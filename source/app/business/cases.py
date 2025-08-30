@@ -86,7 +86,7 @@ def create(request_json):
             if case is None:
                 raise BusinessProcessingError(f'Invalid Case template ID {case_template_id}')
 
-        case.state_id = get_case_state_by_name('Open').state_id
+        case.state_id = get_case_state_by_name('Created').state_id
 
         case.save()
 
