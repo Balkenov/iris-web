@@ -31,7 +31,7 @@
 								{% if session['current_case'] %}
 								<a class="text-light" title="{{ session['current_case'].case_name }}" onclick="load_context_switcher();return false;" href="#">{{ session['current_case'].case_name }}</a> {{ session['current_case'].access|safe }}
 								{% else %}
-								<div class="text-warning" style="cursor:pointer;" title="Switch case" onclick="load_context_switcher();return false;">No context</div>
+								<div class="text-warning" style="cursor:pointer;" title="{{_('Switch case')}}" onclick="load_context_switcher();return false;">{{_('No context')}}</div>
 								{% endif %}
 						</div>
 					</div>

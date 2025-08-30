@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-04-02 17:48+0500\n"
+"POT-Creation-Date: 2025-08-30 13:48+0500\n"
 "PO-Revision-Date: 2025-03-25 23:09+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -30,10 +30,11 @@ msgstr ""
 #: blueprints/case/templates/case_tasks.html:34
 #: blueprints/case/templates/case_timeline.html:46
 #: blueprints/case/templates/modal_conversation.html:53
-#: blueprints/dashboard/templates/index.html:102
-#: blueprints/dashboard/templates/index.html:137
-#: blueprints/dashboard/templates/index.html:183
-#: blueprints/dashboard/templates/index.html:229
+#: blueprints/dashboard/templates/index.html:125
+#: blueprints/dashboard/templates/index.html:160
+#: blueprints/dashboard/templates/index.html:206
+#: blueprints/dashboard/templates/index.html:252
+#: blueprints/manage/templates/modal_case_info_from_case.html:318
 #: blueprints/overview/templates/overview.html:31
 msgid "Refresh"
 msgstr "Обновить"
@@ -54,8 +55,8 @@ msgstr "Пользователь"
 
 #: blueprints/activities/templates/activities.html:40
 #: blueprints/activities/templates/activities.html:50
-#: blueprints/dashboard/templates/index.html:150
-#: blueprints/dashboard/templates/index.html:160
+#: blueprints/dashboard/templates/index.html:173
+#: blueprints/dashboard/templates/index.html:183
 #: blueprints/search/templates/search.html:89
 #: blueprints/search/templates/search.html:99
 #: blueprints/search/templates/search.html:120
@@ -155,12 +156,12 @@ msgstr "Алертов на странице"
 #: blueprints/alerts/templates/alerts.html:101
 #: blueprints/case/templates/case_tasks.html:57
 #: blueprints/case/templates/case_tasks.html:67
-#: blueprints/dashboard/templates/index.html:147
-#: blueprints/dashboard/templates/index.html:157
-#: blueprints/dashboard/templates/index.html:193
-#: blueprints/dashboard/templates/index.html:202
-#: blueprints/dashboard/templates/index.html:239
-#: blueprints/dashboard/templates/index.html:249
+#: blueprints/dashboard/templates/index.html:170
+#: blueprints/dashboard/templates/index.html:180
+#: blueprints/dashboard/templates/index.html:216
+#: blueprints/dashboard/templates/index.html:225
+#: blueprints/dashboard/templates/index.html:262
+#: blueprints/dashboard/templates/index.html:272
 #: blueprints/overview/templates/overview.html:58
 #: blueprints/overview/templates/overview.html:74
 msgid "Title"
@@ -177,12 +178,12 @@ msgstr "Заголовок"
 #: blueprints/case/templates/case_tasks.html:68
 #: blueprints/case/templates/modal_add_case_asset.html:54
 #: blueprints/case/templates/modal_add_case_ioc.html:74
-#: blueprints/dashboard/templates/index.html:148
-#: blueprints/dashboard/templates/index.html:158
-#: blueprints/dashboard/templates/index.html:194
-#: blueprints/dashboard/templates/index.html:203
-#: blueprints/dashboard/templates/index.html:240
-#: blueprints/dashboard/templates/index.html:250
+#: blueprints/dashboard/templates/index.html:171
+#: blueprints/dashboard/templates/index.html:181
+#: blueprints/dashboard/templates/index.html:217
+#: blueprints/dashboard/templates/index.html:226
+#: blueprints/dashboard/templates/index.html:263
+#: blueprints/dashboard/templates/index.html:273
 #: blueprints/search/templates/search.html:87
 #: blueprints/search/templates/search.html:97
 msgid "Description"
@@ -193,19 +194,19 @@ msgid "Source"
 msgstr "Источник"
 
 #: blueprints/alerts/templates/alerts.html:113
-#: blueprints/alerts/templates/alerts.html:341
+#: blueprints/alerts/templates/alerts.html:333
 #: blueprints/case/templates/case_assets.html:67
 #: blueprints/case/templates/case_assets.html:79
 #: blueprints/case/templates/case_ioc.html:66
 #: blueprints/case/templates/case_ioc.html:76
 #: blueprints/case/templates/case_tasks.html:62
 #: blueprints/case/templates/case_tasks.html:72
-#: blueprints/dashboard/templates/index.html:152
-#: blueprints/dashboard/templates/index.html:162
-#: blueprints/dashboard/templates/index.html:197
-#: blueprints/dashboard/templates/index.html:206
-#: blueprints/dashboard/templates/index.html:244
-#: blueprints/dashboard/templates/index.html:254
+#: blueprints/dashboard/templates/index.html:175
+#: blueprints/dashboard/templates/index.html:185
+#: blueprints/dashboard/templates/index.html:220
+#: blueprints/dashboard/templates/index.html:229
+#: blueprints/dashboard/templates/index.html:267
+#: blueprints/dashboard/templates/index.html:277
 #: blueprints/overview/templates/overview.html:62
 #: blueprints/overview/templates/overview.html:78
 msgid "Tags"
@@ -214,21 +215,23 @@ msgstr "Теги"
 #: blueprints/alerts/templates/alerts.html:119
 #: blueprints/case/templates/case_tasks.html:59
 #: blueprints/case/templates/case_tasks.html:69
-#: blueprints/dashboard/templates/index.html:149
-#: blueprints/dashboard/templates/index.html:159
-#: blueprints/dashboard/templates/index.html:241
-#: blueprints/dashboard/templates/index.html:251
+#: blueprints/dashboard/templates/index.html:172
+#: blueprints/dashboard/templates/index.html:182
+#: blueprints/dashboard/templates/index.html:264
+#: blueprints/dashboard/templates/index.html:274
 msgid "Status"
 msgstr "Статус"
 
 #: blueprints/alerts/templates/alerts.html:124
-#: blueprints/alerts/templates/alerts.html:352
+#: blueprints/alerts/templates/alerts.html:344
+#: blueprints/manage/templates/modal_case_info_from_case.html:247
 #: blueprints/overview/templates/overview.html:57
 msgid "Severity"
 msgstr "Серьезность"
 
 #: blueprints/alerts/templates/alerts.html:129
-#: blueprints/alerts/templates/alerts.html:347
+#: blueprints/alerts/templates/alerts.html:339
+#: blueprints/manage/templates/modal_case_info_from_case.html:167
 #: blueprints/overview/templates/overview.html:60
 #: blueprints/overview/templates/overview.html:76
 msgid "Classification"
@@ -236,6 +239,7 @@ msgstr "Классификация"
 
 #: blueprints/alerts/templates/alerts.html:134
 #: blueprints/case/templates/case.html:49
+#: blueprints/manage/templates/modal_case_info_from_case.html:222
 #: blueprints/overview/templates/overview.html:59
 #: blueprints/overview/templates/overview.html:75
 #: blueprints/search/templates/search.html:90
@@ -283,6 +287,7 @@ msgid "Case ID"
 msgstr "ID Кейса"
 
 #: blueprints/alerts/templates/alerts.html:177
+#: blueprints/manage/templates/modal_case_info_from_case.html:180
 #: blueprints/overview/templates/overview.html:66
 #: blueprints/overview/templates/overview.html:82
 msgid "Owner"
@@ -326,42 +331,39 @@ msgid "Resolution status"
 msgstr "Статус обработки"
 
 #: blueprints/alerts/templates/alerts.html:311
-msgid "Not applicable"
-msgstr "Не применимо"
-
-#: blueprints/alerts/templates/alerts.html:315
-msgid "False positive"
-msgstr "Ложное срабатывание"
-
-#: blueprints/alerts/templates/alerts.html:319
-msgid "True positive without impact"
-msgstr "Подтверждённая угроза без последствий"
-
-#: blueprints/alerts/templates/alerts.html:323
-msgid "True positive with impact"
-msgstr "Подтверждённая угроза с последствиями"
-
-#: blueprints/alerts/templates/alerts.html:327
-msgid "Legitimate"
-msgstr "Легитимно"
-
-#: blueprints/alerts/templates/alerts.html:331
+#: blueprints/manage/templates/modal_case_info_from_case.html:87
+#: blueprints/manage/templates/modal_case_info_from_case.html:210
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: blueprints/alerts/templates/alerts.html:337
+#: blueprints/alerts/templates/alerts.html:315
+msgid "False positive"
+msgstr "Ложноположительный"
+
+#: blueprints/alerts/templates/alerts.html:319
+msgid "True positive"
+msgstr "Подтверждённая угроза"
+
+#: blueprints/alerts/templates/alerts.html:323
+#: blueprints/manage/templates/modal_case_info_from_case.html:213
+msgid "Legitimate"
+msgstr "Легитимный"
+
+#: blueprints/alerts/templates/alerts.html:329
 msgid "Note"
 msgstr "Заметка"
 
-#: blueprints/alerts/templates/alerts.html:357
+#: blueprints/alerts/templates/alerts.html:349
 msgid "Close Alert"
 msgstr "Закрыть Алерт"
 
-#: blueprints/alerts/templates/alerts.html:358
+#: blueprints/alerts/templates/alerts.html:350
 #: blueprints/alerts/templates/modal_escalate.html:81
 #: blueprints/alerts/templates/modal_new_alert_owner.html:17
 #: blueprints/case/templates/case.html:278
+#: blueprints/case/templates/case.html:314
 #: blueprints/case/templates/modal_conversation.html:49
+#: blueprints/manage/templates/modal_case_info_from_case.html:405
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -563,8 +565,45 @@ msgid "Case summary"
 msgstr "Сводка"
 
 #: blueprints/case/templates/case.html:131
+#: blueprints/manage/templates/modal_case_info_from_case.html:48
 msgid "Edit"
 msgstr "Редактировать"
+
+#: blueprints/case/templates/case.html:175
+msgid "Select report template"
+msgstr "Выбрать шаблон отчета"
+
+#: blueprints/case/templates/case.html:182
+#: blueprints/case/templates/case.html:225
+msgid "No report template found"
+msgstr "Не найдено шаблона отчета"
+
+#: blueprints/case/templates/case.html:183
+#: blueprints/case/templates/case.html:226
+msgid "Report templates are configured in"
+msgstr "Шаблоны отчета сконфигурированы в"
+
+#: blueprints/case/templates/case.html:183
+#: blueprints/case/templates/case.html:226
+msgid "the management section"
+msgstr ""
+
+#: blueprints/case/templates/case.html:187
+#: blueprints/case/templates/case.html:230
+msgid ""
+"Since IRIS v2.0.0, the report generation supports images. Integration of "
+"images might fail depending on the situation."
+msgstr ""
+
+#: blueprints/case/templates/case.html:187
+#: blueprints/case/templates/case.html:230
+msgid "Safe Mode"
+msgstr "Безопасный режим"
+
+#: blueprints/case/templates/case.html:187
+#: blueprints/case/templates/case.html:230
+msgid "can be used to generate the report without them."
+msgstr ""
 
 #: blueprints/case/templates/case.html:201
 #: blueprints/case/templates/case.html:245
@@ -575,6 +614,10 @@ msgstr "Сгенерировать в безопасном режиме"
 #: blueprints/case/templates/case.html:251
 msgid "Generate"
 msgstr "Сгененрировать"
+
+#: blueprints/case/templates/case.html:218
+msgid "Select activity report template"
+msgstr "Выбрать шаблона отчета активности"
 
 #: blueprints/case/templates/case.html:263
 msgid "Choose reviewer"
@@ -591,6 +634,10 @@ msgstr "Обзор кейса"
 #: blueprints/case/templates/case.html:309
 msgid "Do you confirm that the case has been reviewed?"
 msgstr "Вы подтверждаете, что кейс был проверен?"
+
+#: blueprints/case/templates/case.html:315
+msgid "Confirm Review"
+msgstr "Подтвердить проверку"
 
 #: blueprints/case/templates/case_assets.html:21
 #: blueprints/case/templates/case_graph.html:24
@@ -618,6 +665,10 @@ msgstr "Загрузить ресурсы из CSV"
 #: blueprints/case/templates/case_assets.html:73
 #: blueprints/case/templates/case_rfile.html:55
 #: blueprints/case/templates/case_rfile.html:65
+#: blueprints/manage/templates/modal_case_info_from_case.html:284
+#: blueprints/manage/templates/modal_case_info_from_case.html:286
+#: blueprints/manage/templates/modal_case_info_from_case.html:363
+#: blueprints/manage/templates/modal_case_info_from_case.html:365
 #: blueprints/profile/templates/profile.html:37
 #: blueprints/search/templates/search.html:86
 #: blueprints/search/templates/search.html:96
@@ -720,6 +771,7 @@ msgid "Upload IOC list (CSV format)"
 msgstr "Загрузить список IOC (в формате CSV)"
 
 #: blueprints/case/templates/case_md_helper.html:5
+#: templates/includes/quick-sidebar.html:41
 msgid "Shortcuts"
 msgstr "Ярлыки"
 
@@ -773,7 +825,9 @@ msgstr "Поиск в заметках"
 
 #: blueprints/case/templates/case_notes_v2.html:53
 msgid "Select a note on the left pane or click here to add a directory"
-msgstr "Выберите заметку в левой панели или нажмите здесь, чтобы добавить директорию"
+msgstr ""
+"Выберите заметку в левой панели или нажмите здесь, чтобы добавить "
+"директорию"
 
 #: blueprints/case/templates/case_notes_v2.html:54
 msgid "Right-click on a directory to add a note"
@@ -831,8 +885,8 @@ msgstr "Добавить задачу"
 
 #: blueprints/case/templates/case_tasks.html:60
 #: blueprints/case/templates/case_tasks.html:70
-#: blueprints/dashboard/templates/index.html:242
-#: blueprints/dashboard/templates/index.html:252
+#: blueprints/dashboard/templates/index.html:265
+#: blueprints/dashboard/templates/index.html:275
 msgid "Assigned to"
 msgstr "Назначено на"
 
@@ -994,6 +1048,7 @@ msgstr "Обновить"
 #: blueprints/case/templates/modal_add_case_ioc.html:120
 #: blueprints/case/templates/modal_conversation.html:47
 #: blueprints/case/templates/modal_note_edit.html:97
+#: blueprints/manage/templates/modal_case_info_from_case.html:406
 msgid "Save"
 msgstr "Сохранить"
 
@@ -1031,78 +1086,272 @@ msgstr "У вас нет назначенных кейсов"
 msgid "The page you’re looking for is only available when a case is selected."
 msgstr "Страница доступна только после выбора кейса"
 
-#: blueprints/dashboard/templates/index.html:18
+#: blueprints/dashboard/templates/index.html:17
 #: templates/includes/sidenav.html:45
 msgid "Dashboard"
 msgstr "Обзорная панель"
 
-#: blueprints/dashboard/templates/index.html:47
+#: blueprints/dashboard/templates/index.html:52
+msgid "Generate Reports"
+msgstr "Сформировать отчеты"
+
+#: blueprints/dashboard/templates/index.html:70
 msgid "Cases (open / all)"
 msgstr "Кейсы (открытые / все)"
 
-#: blueprints/dashboard/templates/index.html:66
-#: blueprints/dashboard/templates/index.html:176
+#: blueprints/dashboard/templates/index.html:89
+#: blueprints/dashboard/templates/index.html:199
 msgid "Attributed open cases"
 msgstr "Назначенные кейсы"
 
-#: blueprints/dashboard/templates/index.html:85
-#: blueprints/dashboard/templates/index.html:133
+#: blueprints/dashboard/templates/index.html:108
+#: blueprints/dashboard/templates/index.html:156
 msgid "Attributed open tasks"
 msgstr "Назначенные открытые задачи"
 
-#: blueprints/dashboard/templates/index.html:98
+#: blueprints/dashboard/templates/index.html:121
 msgid "Attributed cases review"
 msgstr "Кейсы на проверку"
 
-#: blueprints/dashboard/templates/index.html:112
-#: blueprints/dashboard/templates/index.html:118
+#: blueprints/dashboard/templates/index.html:135
+#: blueprints/dashboard/templates/index.html:141
+#: blueprints/manage/templates/modal_case_info_from_case.html:149
 msgid "Case name"
 msgstr "Имя кейса"
 
-#: blueprints/dashboard/templates/index.html:113
-#: blueprints/dashboard/templates/index.html:119
+#: blueprints/dashboard/templates/index.html:136
+#: blueprints/dashboard/templates/index.html:142
 msgid "Review Status"
 msgstr "Статус проверки"
 
-#: blueprints/dashboard/templates/index.html:151
-#: blueprints/dashboard/templates/index.html:161
-#: blueprints/dashboard/templates/index.html:243
-#: blueprints/dashboard/templates/index.html:253
+#: blueprints/dashboard/templates/index.html:174
+#: blueprints/dashboard/templates/index.html:184
+#: blueprints/dashboard/templates/index.html:266
+#: blueprints/dashboard/templates/index.html:276
 msgid "Last update"
 msgstr "Последнее обновление"
 
-#: blueprints/dashboard/templates/index.html:180
+#: blueprints/dashboard/templates/index.html:203
 #: blueprints/overview/templates/overview.html:38
 msgid "Show closed cases"
 msgstr "Отображать закрытые кейсы"
 
-#: blueprints/dashboard/templates/index.html:195
-#: blueprints/dashboard/templates/index.html:204
+#: blueprints/dashboard/templates/index.html:218
+#: blueprints/dashboard/templates/index.html:227
 msgid "Client"
 msgstr "Клиент"
 
-#: blueprints/dashboard/templates/index.html:196
-#: blueprints/dashboard/templates/index.html:205
+#: blueprints/dashboard/templates/index.html:219
+#: blueprints/dashboard/templates/index.html:228
 msgid "Opening date"
 msgstr "Дата открытия"
 
-#: blueprints/dashboard/templates/index.html:226
+#: blueprints/dashboard/templates/index.html:249
 msgid "Add global task"
 msgstr "Добавить общую задачу"
 
-#: blueprints/overview/templates/overview.html:55
-msgid "Outcome"
-msgstr "Результат"
+#: blueprints/manage/templates/manage_srv_settings.html:18
+msgid "Server versions"
+msgstr "Версии сервера"
 
+#: blueprints/manage/templates/manage_srv_settings.html:54
+msgid "Global settings"
+msgstr "Глобавльные настройки"
+
+#: blueprints/manage/templates/manage_srv_settings.html:61
+msgid "Proxy"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:72
+msgid "HTTP Proxy"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:82
+msgid "HTTPS Proxy"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:102
+msgid "Password Policy"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:112
+msgid "12"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:122
+msgid "Set empty to disable"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:131
+msgid "Must include uppercase char"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:137
+msgid "Must include lowercase char"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:143
+msgid "Must include digits"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:155
+msgid "Enforce MFA for all users"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:162
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: blueprints/manage/templates/manage_srv_settings.html:174
+msgid "Backups"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:179
+msgid "Database"
+msgstr "База данных"
+
+#: blueprints/manage/templates/manage_srv_settings.html:182
+msgid "Backup database"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:194
+msgid "Data Management"
+msgstr ""
+
+#: blueprints/manage/templates/manage_srv_settings.html:199
+#: blueprints/manage/templates/manage_srv_settings.html:221
+msgid "Delete Cases"
+msgstr "Удалить кейсы"
+
+#: blueprints/manage/templates/manage_srv_settings.html:206
+msgid "Start Date"
+msgstr "От"
+
+#: blueprints/manage/templates/manage_srv_settings.html:214
+msgid "End Date"
+msgstr "До"
+
+#: blueprints/manage/templates/manage_srv_settings.html:234
+msgid "Server Updates"
+msgstr "Обновления сервера"
+
+#: blueprints/manage/templates/manage_srv_settings.html:241
+msgid "Please wait while we look for updates"
+msgstr "Пожалуйста, подождите, пока мы ищем обновления"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:19
+msgid "Info"
+msgstr "Информация"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:22
+msgid "Access"
+msgstr "Доступ"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:48
+msgid "General info"
+msgstr "Общая информация"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:141
+msgid "Edit case information"
+msgstr "Редактировать информацию о кейсе"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:157
+msgid "SOC ticket ID"
+msgstr "ID тикета SOC"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:192
 #: blueprints/overview/templates/overview.html:61
 #: blueprints/overview/templates/overview.html:77
 msgid "State"
 msgstr "Статус"
 
+#: blueprints/manage/templates/modal_case_info_from_case.html:205
+#: blueprints/overview/templates/overview.html:55
+msgid "Outcome"
+msgstr "Результат"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:211
+msgid "False Positive"
+msgstr "Ложное срабатывание"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:212
+msgid "True Positive"
+msgstr "Подтвержденная угроза"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:235
+msgid "Reviewer"
+msgstr "Рецензент"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:277
+#: blueprints/manage/templates/modal_case_info_from_case.html:279
+#: blueprints/manage/templates/modal_case_info_from_case.html:356
+#: blueprints/manage/templates/modal_case_info_from_case.html:358
+msgid "Role"
+msgstr "Роль"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:291
+#: blueprints/manage/templates/modal_case_info_from_case.html:293
+#: blueprints/manage/templates/modal_case_info_from_case.html:370
+#: blueprints/manage/templates/modal_case_info_from_case.html:372
+msgid "Contact"
+msgstr "Контакт"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:305
+msgid "Add protagonist"
+msgstr "Добавить участника"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:315
+msgid "Case access"
+msgstr "Доступ к кейсу"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:319
+msgid "Set access via group"
+msgstr "Установить доступ через группу"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:327
+#: blueprints/manage/templates/modal_case_info_from_case.html:335
+msgid "User ID"
+msgstr "ID пользователя"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:328
+#: blueprints/manage/templates/modal_case_info_from_case.html:336
+msgid "User Name"
+msgstr "Имя пользователя"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:329
+#: blueprints/manage/templates/modal_case_info_from_case.html:337
+msgid "User Login"
+msgstr "Логин пользователя"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:330
+#: blueprints/manage/templates/modal_case_info_from_case.html:338
+msgid "User Access"
+msgstr "Доступ пользователя"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:353
+msgid "Protagonist"
+msgstr "Участник"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:396
+msgid "Delete case"
+msgstr "Удалить кейс"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:400
+msgid "Close case"
+msgstr "Закрыть кейс"
+
+#: blueprints/manage/templates/modal_case_info_from_case.html:403
+msgid "Reopen case"
+msgstr "Переоткрыть кейс"
+
 #: blueprints/overview/templates/overview.html:63
 #: blueprints/overview/templates/overview.html:79
 msgid "Open since"
 msgstr "Открыто с"
+
+#: blueprints/profile/templates/profile.html:27
+msgid "Forensicator"
+msgstr "Криминалист"
 
 #: blueprints/profile/templates/profile.html:48
 msgid "Username"
@@ -1143,6 +1392,10 @@ msgstr "Сменить пароль"
 #: blueprints/search/templates/search.html:17
 msgid "Search across cases"
 msgstr "Поиск среди кейсов"
+
+#: blueprints/search/templates/search.html:23
+msgid "Search term - You can use % as a wilcard.   Search is context-free."
+msgstr "Поисковый термин - можно использовать % как подстановочный знак. Поиск не зависит от контекста."
 
 #: blueprints/search/templates/search.html:25
 #: templates/includes/sidenav.html:86
@@ -1201,17 +1454,33 @@ msgstr "Сменить контекст"
 msgid "Switch"
 msgstr "Выбрать другой"
 
+#: templates/includes/footer.html:47 templates/includes/quick-sidebar.html:95
+msgid "Add task log"
+msgstr "Добавить запись о задаче"
+
 #: templates/includes/footer.html:55
 msgid "Add a task log that will be registered under activities"
 msgstr "Добавить задачу в журнал действий"
+
+#: templates/includes/footer.html:56
+msgid "Log content"
+msgstr "Содержимое журнала"
 
 #: templates/includes/footer.html:61 templates/includes/footer.html:91
 msgid "Submit"
 msgstr "Подтвердить"
 
+#: templates/includes/footer.html:76
+msgid "Datastore folder"
+msgstr "Папка хранилища данных"
+
 #: templates/includes/footer.html:84
 msgid "Input the folder name below"
 msgstr "Укажите имя папки ниже"
+
+#: templates/includes/footer.html:85
+msgid "Folder name"
+msgstr "Имя папки"
 
 #: templates/includes/footer.html:112
 msgid "Task info"
@@ -1225,8 +1494,16 @@ msgstr "Сохранить фильтр"
 msgid "Filter Name"
 msgstr "Имя фильтра"
 
+#: templates/includes/footer.html:138
+msgid "Filter name"
+msgstr "Имя фильтра"
+
 #: templates/includes/footer.html:141
 msgid "Filter Description"
+msgstr "Описание фильтра"
+
+#: templates/includes/footer.html:142
+msgid "Filter description"
 msgstr "Описание фильтра"
 
 #: templates/includes/footer.html:147
@@ -1236,6 +1513,21 @@ msgstr "Приватный фильтр"
 #: templates/includes/footer.html:148
 msgid "If checked, the filter will be only visible to you"
 msgstr "Если отмечено, фильтр будет виден только вам"
+
+#: templates/includes/navigation.html:38
+msgid "Go to case number #"
+msgstr "Перейти к номеру кейса #"
+
+#: templates/includes/navigation.html:48
+#: templates/includes/navigation_ext.html:34
+#: templates/includes/quick-sidebar.html:115
+msgid "Switch case"
+msgstr "Сменить кейс"
+
+#: templates/includes/navigation.html:48
+#: templates/includes/navigation_ext.html:34
+msgid "No context"
+msgstr "Нет контекста"
 
 #: templates/includes/quick-sidebar.html:8 templates/includes/sidenav.html:94
 msgid "Activities"
@@ -1261,17 +1553,9 @@ msgstr "Добавить заметку"
 msgid "Upload evidence"
 msgstr "Загрузить доказательство"
 
-#: templates/includes/quick-sidebar.html:95
-msgid "Add task log"
-msgstr "Добавить запись о задаче"
-
 #: templates/includes/quick-sidebar.html:103
 msgid "Register evidence"
 msgstr "Добавить доказательство"
-
-#: templates/includes/quick-sidebar.html:115
-msgid "Switch case"
-msgstr "Сменить кейс"
 
 #: templates/includes/sidenav.html:28
 msgid "My settings"
@@ -1304,6 +1588,10 @@ msgstr "Управление кейсом"
 #: templates/includes/sidenav.html:122
 msgid "Advanced"
 msgstr "Дополнительно"
+
+#: templates/includes/sidenav.html:132
+msgid "Modules"
+msgstr "Модули"
 
 #: templates/includes/sidenav.html:140
 msgid "Customers"

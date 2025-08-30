@@ -172,19 +172,19 @@
                 <div class="modal-lg modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-header">
-                      <h5>Select report template</h5>
+                      <h5>{{_('Select report template')}}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                       </div>
                       <div class="modal-body">
                           {% if reports| length == 0 %}
                               <div class="alert alert-warning" role="alert">
-                                  <h4 class="alert-heading">No report template found</h4>
-                                  <p>Report templates are configured in <a href="/manage/templates?cid={{case.case_id}}">the management section</a>.</p>
+                                  <h4 class="alert-heading">{{_('No report template found')}}</h4>
+                                  <p>{{_('Report templates are configured in')}} <a href="/manage/templates?cid={{case.case_id}}">{{_('the management section')}}</a>.</p>
                               </div>
                           {% else %}
                           <div class="col">
-                            <p>Since IRIS v2.0.0, the report generation supports images. Integration of images might fail depending on the situation.<br/><code>Safe Mode</code> can be used to generate the report without them.</p>
+                            <p>{{_('Since IRIS v2.0.0, the report generation supports images. Integration of images might fail depending on the situation.')}}<br/><code>{{_('Safe Mode')}}</code> {{_('can be used to generate the report without them.')}}</p>
                           </div>
 
                           <select class="selectpicker form-control bg-outline-success dropdown-submenu" data-show-subtext="true" data-live-search="true" id="select_report">
@@ -215,19 +215,19 @@
                 <div class="modal-lg modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-header">
-                      <h5>Select activity report template</h5>
+                      <h5>{{_('Select activity report template')}}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                       </div>
                       <div class="modal-body">
                           {% if reports| length == 0 %}
                               <div class="alert alert-warning" role="alert">
-                                  <h4 class="alert-heading">No report template found</h4>
-                                  <p>Report templates are configured in <a href="/manage/templates?cid={{case.case_id}}">the management section</a>.</p>
+                                  <h4 class="alert-heading">{{_('No report template found')}}</h4>
+                                  <p>{{_('Report templates are configured in')}} <a href="/manage/templates?cid={{case.case_id}}">{{_('the management section')}}</a>.</p>
                               </div>
                           {% else %}
                               <div class="col">
-                                <p>Since IRIS v2.0.0, the report generation supports images. Integration of images might fail depending on the situation.<br/><code>Safe Mode</code> can be used to generate the report without them.</p>
+                                <p>{{_('Since IRIS v2.0.0, the report generation supports images. Integration of images might fail depending on the situation.')}}<br/><code>{{_('Safe Mode')}}</code> {{_('can be used to generate the report without them.')}}</p>
                               </div>
                               <select class="selectpicker form-control bg-outline-success dropdown-submenu mb-2" data-show-subtext="true" data-live-search="true" id="select_report_act">
                                     {% for report in reports_act %}
@@ -311,8 +311,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-success float-right" id="confirmReview">Confirm Review</button>
+                                    <button type="button" class="btn btn-danger float-left" data-dismiss="modal">{{_('Cancel')}}</button>
+                                    <button type="button" class="btn btn-success float-right" id="confirmReview">{{_('Confirm Review')}}</button>
                                 </div>
                             </div>
                         </div>

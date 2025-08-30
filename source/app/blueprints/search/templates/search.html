@@ -20,7 +20,7 @@
                     <form method="post" action="" id="form_search">
                         {{ form.hidden_tag() }}
                         <div class="input-group">
-                            {{ form.search_value(placeholder="Search term - You can use % as a wilcard.   Search is context-free." , class="form-control", type="text") }}
+                            {{ form.search_value(placeholder=_("Search term - You can use % as a wilcard.   Search is context-free.") , class="form-control", type="text") }}
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-sm btn-outline-success" id="submit_search">{{_('Search')}}</button>
                             </div>

@@ -35,7 +35,7 @@
 										<li>
 											<div class="ml-2 mr-2 mt-2 mb-2 d-flex justify-content-between align-items-center">
 												<div class="input-group">
-												  <input type="number" min="1" class="form-control" placeholder="Go to case number #" id="goto_case_number_input" aria-label="Go to case number #">
+												  <input type="number" min="1" class="form-control" placeholder="{{_('Go to case number #')}}" id="goto_case_number_input" aria-label="{{_('Go to case number #')}}">
 												   <div class="input-group-append">
 													<button class="btn btn-sm btn-outline-dark" type="button" title="Go" onclick="goto_case_number();">Go</button>
 												  </div>
@@ -45,7 +45,7 @@
 									</ul>
 									<a class="text-light" title="Switch case" onclick="load_context_switcher();return false;" href="#">{{ session['current_case'].case_name }}</a> {{ session['current_case'].access|safe }}</div>
 								{% else %}
-								<div class="text-warning" style="cursor:pointer;" title="Switch case" onclick="load_context_switcher();return false;">No context</div>
+								<div class="text-warning" style="cursor:pointer;" title="{{_('Switch case')}}" onclick="load_context_switcher();return false;">{{_('No context')}}</div>
 								{% endif %}
 							</div>
 					</div>
