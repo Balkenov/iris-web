@@ -36,21 +36,21 @@ msgstr ""
 #: blueprints/manage/templates/modal_case_info_from_case.html:318
 #: blueprints/overview/templates/overview.html:31
 msgid "Refresh"
-msgstr ""
+msgstr "Жаңарту"
 
 #: blueprints/activities/templates/activities.html:28
 msgid "Show non case related activity"
-msgstr ""
+msgstr "Іс-шараға қатысы жоқ белсенділікті көрсету"
 
 #: blueprints/activities/templates/activities.html:38
 #: blueprints/activities/templates/activities.html:48
 msgid "Date"
-msgstr ""
+msgstr "Күні"
 
 #: blueprints/activities/templates/activities.html:39
 #: blueprints/activities/templates/activities.html:49
 msgid "User"
-msgstr ""
+msgstr "Пайдаланушы"
 
 #: blueprints/activities/templates/activities.html:40
 #: blueprints/activities/templates/activities.html:50
@@ -62,95 +62,95 @@ msgstr ""
 #: blueprints/search/templates/search.html:128
 #: templates/includes/quick-sidebar.html:7 templates/includes/sidenav.html:71
 msgid "Case"
-msgstr ""
+msgstr "Іс-шара"
 
 #: blueprints/activities/templates/activities.html:41
 #: blueprints/activities/templates/activities.html:51
 msgid "Manual input"
-msgstr ""
+msgstr "Қолмен енгізу"
 
 #: blueprints/activities/templates/activities.html:42
 #: blueprints/activities/templates/activities.html:52
 msgid "From API"
-msgstr ""
+msgstr "API арқылы"
 
 #: blueprints/activities/templates/activities.html:43
 #: blueprints/activities/templates/activities.html:53
 msgid "Activity"
-msgstr ""
+msgstr "Белсенділік"
 
 #: blueprints/alerts/templates/alerts.html:28
 msgid "Filter"
-msgstr ""
+msgstr "Сүзгі"
 
 #: blueprints/alerts/templates/alerts.html:33
 msgid "Clear Filters"
-msgstr ""
+msgstr "Сүзгілерді тазалау"
 
 #: blueprints/alerts/templates/alerts.html:42
 #: blueprints/alerts/templates/modal_escalate.html:82
 msgid "Merge"
-msgstr ""
+msgstr "Біріктіру"
 
 #: blueprints/alerts/templates/alerts.html:48
 msgid "Assign to me"
-msgstr ""
+msgstr "Маған тағайындау"
 
 #: blueprints/alerts/templates/alerts.html:49
 #: blueprints/alerts/templates/modal_new_alert_owner.html:18
 msgid "Assign"
-msgstr ""
+msgstr "Тағайындау"
 
 #: blueprints/alerts/templates/alerts.html:55
 msgid "Set status"
-msgstr ""
+msgstr "Күйді орнату"
 
 #: blueprints/alerts/templates/alerts.html:58
 msgid "New"
-msgstr ""
+msgstr "Жаңа"
 
 #: blueprints/alerts/templates/alerts.html:59
 msgid "In progress"
-msgstr ""
+msgstr "Жүріп жатыр"
 
 #: blueprints/alerts/templates/alerts.html:60
 msgid "Pending"
-msgstr ""
+msgstr "Күтуде"
 
 #: blueprints/alerts/templates/alerts.html:61
 msgid "Closed"
-msgstr ""
+msgstr "Жабылған"
 
 #: blueprints/alerts/templates/alerts.html:62
 msgid "Merged"
-msgstr ""
+msgstr "Біріктірілген"
 
 #: blueprints/alerts/templates/alerts.html:66
 msgid "Close with note"
-msgstr ""
+msgstr "Ескертпемен жабу"
 
 #: blueprints/alerts/templates/alerts.html:67
 #: blueprints/case/templates/modal_add_case_asset.html:129
 #: blueprints/case/templates/modal_add_case_event.html:247
 #: blueprints/case/templates/modal_add_case_ioc.html:113
 msgid "Delete"
-msgstr ""
+msgstr "Жою"
 
 #: blueprints/alerts/templates/alerts.html:69
 msgid "Select all"
-msgstr ""
+msgstr "Барлығын таңдау"
 
 #: blueprints/alerts/templates/alerts.html:71
 msgid "Select"
-msgstr ""
+msgstr "Таңдау"
 
 #: blueprints/alerts/templates/alerts.html:74
 msgid "Expand All"
-msgstr ""
+msgstr "Барлығын кеңейту"
 
 #: blueprints/alerts/templates/alerts.html:80
 msgid "Alerts per page"
-msgstr ""
+msgstr "Бетке ескертулер"
 
 #: blueprints/alerts/templates/alerts.html:101
 #: blueprints/case/templates/case_tasks.html:57
@@ -164,7 +164,7 @@ msgstr ""
 #: blueprints/overview/templates/overview.html:58
 #: blueprints/overview/templates/overview.html:74
 msgid "Title"
-msgstr ""
+msgstr "Тақырып"
 
 #: blueprints/alerts/templates/alerts.html:105
 #: blueprints/case/templates/case_assets.html:63
@@ -186,11 +186,11 @@ msgstr ""
 #: blueprints/search/templates/search.html:87
 #: blueprints/search/templates/search.html:97
 msgid "Description"
-msgstr ""
+msgstr "Сипаттама"
 
 #: blueprints/alerts/templates/alerts.html:109
 msgid "Source"
-msgstr ""
+msgstr "Көз"
 
 #: blueprints/alerts/templates/alerts.html:113
 #: blueprints/alerts/templates/alerts.html:333
@@ -209,7 +209,7 @@ msgstr ""
 #: blueprints/overview/templates/overview.html:62
 #: blueprints/overview/templates/overview.html:78
 msgid "Tags"
-msgstr ""
+msgstr "Тегтер"
 
 #: blueprints/alerts/templates/alerts.html:119
 #: blueprints/case/templates/case_tasks.html:59
@@ -219,14 +219,14 @@ msgstr ""
 #: blueprints/dashboard/templates/index.html:264
 #: blueprints/dashboard/templates/index.html:274
 msgid "Status"
-msgstr ""
+msgstr "Күй"
 
 #: blueprints/alerts/templates/alerts.html:124
 #: blueprints/alerts/templates/alerts.html:344
 #: blueprints/manage/templates/modal_case_info_from_case.html:247
 #: blueprints/overview/templates/overview.html:57
 msgid "Severity"
-msgstr ""
+msgstr "Ауырлық"
 
 #: blueprints/alerts/templates/alerts.html:129
 #: blueprints/alerts/templates/alerts.html:339
@@ -234,7 +234,7 @@ msgstr ""
 #: blueprints/overview/templates/overview.html:60
 #: blueprints/overview/templates/overview.html:76
 msgid "Classification"
-msgstr ""
+msgstr "Сыныптау"
 
 #: blueprints/alerts/templates/alerts.html:134
 #: blueprints/case/templates/case.html:49
@@ -246,115 +246,115 @@ msgstr ""
 #: blueprints/search/templates/search.html:121
 #: blueprints/search/templates/search.html:129
 msgid "Customer"
-msgstr ""
+msgstr "Тұтынушы"
 
 #: blueprints/alerts/templates/alerts.html:141
 msgid "Source Start Date"
-msgstr ""
+msgstr "Көз басталу күні"
 
 #: blueprints/alerts/templates/alerts.html:145
 msgid "Source End Date"
-msgstr ""
+msgstr "Көз аяқталу күні"
 
 #: blueprints/alerts/templates/alerts.html:149
 msgid "Creation Start Date"
-msgstr ""
+msgstr "Жасалу басталу күні"
 
 #: blueprints/alerts/templates/alerts.html:153
 msgid "Creation End Date"
-msgstr ""
+msgstr "Жасалу аяқталу күні"
 
 #: blueprints/alerts/templates/alerts.html:157
 msgid "Asset(s) name"
-msgstr ""
+msgstr "Актив(тер) атауы"
 
 #: blueprints/alerts/templates/alerts.html:161
 msgid "IOC(s)"
-msgstr ""
+msgstr "IOC(лар)"
 
 #: blueprints/alerts/templates/alerts.html:165
 msgid "Alert(s) ID"
-msgstr ""
+msgstr "Ескерту(лер) ID"
 
 #: blueprints/alerts/templates/alerts.html:169
 msgid "Source Reference"
-msgstr ""
+msgstr "Көз сілтемесі"
 
 #: blueprints/alerts/templates/alerts.html:173
 #: blueprints/overview/templates/overview.html:56
 msgid "Case ID"
-msgstr ""
+msgstr "Іс-шара ID"
 
 #: blueprints/alerts/templates/alerts.html:177
 #: blueprints/manage/templates/modal_case_info_from_case.html:180
 #: blueprints/overview/templates/overview.html:66
 #: blueprints/overview/templates/overview.html:82
 msgid "Owner"
-msgstr ""
+msgstr "Иесі"
 
 #: blueprints/alerts/templates/alerts.html:182
 msgid "Resolution Status"
-msgstr ""
+msgstr "Шешім күйі"
 
 #: blueprints/alerts/templates/alerts.html:190
 #: blueprints/alerts/templates/alerts.html:201
 msgid "Custom Conditions"
-msgstr ""
+msgstr "Арнайы шарттар"
 
 #: blueprints/alerts/templates/alerts.html:193
 msgid "Show Examples"
-msgstr ""
+msgstr "Мысалдарды көрсету"
 
 #: blueprints/alerts/templates/alerts.html:209
 msgid "Here are two sample custom conditions"
-msgstr ""
+msgstr "Міне екі үлгі арнайы шарт"
 
 #: blueprints/alerts/templates/alerts.html:233
 msgid "Apply Filters"
-msgstr ""
+msgstr "Сүзгілерді қолдану"
 
 #: blueprints/alerts/templates/alerts.html:234
 msgid "Save as filter"
-msgstr ""
+msgstr "Сүзгі ретінде сақтау"
 
 #: blueprints/alerts/templates/alerts.html:265
 msgid "View Alert"
-msgstr ""
+msgstr "Ескертпені көру"
 
 #: blueprints/alerts/templates/alerts.html:284
 msgid "Alert history"
-msgstr ""
+msgstr "Ескерту тарихы"
 
 #: blueprints/alerts/templates/alerts.html:307
 msgid "Resolution status"
-msgstr ""
+msgstr "Шешім күйі"
 
 #: blueprints/alerts/templates/alerts.html:311
 #: blueprints/manage/templates/modal_case_info_from_case.html:87
 #: blueprints/manage/templates/modal_case_info_from_case.html:210
 msgid "Unknown"
-msgstr ""
+msgstr "Белгісіз"
 
 #: blueprints/alerts/templates/alerts.html:315
 msgid "False positive"
-msgstr ""
+msgstr "Жалған оң"
 
 #: blueprints/alerts/templates/alerts.html:319
 msgid "True positive"
-msgstr ""
+msgstr "Шынымен оң"
 
 #: blueprints/alerts/templates/alerts.html:323
 #: blueprints/manage/templates/modal_case_info_from_case.html:213
 msgid "Legitimate"
-msgstr ""
+msgstr "Заңды"
 
 #: blueprints/alerts/templates/alerts.html:329
 msgid "Note"
-msgstr ""
+msgstr "Ескертпе"
 
 #: blueprints/alerts/templates/alerts.html:349
 msgid "Close Alert"
-msgstr ""
+msgstr "Ескертпені жабу"
 
 #: blueprints/alerts/templates/alerts.html:350
 #: blueprints/alerts/templates/modal_escalate.html:81
@@ -364,228 +364,228 @@ msgstr ""
 #: blueprints/case/templates/modal_conversation.html:49
 #: blueprints/manage/templates/modal_case_info_from_case.html:405
 msgid "Cancel"
-msgstr ""
+msgstr "Бас тарту"
 
 #: blueprints/alerts/templates/modal_enrichment.html:5
 msgid "Enrichment"
-msgstr ""
+msgstr "Бағыттау"
 
 #: blueprints/alerts/templates/modal_enrichment.html:14
 #: blueprints/case/templates/case_assets.html:109
 #: blueprints/case/templates/case_md_helper.html:6
 #: templates/includes/footer.html:25 templates/includes/footer.html:120
 msgid "Close"
-msgstr ""
+msgstr "Жабу"
 
 #: blueprints/alerts/templates/modal_escalate.html:19
 msgid "Merge options"
-msgstr ""
+msgstr "Біріктіру опциялары"
 
 #: blueprints/alerts/templates/modal_escalate.html:24
 msgid "Merge into a new case"
-msgstr ""
+msgstr "Жаңа іс-шараға біріктіру"
 
 #: blueprints/alerts/templates/modal_escalate.html:29
 msgid "Merge into existing case"
-msgstr ""
+msgstr "Мәні бар іс-шараға біріктіру"
 
 #: blueprints/alerts/templates/modal_escalate.html:37
 msgid "New case title"
-msgstr ""
+msgstr "Жаңа іс-шара тақырыбы"
 
 #: blueprints/alerts/templates/modal_escalate.html:42
 msgid "Select case to merge into"
-msgstr ""
+msgstr "Біріктіру үшін іс-шараны таңдау"
 
 #: blueprints/alerts/templates/modal_escalate.html:47
 msgid "Select case template"
-msgstr ""
+msgstr "Іс-шара үлгісін таңдау"
 
 #: blueprints/alerts/templates/modal_escalate.html:52
 msgid "IOCs to import"
-msgstr ""
+msgstr "Импортталатын IOC-тер"
 
 #: blueprints/alerts/templates/modal_escalate.html:53
 #: blueprints/alerts/templates/modal_escalate.html:58
 msgid "Deselect All"
-msgstr ""
+msgstr "Барлығын таңдаудан шығару"
 
 #: blueprints/alerts/templates/modal_escalate.html:57
 msgid "Assets to import"
-msgstr ""
+msgstr "Импортталатын активтер"
 
 #: blueprints/alerts/templates/modal_escalate.html:62
 msgid "Escalation note"
-msgstr ""
+msgstr "Эскалация ескертпесі"
 
 #: blueprints/alerts/templates/modal_escalate.html:66
 msgid "Case tags"
-msgstr ""
+msgstr "Іс-шара тегтері"
 
 #: blueprints/alerts/templates/modal_escalate.html:74
 msgid "Add alert as event in the timeline"
-msgstr ""
+msgstr "Ескертпені уақыт сызығына оқиға ретінде қосу"
 
 #: blueprints/alerts/templates/modal_new_alert_owner.html:5
 msgid "Reassign Alert"
-msgstr ""
+msgstr "Ескертпені қайта тағайындау"
 
 #: blueprints/alerts/templates/modal_new_alert_owner.html:12
 msgid "New Owner"
-msgstr ""
+msgstr "Жаңа иесі"
 
 #: blueprints/case/templates/case-nav.html:6
 msgid "Summary"
-msgstr ""
+msgstr "Қорытынды"
 
 #: blueprints/case/templates/case-nav.html:11
 #: blueprints/search/templates/search.html:37
 msgid "Notes"
-msgstr ""
+msgstr "Ескертпелер"
 
 #: blueprints/case/templates/case-nav.html:16
 msgid "Assets"
-msgstr ""
+msgstr "Активтер"
 
 #: blueprints/case/templates/case-nav.html:21
 #: blueprints/case/templates/case_assets.html:66
 #: blueprints/case/templates/case_assets.html:78
 #: blueprints/search/templates/search.html:33
 msgid "IOC"
-msgstr ""
+msgstr "IOC"
 
 #: blueprints/case/templates/case-nav.html:26
 msgid "Timeline"
-msgstr ""
+msgstr "Уақыт сызығы"
 
 #: blueprints/case/templates/case-nav.html:31
 msgid "Graph"
-msgstr ""
+msgstr "График"
 
 #: blueprints/case/templates/case-nav.html:36
 #: blueprints/overview/templates/overview.html:65
 #: blueprints/overview/templates/overview.html:81
 msgid "Tasks"
-msgstr ""
+msgstr "Тапсырмалар"
 
 #: blueprints/case/templates/case-nav.html:41
 msgid "Evidence"
-msgstr ""
+msgstr "Дәлел"
 
 #: blueprints/case/templates/case-nav.html:46
 #: blueprints/case/templates/case_notes_v2.html:75
 #: blueprints/search/templates/search.html:41
 msgid "Comments"
-msgstr ""
+msgstr "Пікірлер"
 
 #: blueprints/case/templates/case-nav_landing.html:10
 #: templates/includes/sidenav.html:110
 msgid "Manage"
-msgstr ""
+msgstr "Басқару"
 
 #: blueprints/case/templates/case-nav_landing.html:16
 msgid "Processors"
-msgstr ""
+msgstr "Процессорлар"
 
 #: blueprints/case/templates/case-nav_landing.html:24
 msgid "Pipelines"
-msgstr ""
+msgstr "Конвейерлер"
 
 #: blueprints/case/templates/case-nav_landing.html:30
 msgid "Request review"
-msgstr ""
+msgstr "Қарауды сұрау"
 
 #: blueprints/case/templates/case-nav_landing.html:37
 msgid "Generate report"
-msgstr ""
+msgstr "Есеп жасау"
 
 #: blueprints/case/templates/case-nav_landing.html:43
 msgid "Activity report"
-msgstr ""
+msgstr "Белсенділік есебі"
 
 #: blueprints/case/templates/case.html:33
 msgid "Open on"
-msgstr ""
+msgstr "Ашық күні"
 
 #: blueprints/case/templates/case.html:34
 msgid "Owned by"
-msgstr ""
+msgstr "Иесі"
 
 #: blueprints/case/templates/case.html:36
 msgid "Closed on"
-msgstr ""
+msgstr "Жабылған күні"
 
 #: blueprints/case/templates/case.html:41
 msgid "Case severity"
-msgstr ""
+msgstr "Іс-шара ауырлығы"
 
 #: blueprints/case/templates/case.html:42
 msgid "Case outcome"
-msgstr ""
+msgstr "Іс-шара нәтижесі"
 
 #: blueprints/case/templates/case.html:52
 msgid "SOC ID"
-msgstr ""
+msgstr "SOC ID"
 
 #: blueprints/case/templates/case.html:68
 msgid "Reviewed"
-msgstr ""
+msgstr "Қаралған"
 
 #: blueprints/case/templates/case.html:68
 msgid "Case reviewed by"
-msgstr ""
+msgstr "Іс-шараны қараған"
 
 #: blueprints/case/templates/case.html:68
 msgid "you"
-msgstr ""
+msgstr "сен"
 
 #: blueprints/case/templates/case.html:92
 msgid "Review requested"
-msgstr ""
+msgstr "Қару сұралған"
 
 #: blueprints/case/templates/case.html:93
 msgid "Start review"
-msgstr ""
+msgstr "Қарауды бастау"
 
 #: blueprints/case/templates/case.html:95
 msgid "Confirm review"
-msgstr ""
+msgstr "Қарауды растау"
 
 #: blueprints/case/templates/case.html:97
 msgid "Cancel review"
-msgstr ""
+msgstr "Қарауды тоқтату"
 
 #: blueprints/case/templates/case.html:99
 msgid "You have been requested to review this case."
-msgstr ""
+msgstr "Сізге бұл іс-шараны қарау сұралды."
 
 #: blueprints/case/templates/case.html:123
 msgid "Case summary"
-msgstr ""
+msgstr "Іс-шара қорытындысы"
 
 #: blueprints/case/templates/case.html:131
 #: blueprints/manage/templates/modal_case_info_from_case.html:48
 msgid "Edit"
-msgstr ""
+msgstr "Өңдеу"
 
 #: blueprints/case/templates/case.html:175
 msgid "Select report template"
-msgstr ""
+msgstr "Есеп үлгісін таңдау"
 
 #: blueprints/case/templates/case.html:182
 #: blueprints/case/templates/case.html:225
 msgid "No report template found"
-msgstr ""
+msgstr "Есеп үлгісі табылмады"
 
 #: blueprints/case/templates/case.html:183
 #: blueprints/case/templates/case.html:226
 msgid "Report templates are configured in"
-msgstr ""
+msgstr "Есеп үлгілері конфигурацияланған"
 
 #: blueprints/case/templates/case.html:183
 #: blueprints/case/templates/case.html:226
 msgid "the management section"
-msgstr ""
+msgstr "басқару бөлімінде"
 
 #: blueprints/case/templates/case.html:187
 #: blueprints/case/templates/case.html:230
@@ -597,46 +597,46 @@ msgstr ""
 #: blueprints/case/templates/case.html:187
 #: blueprints/case/templates/case.html:230
 msgid "Safe Mode"
-msgstr ""
+msgstr "Қауіпсіз режим"
 
 #: blueprints/case/templates/case.html:187
 #: blueprints/case/templates/case.html:230
 msgid "can be used to generate the report without them."
-msgstr ""
+msgstr "оларсыз есеп жасау үшін қолданылады."
 
 #: blueprints/case/templates/case.html:201
 #: blueprints/case/templates/case.html:245
 msgid "Generate in Safe Mode"
-msgstr ""
+msgstr "Қауіпсіз режимде жасау"
 
 #: blueprints/case/templates/case.html:207
 #: blueprints/case/templates/case.html:251
 msgid "Generate"
-msgstr ""
+msgstr "Жасау"
 
 #: blueprints/case/templates/case.html:218
 msgid "Select activity report template"
-msgstr ""
+msgstr "Белсенділік есебі үлгісін таңдау"
 
 #: blueprints/case/templates/case.html:263
 msgid "Choose reviewer"
-msgstr ""
+msgstr "Қараушыны таңдау"
 
 #: blueprints/case/templates/case.html:280
 msgid "Request"
-msgstr ""
+msgstr "Сұрау"
 
 #: blueprints/case/templates/case.html:301
 msgid "Case Review"
-msgstr ""
+msgstr "Іс-шара қарауы"
 
 #: blueprints/case/templates/case.html:309
 msgid "Do you confirm that the case has been reviewed?"
-msgstr ""
+msgstr "Іс-шара қаралғанын растайсыз ба?"
 
 #: blueprints/case/templates/case.html:315
 msgid "Confirm Review"
-msgstr ""
+msgstr "Қарауды растау"
 
 #: blueprints/case/templates/case_assets.html:21
 #: blueprints/case/templates/case_graph.html:24
@@ -650,15 +650,15 @@ msgstr ""
 #: blueprints/case/templates/case_timeline.html:42
 #: blueprints/case/templates/case_timeline.html:95
 msgid "Loading"
-msgstr ""
+msgstr "Жүктелуде"
 
 #: blueprints/case/templates/case_assets.html:31
 msgid "Add assets"
-msgstr ""
+msgstr "Активтерді қосу"
 
 #: blueprints/case/templates/case_assets.html:40
 msgid "Upload CSV of assets"
-msgstr ""
+msgstr "Активтер CSV файлын жүктеу"
 
 #: blueprints/case/templates/case_assets.html:61
 #: blueprints/case/templates/case_assets.html:73
@@ -672,7 +672,7 @@ msgstr ""
 #: blueprints/search/templates/search.html:86
 #: blueprints/search/templates/search.html:96
 msgid "Name"
-msgstr ""
+msgstr "Атауы"
 
 #: blueprints/case/templates/case_assets.html:62
 #: blueprints/case/templates/case_assets.html:74
@@ -683,363 +683,363 @@ msgstr ""
 #: blueprints/search/templates/search.html:88
 #: blueprints/search/templates/search.html:98
 msgid "Type"
-msgstr ""
+msgstr "Түрі"
 
 #: blueprints/case/templates/case_assets.html:64
 #: blueprints/case/templates/case_assets.html:76
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: blueprints/case/templates/case_assets.html:65
 #: blueprints/case/templates/case_assets.html:77
 msgid "Compromised"
-msgstr ""
+msgstr "Бұзылған"
 
 #: blueprints/case/templates/case_assets.html:68
 #: blueprints/case/templates/case_assets.html:80
 msgid "Analysis"
-msgstr ""
+msgstr "Талдау"
 
 #: blueprints/case/templates/case_assets.html:115
 #: blueprints/case/templates/case_ioc.html:117
 msgid "Expected CSV File format"
-msgstr ""
+msgstr "Күтілетін CSV файл форматы"
 
 #: blueprints/case/templates/case_assets.html:119
 #: blueprints/case/templates/case_ioc.html:122
 msgid "CSV File format example"
-msgstr ""
+msgstr "CSV файл форматы мысалы"
 
 #: blueprints/case/templates/case_assets.html:125
 #: blueprints/case/templates/case_timeline.html:168
 msgid "Choose CSV file to import"
-msgstr ""
+msgstr "Импорттау үшін CSV файлын таңдау"
 
 #: blueprints/case/templates/case_assets.html:132
 #: blueprints/case/templates/case_ioc.html:134
 #: blueprints/case/templates/case_timeline.html:175
 msgid "Download sample CSV"
-msgstr ""
+msgstr "CSV үлгісін жүктеу"
 
 #: blueprints/case/templates/case_assets.html:133
 #: blueprints/case/templates/case_ioc.html:135
 #: blueprints/case/templates/case_timeline.html:176
 msgid "Upload"
-msgstr ""
+msgstr "Жүктеу"
 
 #: blueprints/case/templates/case_graph_timeline.html:26
 msgid "No group"
-msgstr ""
+msgstr "Топ жоқ"
 
 #: blueprints/case/templates/case_graph_timeline.html:29
 msgid "Group by asset"
-msgstr ""
+msgstr "Актив бойынша топтау"
 
 #: blueprints/case/templates/case_graph_timeline.html:32
 msgid "Group by category"
-msgstr ""
+msgstr "Санат бойынша топтау"
 
 #: blueprints/case/templates/case_ioc.html:35
 #: templates/includes/quick-sidebar.html:61
 msgid "Add IOC"
-msgstr ""
+msgstr "IOC қосу"
 
 #: blueprints/case/templates/case_ioc.html:44
 msgid "Upload CSV of IOCs"
-msgstr ""
+msgstr "IOC CSV файлын жүктеу"
 
 #: blueprints/case/templates/case_ioc.html:63
 #: blueprints/case/templates/case_ioc.html:73
 msgid "Value"
-msgstr ""
+msgstr "Мәні"
 
 #: blueprints/case/templates/case_ioc.html:67
 #: blueprints/case/templates/case_ioc.html:77
 msgid "Linked cases"
-msgstr ""
+msgstr "Байланысты іс-шаралар"
 
 #: blueprints/case/templates/case_ioc.html:68
 #: blueprints/case/templates/case_ioc.html:78
 #: blueprints/search/templates/search.html:91
 #: blueprints/search/templates/search.html:101
 msgid "TLP"
-msgstr ""
+msgstr "TLP"
 
 #: blueprints/case/templates/case_ioc.html:110
 msgid "Upload IOC list (CSV format)"
-msgstr ""
+msgstr "IOC тізімін жүктеу (CSV форматы)"
 
 #: blueprints/case/templates/case_md_helper.html:5
 #: templates/includes/quick-sidebar.html:41
 msgid "Shortcuts"
-msgstr ""
+msgstr "Қысқаша жолдар"
 
 #: blueprints/case/templates/case_md_helper.html:13
 msgid "Shortcut"
-msgstr ""
+msgstr "Қысқаша жол"
 
 #: blueprints/case/templates/case_md_helper.html:14
 msgid "Action"
-msgstr ""
+msgstr "Әрекет"
 
 #: blueprints/case/templates/case_md_helper.html:20
 msgid "Save note"
-msgstr ""
+msgstr "Ескертпені сақтау"
 
 #: blueprints/case/templates/case_md_helper.html:24
 msgid "Bold"
-msgstr ""
+msgstr "Қалың"
 
 #: blueprints/case/templates/case_md_helper.html:28
 msgid "Italic"
-msgstr ""
+msgstr "Курсив"
 
 #: blueprints/case/templates/case_md_helper.html:32
 msgid "Heading 1"
-msgstr ""
+msgstr "Тақырып 1"
 
 #: blueprints/case/templates/case_md_helper.html:36
 msgid "Heading 2"
-msgstr ""
+msgstr "Тақырып 2"
 
 #: blueprints/case/templates/case_md_helper.html:40
 msgid "Heading 3"
-msgstr ""
+msgstr "Тақырып 3"
 
 #: blueprints/case/templates/case_md_helper.html:44
 msgid "Heading 4"
-msgstr ""
+msgstr "Тақырып 4"
 
 #: blueprints/case/templates/case_md_helper.html:48
 msgid "Insert code"
-msgstr ""
+msgstr "Кодты енгізу"
 
 #: blueprints/case/templates/case_md_helper.html:52
 msgid "Insert link"
-msgstr ""
+msgstr "Сілтемені енгізу"
 
 #: blueprints/case/templates/case_notes_v2.html:20
 msgid "Search in notes"
-msgstr ""
+msgstr "Ескертпелерде іздеу"
 
 #: blueprints/case/templates/case_notes_v2.html:53
 msgid "Select a note on the left pane or click here to add a directory"
-msgstr ""
+msgstr "Сол панельде ескертпені таңдаңыз немесе қапшық қосу үшін мұнда басыңыз"
 
 #: blueprints/case/templates/case_notes_v2.html:54
 msgid "Right-click on a directory to add a note"
-msgstr ""
+msgstr "Ескертпе қосу үшін қапшыққа оң жақпен басыңыз"
 
 #: blueprints/case/templates/case_notes_v2.html:65
 msgid "Modifications history"
-msgstr ""
+msgstr "Өзгерістер тарихы"
 
 #: blueprints/case/templates/case_notes_v2.html:80
 msgid "Copy shared lin"
-msgstr ""
+msgstr "Бөлісетін сілтемені көшіру"
 
 #: blueprints/case/templates/case_notes_v2.html:164
 msgid "Select the directory to move the item to."
-msgstr ""
+msgstr "Элементті жылжыту үшін қапшықты таңдаңыз."
 
 #: blueprints/case/templates/case_notes_v2.html:182
 msgid "Note revisions"
-msgstr ""
+msgstr "Ескертпе нұсқалары"
 
 #: blueprints/case/templates/case_notes_v2.html:218
 msgid "Revert to this revision"
-msgstr ""
+msgstr "Бұл нұсқаға қайту"
 
 #: blueprints/case/templates/case_notes_v2.html:220
 msgid "Delete revision"
-msgstr ""
+msgstr "Нұсқаны жою"
 
 #: blueprints/case/templates/case_rfile.html:32
 msgid "Register Evidence"
-msgstr ""
+msgstr "Дәлелді тіркеу"
 
 #: blueprints/case/templates/case_rfile.html:57
 #: blueprints/case/templates/case_rfile.html:67
 msgid "Hash"
-msgstr ""
+msgstr "Хеш"
 
 #: blueprints/case/templates/case_rfile.html:58
 msgid "Size (bytes)"
-msgstr ""
+msgstr "Өлшемі (байт)"
 
 #: blueprints/case/templates/case_rfile.html:60
 #: blueprints/case/templates/case_rfile.html:70
 msgid "Added by"
-msgstr ""
+msgstr "Қосқан"
 
 #: blueprints/case/templates/case_rfile.html:68
 msgid "Size(bytes)"
-msgstr ""
+msgstr "Өлшемі(байт)"
 
 #: blueprints/case/templates/case_tasks.html:39
 msgid "Add task"
-msgstr ""
+msgstr "Тапсырма қосу"
 
 #: blueprints/case/templates/case_tasks.html:60
 #: blueprints/case/templates/case_tasks.html:70
 #: blueprints/dashboard/templates/index.html:265
 #: blueprints/dashboard/templates/index.html:275
 msgid "Assigned to"
-msgstr ""
+msgstr "Тағайындалған"
 
 #: blueprints/case/templates/case_tasks.html:61
 #: blueprints/case/templates/case_tasks.html:71
 #: blueprints/overview/templates/overview.html:64
 #: blueprints/overview/templates/overview.html:80
 msgid "Open date"
-msgstr ""
+msgstr "Ашық күні"
 
 #: blueprints/case/templates/case_timeline.html:31
 msgid "Apply filter"
-msgstr ""
+msgstr "Сүзгіні қолдану"
 
 #: blueprints/case/templates/case_timeline.html:34
 msgid "Reset"
-msgstr ""
+msgstr "Қалпына келтіру"
 
 #: blueprints/case/templates/case_timeline.html:52
 #: templates/includes/quick-sidebar.html:81
 msgid "Add event"
-msgstr ""
+msgstr "Оқиға қосу"
 
 #: blueprints/case/templates/case_timeline.html:57
 msgid "Toggle view"
-msgstr ""
+msgstr "Көріністі ауыстыру"
 
 #: blueprints/case/templates/case_timeline.html:67
 msgid "Toggle tree view"
-msgstr ""
+msgstr "Ағаш көрінісін ауыстыру"
 
 #: blueprints/case/templates/case_timeline.html:69
 msgid "Toggle compact view"
-msgstr ""
+msgstr "Қысқа көріністі ауыстыру"
 
 #: blueprints/case/templates/case_timeline.html:72
 msgid "Visualize"
-msgstr ""
+msgstr "Көрнекілендіру"
 
 #: blueprints/case/templates/case_timeline.html:74
 msgid "Visualize by asset"
-msgstr ""
+msgstr "Актив бойынша көрнекілендіру"
 
 #: blueprints/case/templates/case_timeline.html:75
 msgid "Visualize by category"
-msgstr ""
+msgstr "Санат бойынша көрнекілендіру"
 
 #: blueprints/case/templates/case_timeline.html:78
 msgid "Download as CSV"
-msgstr ""
+msgstr "CSV ретінде жүктеу"
 
 #: blueprints/case/templates/case_timeline.html:80
 msgid "Download as CSV with user info"
-msgstr ""
+msgstr "Пайдаланушы ақпаратымен CSV ретінде жүктеу"
 
 #: blueprints/case/templates/case_timeline.html:83
 msgid "Upload CSV of events"
-msgstr ""
+msgstr "Оқиғалар CSV файлын жүктеу"
 
 #: blueprints/case/templates/case_timeline.html:149
 msgid "Upload events list (CSV format)"
-msgstr ""
+msgstr "Оқиғалар тізімін жүктеу (CSV форматы)"
 
 #: blueprints/case/templates/case_timeline.html:156
 msgid "Expected Events CSV File format"
-msgstr ""
+msgstr "Күтілетін оқиғалар CSV файл форматы"
 
 #: blueprints/case/templates/case_timeline.html:160
 msgid "Events CSV File format example"
-msgstr ""
+msgstr "Оқиғалар CSV файл форматы мысалы"
 
 #: blueprints/case/templates/modal_add_case_asset.html:17
 #: blueprints/case/templates/modal_add_case_event.html:24
 #: blueprints/case/templates/modal_add_case_ioc.html:17
 msgid "Share"
-msgstr ""
+msgstr "Бөлісу"
 
 #: blueprints/case/templates/modal_add_case_asset.html:18
 #: blueprints/case/templates/modal_add_case_event.html:25
 #: blueprints/case/templates/modal_add_case_ioc.html:18
 msgid "Markdown Link"
-msgstr ""
+msgstr "Markdown сілтемесі"
 
 #: blueprints/case/templates/modal_add_case_asset.html:49
 msgid "Asset Type"
-msgstr ""
+msgstr "Актив түрі"
 
 #: blueprints/case/templates/modal_add_case_asset.html:78
 msgid "Domain"
-msgstr ""
+msgstr "Домен"
 
 #: blueprints/case/templates/modal_add_case_asset.html:88
 #: blueprints/case/templates/modal_add_case_asset.html:91
 msgid "Additional information"
-msgstr ""
+msgstr "Қосымша ақпарат"
 
 #: blueprints/case/templates/modal_add_case_asset.html:98
 msgid "Compromise Status"
-msgstr ""
+msgstr "Бұзылу күйі"
 
 #: blueprints/case/templates/modal_add_case_asset.html:102
 msgid "Analysis Status"
-msgstr ""
+msgstr "Талдау күйі"
 
 #: blueprints/case/templates/modal_add_case_asset.html:107
 msgid "Asset tags"
-msgstr ""
+msgstr "Актив тегтері"
 
 #: blueprints/case/templates/modal_add_case_asset.html:113
 msgid "Related IOC"
-msgstr ""
+msgstr "Байланысты IOC"
 
 #: blueprints/case/templates/modal_add_case_event.html:26
 msgid "Duplicate"
-msgstr ""
+msgstr "Көшірме"
 
 #: blueprints/case/templates/modal_add_case_event.html:81
 msgid "Event description"
-msgstr ""
+msgstr "Оқиға сипаттамасы"
 
 #: blueprints/case/templates/modal_add_case_event.html:122
 msgid "Event tags"
-msgstr ""
+msgstr "Оқиға тегтері"
 
 #: blueprints/case/templates/modal_add_case_event.html:130
 msgid "Link to assets"
-msgstr ""
+msgstr "Активтерге сілтеме"
 
 #: blueprints/case/templates/modal_add_case_event.html:138
 msgid "Link to IOCs"
-msgstr ""
+msgstr "IOC-терге сілтеме"
 
 #: blueprints/case/templates/modal_add_case_event.html:154
 msgid "Parent Event ID"
-msgstr ""
+msgstr "Ата оқиға ID"
 
 #: blueprints/case/templates/modal_add_case_event.html:165
 msgid "Push IOCs to assets"
-msgstr ""
+msgstr "IOC-терді активтерге жіберу"
 
 #: blueprints/case/templates/modal_add_case_event.html:175
 msgid "Add to summary"
-msgstr ""
+msgstr "Қорытындыға қосу"
 
 #: blueprints/case/templates/modal_add_case_event.html:185
 msgid "Display in graph"
-msgstr ""
+msgstr "Графикте көрсету"
 
 #: blueprints/case/templates/modal_add_case_event.html:192
 msgid "Event color"
-msgstr ""
+msgstr "Оқиға түсі"
 
 #: blueprints/case/templates/modal_add_case_event.html:249
 #: blueprints/case/templates/modal_add_case_ioc.html:115
 msgid "Update"
-msgstr ""
+msgstr "Жаңарту"
 
 #: blueprints/case/templates/modal_add_case_event.html:254
 #: blueprints/case/templates/modal_add_case_ioc.html:120
@@ -1047,37 +1047,37 @@ msgstr ""
 #: blueprints/case/templates/modal_note_edit.html:97
 #: blueprints/manage/templates/modal_case_info_from_case.html:406
 msgid "Save"
-msgstr ""
+msgstr "Сақтау"
 
 #: blueprints/case/templates/modal_add_case_ioc.html:66
 msgid "One IOC per line"
-msgstr ""
+msgstr "Жолға бір IOC"
 
 #: blueprints/case/templates/modal_add_case_ioc.html:98
 msgid "IOC tags"
-msgstr ""
+msgstr "IOC тегтері"
 
 #: blueprints/case/templates/modal_conversation.html:7
 msgid "Comments on"
-msgstr ""
+msgstr "Пікірлер"
 
 #: blueprints/case/templates/modal_conversation.html:45
 #: blueprints/search/templates/search.html:60
 #: blueprints/search/templates/search.html:73
 msgid "Comment"
-msgstr ""
+msgstr "Пікір"
 
 #: blueprints/case/templates/modal_conversation.html:51
 msgid "Preview"
-msgstr ""
+msgstr "Алдын ала көру"
 
 #: blueprints/case/templates/modal_note_edit.html:96
 msgid "Delete note"
-msgstr ""
+msgstr "Ескертпені жою"
 
 #: blueprints/case/templates/select_case.html:15
 msgid "No case found for you"
-msgstr ""
+msgstr "Сіз үшін іс-шара табылмады"
 
 #: blueprints/case/templates/select_case.html:16
 msgid "The page you’re looking for is only available when a case is selected."
@@ -1086,541 +1086,541 @@ msgstr ""
 #: blueprints/dashboard/templates/index.html:17
 #: templates/includes/sidenav.html:45
 msgid "Dashboard"
-msgstr ""
+msgstr "Бақылау тақтасы"
 
 #: blueprints/dashboard/templates/index.html:52
 msgid "Generate Reports"
-msgstr ""
+msgstr "Есептер жасау"
 
 #: blueprints/dashboard/templates/index.html:70
 msgid "Cases (open / all)"
-msgstr ""
+msgstr "Іс-шаралар (ашық / барлығы)"
 
 #: blueprints/dashboard/templates/index.html:89
 #: blueprints/dashboard/templates/index.html:199
 msgid "Attributed open cases"
-msgstr ""
+msgstr "Тағайындалған ашық іс-шаралар"
 
 #: blueprints/dashboard/templates/index.html:108
 #: blueprints/dashboard/templates/index.html:156
 msgid "Attributed open tasks"
-msgstr ""
+msgstr "Тағайындалған ашық тапсырмалар"
 
 #: blueprints/dashboard/templates/index.html:121
 msgid "Attributed cases review"
-msgstr ""
+msgstr "Тағайындалған іс-шаралар қарауы"
 
 #: blueprints/dashboard/templates/index.html:135
 #: blueprints/dashboard/templates/index.html:141
 #: blueprints/manage/templates/modal_case_info_from_case.html:149
 msgid "Case name"
-msgstr ""
+msgstr "Іс-шара атауы"
 
 #: blueprints/dashboard/templates/index.html:136
 #: blueprints/dashboard/templates/index.html:142
 msgid "Review Status"
-msgstr ""
+msgstr "Қарау күйі"
 
 #: blueprints/dashboard/templates/index.html:174
 #: blueprints/dashboard/templates/index.html:184
 #: blueprints/dashboard/templates/index.html:266
 #: blueprints/dashboard/templates/index.html:276
 msgid "Last update"
-msgstr ""
+msgstr "Соңғы жаңарту"
 
 #: blueprints/dashboard/templates/index.html:203
 #: blueprints/overview/templates/overview.html:38
 msgid "Show closed cases"
-msgstr ""
+msgstr "Жабылған іс-шараларды көрсету"
 
 #: blueprints/dashboard/templates/index.html:218
 #: blueprints/dashboard/templates/index.html:227
 msgid "Client"
-msgstr ""
+msgstr "Клиент"
 
 #: blueprints/dashboard/templates/index.html:219
 #: blueprints/dashboard/templates/index.html:228
 msgid "Opening date"
-msgstr ""
+msgstr "Ашылу күні"
 
 #: blueprints/dashboard/templates/index.html:249
 msgid "Add global task"
-msgstr ""
+msgstr "Жалпы тапсырма қосу"
 
 #: blueprints/manage/templates/manage_srv_settings.html:18
 msgid "Server versions"
-msgstr ""
+msgstr "Сервер нұсқалары"
 
 #: blueprints/manage/templates/manage_srv_settings.html:54
 msgid "Global settings"
-msgstr ""
+msgstr "Жалпы параметрлер"
 
 #: blueprints/manage/templates/manage_srv_settings.html:61
 msgid "Proxy"
-msgstr ""
+msgstr "Прокси"
 
 #: blueprints/manage/templates/manage_srv_settings.html:72
 msgid "HTTP Proxy"
-msgstr ""
+msgstr "HTTP прокси"
 
 #: blueprints/manage/templates/manage_srv_settings.html:82
 msgid "HTTPS Proxy"
-msgstr ""
+msgstr "HTTPS прокси"
 
 #: blueprints/manage/templates/manage_srv_settings.html:102
 msgid "Password Policy"
-msgstr ""
+msgstr "Құпия сөз саясаты"
 
 #: blueprints/manage/templates/manage_srv_settings.html:112
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: blueprints/manage/templates/manage_srv_settings.html:122
 msgid "Set empty to disable"
-msgstr ""
+msgstr "Сөндіру үшін бос қалдырыңыз"
 
 #: blueprints/manage/templates/manage_srv_settings.html:131
 msgid "Must include uppercase char"
-msgstr ""
+msgstr "Үлкен әріп қамтылуы керек"
 
 #: blueprints/manage/templates/manage_srv_settings.html:137
 msgid "Must include lowercase char"
-msgstr ""
+msgstr "Кіші әріп қамтылуы керек"
 
 #: blueprints/manage/templates/manage_srv_settings.html:143
 msgid "Must include digits"
-msgstr ""
+msgstr "Сандар қамтылуы керек"
 
 #: blueprints/manage/templates/manage_srv_settings.html:155
 msgid "Enforce MFA for all users"
-msgstr ""
+msgstr "Барлық пайдаланушылар үшін MFA міндеттеу"
 
 #: blueprints/manage/templates/manage_srv_settings.html:162
 msgid "Save changes"
-msgstr ""
+msgstr "Өзгерістерді сақтау"
 
 #: blueprints/manage/templates/manage_srv_settings.html:174
 msgid "Backups"
-msgstr ""
+msgstr "Резервті көшірулер"
 
 #: blueprints/manage/templates/manage_srv_settings.html:179
 msgid "Database"
-msgstr ""
+msgstr "Дерекқор"
 
 #: blueprints/manage/templates/manage_srv_settings.html:182
 msgid "Backup database"
-msgstr ""
+msgstr "Дерекқорды резервке көшіру"
 
 #: blueprints/manage/templates/manage_srv_settings.html:194
 msgid "Data Management"
-msgstr ""
+msgstr "Деректерді басқару"
 
 #: blueprints/manage/templates/manage_srv_settings.html:199
 #: blueprints/manage/templates/manage_srv_settings.html:221
 msgid "Delete Cases"
-msgstr ""
+msgstr "Іс-шараларды жою"
 
 #: blueprints/manage/templates/manage_srv_settings.html:206
 msgid "Start Date"
-msgstr ""
+msgstr "Басталу күні"
 
 #: blueprints/manage/templates/manage_srv_settings.html:214
 msgid "End Date"
-msgstr ""
+msgstr "Аяқталу күні"
 
 #: blueprints/manage/templates/manage_srv_settings.html:234
 msgid "Server Updates"
-msgstr ""
+msgstr "Сервер жаңартулары"
 
 #: blueprints/manage/templates/manage_srv_settings.html:241
 msgid "Please wait while we look for updates"
-msgstr ""
+msgstr "Жаңартуларды іздеу кезінде күте тұрыңыз"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:19
 msgid "Info"
-msgstr ""
+msgstr "Ақпарат"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:22
 msgid "Access"
-msgstr ""
+msgstr "Қол жеткізу"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:48
 msgid "General info"
-msgstr ""
+msgstr "Жалпы ақпарат"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:141
 msgid "Edit case information"
-msgstr ""
+msgstr "Іс-шара ақпаратын өңдеу"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:157
 msgid "SOC ticket ID"
-msgstr ""
+msgstr "SOC билет ID"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:192
 #: blueprints/overview/templates/overview.html:61
 #: blueprints/overview/templates/overview.html:77
 msgid "State"
-msgstr ""
+msgstr "Күй"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:205
 #: blueprints/overview/templates/overview.html:55
 msgid "Outcome"
-msgstr ""
+msgstr "Нәтиже"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:211
 msgid "False Positive"
-msgstr ""
+msgstr "Жалған оң"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:212
 msgid "True Positive"
-msgstr ""
+msgstr "Шынымен оң"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:235
 msgid "Reviewer"
-msgstr ""
+msgstr "Қараушы"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:277
 #: blueprints/manage/templates/modal_case_info_from_case.html:279
 #: blueprints/manage/templates/modal_case_info_from_case.html:356
 #: blueprints/manage/templates/modal_case_info_from_case.html:358
 msgid "Role"
-msgstr ""
+msgstr "Рөл"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:291
 #: blueprints/manage/templates/modal_case_info_from_case.html:293
 #: blueprints/manage/templates/modal_case_info_from_case.html:370
 #: blueprints/manage/templates/modal_case_info_from_case.html:372
 msgid "Contact"
-msgstr ""
+msgstr "Байланыс"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:305
 msgid "Add protagonist"
-msgstr ""
+msgstr "Кейіпкер қосу"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:315
 msgid "Case access"
-msgstr ""
+msgstr "Іс-шараға қол жеткізу"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:319
 msgid "Set access via group"
-msgstr ""
+msgstr "Топ арқылы қол жеткізуді орнату"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:327
 #: blueprints/manage/templates/modal_case_info_from_case.html:335
 msgid "User ID"
-msgstr ""
+msgstr "Пайдаланушы ID"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:328
 #: blueprints/manage/templates/modal_case_info_from_case.html:336
 msgid "User Name"
-msgstr ""
+msgstr "Пайдаланушы атауы"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:329
 #: blueprints/manage/templates/modal_case_info_from_case.html:337
 msgid "User Login"
-msgstr ""
+msgstr "Пайдаланушы логині"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:330
 #: blueprints/manage/templates/modal_case_info_from_case.html:338
 msgid "User Access"
-msgstr ""
+msgstr "Пайдаланушы қол жеткізуі"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:353
 msgid "Protagonist"
-msgstr ""
+msgstr "Кейіпкер"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:396
 msgid "Delete case"
-msgstr ""
+msgstr "Іс-шараны жою"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:400
 msgid "Close case"
-msgstr ""
+msgstr "Іс-шараны жабу"
 
 #: blueprints/manage/templates/modal_case_info_from_case.html:403
 msgid "Reopen case"
-msgstr ""
+msgstr "Іс-шараны қайта ашу"
 
 #: blueprints/overview/templates/overview.html:63
 #: blueprints/overview/templates/overview.html:79
 msgid "Open since"
-msgstr ""
+msgstr "Ашық болғаннан бері"
 
 #: blueprints/profile/templates/profile.html:27
 msgid "Forensicator"
-msgstr ""
+msgstr "Криминалист"
 
 #: blueprints/profile/templates/profile.html:48
 msgid "Username"
-msgstr ""
+msgstr "Пайдаланушы атауы"
 
 #: blueprints/profile/templates/profile.html:61
 msgid "Email"
-msgstr ""
+msgstr "Электрондық пошта"
 
 #: blueprints/profile/templates/profile.html:97
 msgid "API Key"
-msgstr ""
+msgstr "API кілті"
 
 #: blueprints/profile/templates/profile.html:102
 msgid "Renew"
-msgstr ""
+msgstr "Жаңарту"
 
 #: blueprints/profile/templates/profile.html:111
 msgid "IRIS Theme"
-msgstr ""
+msgstr "IRIS тақырыбы"
 
 #: blueprints/profile/templates/profile.html:126
 msgid "Prompt a confirmation box before deleting objects"
-msgstr ""
+msgstr "Объектілерді жою алдында растау қорабын көрсету"
 
 #: blueprints/profile/templates/profile.html:143
 msgid "Refresh access"
-msgstr ""
+msgstr "Қол жеткізуді жаңарту"
 
 #: blueprints/profile/templates/profile.html:148
 msgid "Reset MFA"
-msgstr ""
+msgstr "MFA қалпына келтіру"
 
 #: blueprints/profile/templates/profile.html:151
 msgid "Change password"
-msgstr ""
+msgstr "Құпия сөзді өзгерту"
 
 #: blueprints/search/templates/search.html:17
 msgid "Search across cases"
-msgstr ""
+msgstr "Іс-шаралар бойынша іздеу"
 
 #: blueprints/search/templates/search.html:23
 msgid "Search term - You can use % as a wilcard.   Search is context-free."
-msgstr ""
+msgstr "Іздеу термині - % белгісін жалпылама ретінде қолдана аласыз. Іздеу контекстсіз."
 
 #: blueprints/search/templates/search.html:25
 #: templates/includes/sidenav.html:86
 msgid "Search"
-msgstr ""
+msgstr "Іздеу"
 
 #: blueprints/search/templates/search.html:29
 msgid "Set to search within"
-msgstr ""
+msgstr "Іздеу аясын орнату"
 
 #: blueprints/search/templates/search.html:54
 #: blueprints/search/templates/search.html:67
 msgid "Filename"
-msgstr ""
+msgstr "Файл атауы"
 
 #: blueprints/search/templates/search.html:55
 #: blueprints/search/templates/search.html:68
 msgid "Path"
-msgstr ""
+msgstr "Жол"
 
 #: blueprints/search/templates/search.html:56
 #: blueprints/search/templates/search.html:69
 msgid "VT Score"
-msgstr ""
+msgstr "VT баллы"
 
 #: blueprints/search/templates/search.html:57
 #: blueprints/search/templates/search.html:70
 msgid "Case seen"
-msgstr ""
+msgstr "Көрілген іс-шара"
 
 #: blueprints/search/templates/search.html:58
 #: blueprints/search/templates/search.html:71
 msgid "Seen count"
-msgstr ""
+msgstr "Көрілген саны"
 
 #: blueprints/search/templates/search.html:59
 #: blueprints/search/templates/search.html:72
 msgid "Flag"
-msgstr ""
+msgstr "Белгі"
 
 #: blueprints/search/templates/search.html:61
 #: blueprints/search/templates/search.html:74
 msgid "VT"
-msgstr ""
+msgstr "VT"
 
 #: blueprints/search/templates/search.html:119
 #: blueprints/search/templates/search.html:127
 msgid "Comment text"
-msgstr ""
+msgstr "Пікір мәтіні"
 
 #: templates/includes/footer.html:10
 msgid "Switch context"
-msgstr ""
+msgstr "Контекстті ауыстыру"
 
 #: templates/includes/footer.html:27
 msgid "Switch"
-msgstr ""
+msgstr "Ауыстыру"
 
 #: templates/includes/footer.html:47 templates/includes/quick-sidebar.html:95
 msgid "Add task log"
-msgstr ""
+msgstr "Тапсырма журналын қосу"
 
 #: templates/includes/footer.html:55
 msgid "Add a task log that will be registered under activities"
-msgstr ""
+msgstr "Белсенділіктер бөлімінде тіркелетін тапсырма журналын қосу"
 
 #: templates/includes/footer.html:56
 msgid "Log content"
-msgstr ""
+msgstr "Журнал мазмұны"
 
 #: templates/includes/footer.html:61 templates/includes/footer.html:91
 msgid "Submit"
-msgstr ""
+msgstr "Жіберу"
 
 #: templates/includes/footer.html:76
 msgid "Datastore folder"
-msgstr ""
+msgstr "Деректер қоры қапшығы"
 
 #: templates/includes/footer.html:84
 msgid "Input the folder name below"
-msgstr ""
+msgstr "Төменде қапшық атауын енгізіңіз"
 
 #: templates/includes/footer.html:85
 msgid "Folder name"
-msgstr ""
+msgstr "Қапшық атауы"
 
 #: templates/includes/footer.html:112
 msgid "Task info"
-msgstr ""
+msgstr "Тапсырма ақпараты"
 
 #: templates/includes/footer.html:130 templates/includes/footer.html:154
 msgid "Save Filter"
-msgstr ""
+msgstr "Сүзгіні сақтау"
 
 #: templates/includes/footer.html:137
 msgid "Filter Name"
-msgstr ""
+msgstr "Сүзгі атауы"
 
 #: templates/includes/footer.html:138
 msgid "Filter name"
-msgstr ""
+msgstr "Сүзгі атауы"
 
 #: templates/includes/footer.html:141
 msgid "Filter Description"
-msgstr ""
+msgstr "Сүзгі сипаттамасы"
 
 #: templates/includes/footer.html:142
 msgid "Filter description"
-msgstr ""
+msgstr "Сүзгі сипаттамасы"
 
 #: templates/includes/footer.html:147
 msgid "Private Filter"
-msgstr ""
+msgstr "Жеке сүзгі"
 
 #: templates/includes/footer.html:148
 msgid "If checked, the filter will be only visible to you"
-msgstr ""
+msgstr "Егер белгіленсе, сүзгі тек сізге көрінеді"
 
 #: templates/includes/navigation.html:38
 msgid "Go to case number #"
-msgstr ""
+msgstr "Іс-шара нөміріне өту #"
 
 #: templates/includes/navigation.html:48
 #: templates/includes/navigation_ext.html:34
 #: templates/includes/quick-sidebar.html:115
 msgid "Switch case"
-msgstr ""
+msgstr "Іс-шараны ауыстыру"
 
 #: templates/includes/navigation.html:48
 #: templates/includes/navigation_ext.html:34
 msgid "No context"
-msgstr ""
+msgstr "Контекст жоқ"
 
 #: templates/includes/quick-sidebar.html:8 templates/includes/sidenav.html:94
 msgid "Activities"
-msgstr ""
+msgstr "Белсенділіктер"
 
 #: templates/includes/quick-sidebar.html:9 templates/includes/sidenav.html:101
 msgid "DIM Tasks"
-msgstr ""
+msgstr "DIM тапсырмалары"
 
 #: templates/includes/quick-sidebar.html:49
 msgid "Take screenshot of content"
-msgstr ""
+msgstr "Мазмұнның скриншотын алу"
 
 #: templates/includes/quick-sidebar.html:67
 msgid "Add asset"
-msgstr ""
+msgstr "Актив қосу"
 
 #: templates/includes/quick-sidebar.html:75
 msgid "Add note"
-msgstr ""
+msgstr "Ескертпе қосу"
 
 #: templates/includes/quick-sidebar.html:89
 msgid "Upload evidence"
-msgstr ""
+msgstr "Дәлелді жүктеу"
 
 #: templates/includes/quick-sidebar.html:103
 msgid "Register evidence"
-msgstr ""
+msgstr "Дәлелді тіркеу"
 
 #: templates/includes/sidenav.html:28
 msgid "My settings"
-msgstr ""
+msgstr "Менің параметрлерім"
 
 #: templates/includes/sidenav.html:33
 msgid "Logout"
-msgstr ""
+msgstr "Шығу"
 
 #: templates/includes/sidenav.html:51
 msgid "Overview"
-msgstr ""
+msgstr "Шолу"
 
 #: templates/includes/sidenav.html:58
 msgid "Welcome page"
-msgstr ""
+msgstr "Қош келдіңіз беті"
 
 #: templates/includes/sidenav.html:66
 msgid "Investigation"
-msgstr ""
+msgstr "Тергеу"
 
 #: templates/includes/sidenav.html:78
 msgid "Alerts"
-msgstr ""
+msgstr "Ескертулер"
 
 #: templates/includes/sidenav.html:115
 msgid "Manage case"
-msgstr ""
+msgstr "Іс-шараны басқару"
 
 #: templates/includes/sidenav.html:122
 msgid "Advanced"
-msgstr ""
+msgstr "Жоғары"
 
 #: templates/includes/sidenav.html:132
 msgid "Modules"
-msgstr ""
+msgstr "Модульдер"
 
 #: templates/includes/sidenav.html:140
 msgid "Customers"
-msgstr ""
+msgstr "Тұтынушылар"
 
 #: templates/includes/sidenav.html:148
 msgid "Case Objects"
-msgstr ""
+msgstr "Іс-шара объектілері"
 
 #: templates/includes/sidenav.html:155
 msgid "Custom Attributes"
-msgstr ""
+msgstr "Арнайы атрибуттар"
 
 #: templates/includes/sidenav.html:163
 msgid "Case Templates"
-msgstr ""
+msgstr "Іс-шара үлгілері"
 
 #: templates/includes/sidenav.html:171
 msgid "Report Templates"
-msgstr ""
+msgstr "Есеп үлгілері"
 
 #: templates/includes/sidenav.html:178
 msgid "Access control"
-msgstr ""
+msgstr "Қол жеткізуді басқару"
 
 #: templates/includes/sidenav.html:185
 msgid "Server settings"
-msgstr ""
+msgstr "Сервер параметрлері"
 
 #: templates/includes/sidenav.html:196
 msgid "Help"
-msgstr ""
+msgstr "Көмек"
 
 #: templates/pages/error-404.html:21
 msgid "The page you’re looking for was not found."
