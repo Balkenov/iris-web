@@ -586,7 +586,7 @@ msgstr "Шаблоны отчета сконфигурированы в"
 #: blueprints/case/templates/case.html:183
 #: blueprints/case/templates/case.html:226
 msgid "the management section"
-msgstr ""
+msgstr "разделе управления"
 
 #: blueprints/case/templates/case.html:187
 #: blueprints/case/templates/case.html:230
@@ -594,6 +594,8 @@ msgid ""
 "Since IRIS v2.0.0, the report generation supports images. Integration of "
 "images might fail depending on the situation."
 msgstr ""
+"Начиная с IRIS v2.0.0, генерация отчетов поддерживает изображения. "
+"Интеграция изображений может не удаться в зависимости от ситуации."
 
 #: blueprints/case/templates/case.html:187
 #: blueprints/case/templates/case.html:230
@@ -603,7 +605,7 @@ msgstr "Безопасный режим"
 #: blueprints/case/templates/case.html:187
 #: blueprints/case/templates/case.html:230
 msgid "can be used to generate the report without them."
-msgstr ""
+msgstr "можно использовать для генерации отчета без них."
 
 #: blueprints/case/templates/case.html:201
 #: blueprints/case/templates/case.html:245
@@ -1160,43 +1162,43 @@ msgstr "Глобавльные настройки"
 
 #: blueprints/manage/templates/manage_srv_settings.html:61
 msgid "Proxy"
-msgstr ""
+msgstr "Прокси"
 
 #: blueprints/manage/templates/manage_srv_settings.html:72
 msgid "HTTP Proxy"
-msgstr ""
+msgstr "HTTP Прокси"
 
 #: blueprints/manage/templates/manage_srv_settings.html:82
 msgid "HTTPS Proxy"
-msgstr ""
+msgstr "HTTPS Прокси"
 
 #: blueprints/manage/templates/manage_srv_settings.html:102
 msgid "Password Policy"
-msgstr ""
+msgstr "Политика паролей"
 
 #: blueprints/manage/templates/manage_srv_settings.html:112
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: blueprints/manage/templates/manage_srv_settings.html:122
 msgid "Set empty to disable"
-msgstr ""
+msgstr "Оставить пустым для отключения"
 
 #: blueprints/manage/templates/manage_srv_settings.html:131
 msgid "Must include uppercase char"
-msgstr ""
+msgstr "Должен содержать заглавную букву"
 
 #: blueprints/manage/templates/manage_srv_settings.html:137
 msgid "Must include lowercase char"
-msgstr ""
+msgstr "Должен содержать строчную букву"
 
 #: blueprints/manage/templates/manage_srv_settings.html:143
 msgid "Must include digits"
-msgstr ""
+msgstr "Должен содержать цифры"
 
 #: blueprints/manage/templates/manage_srv_settings.html:155
 msgid "Enforce MFA for all users"
-msgstr ""
+msgstr "Обязательная MFA для всех пользователей"
 
 #: blueprints/manage/templates/manage_srv_settings.html:162
 msgid "Save changes"
@@ -1204,7 +1206,7 @@ msgstr "Сохранить изменения"
 
 #: blueprints/manage/templates/manage_srv_settings.html:174
 msgid "Backups"
-msgstr ""
+msgstr "Резервные копии"
 
 #: blueprints/manage/templates/manage_srv_settings.html:179
 msgid "Database"
@@ -1212,11 +1214,11 @@ msgstr "База данных"
 
 #: blueprints/manage/templates/manage_srv_settings.html:182
 msgid "Backup database"
-msgstr ""
+msgstr "Резервная копия базы данных"
 
 #: blueprints/manage/templates/manage_srv_settings.html:194
 msgid "Data Management"
-msgstr ""
+msgstr "Управление данными"
 
 #: blueprints/manage/templates/manage_srv_settings.html:199
 #: blueprints/manage/templates/manage_srv_settings.html:221
